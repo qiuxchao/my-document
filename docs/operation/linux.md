@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 19:53:55
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-07 13:54:05
+ * @LastEditTime: 2022-07-08 13:38:14
 -->
 # Linux
 
@@ -18,6 +18,9 @@ netstat -anp | grep 端口号
 scp 文件 root@xxx.xxx.xxx.xxx:/etc/
 # 拷贝文件夹
 scp -r 文件夹 root@xxx.xxx.xxx.xxx:/etc/
+
+# 查看可执行命令所在路径
+which xxx
 
 ```
 
