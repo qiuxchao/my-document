@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-07 15:41:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-08 14:37:56
+ * @LastEditTime: 2022-07-11 14:16:30
 -->
 # Jenkins
 
@@ -194,7 +194,7 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
     ![](./image/jenkins_github_1.png)
 - 点击「**源码管理**」选项卡，同样填入 `github` 项目地址，然后在点击下面的「**添加**」按钮，在浮窗中选择 `Jenkins`
     ![](./image/jenkins_github_conf_1.png)
-- 在弹出的窗口中输入 `github` 的账号和密码（现在github已经不支持使用密码登录，这里密码的输入框可以输入 Github Access Token），点击添加关闭窗口
+- 在弹出的窗口中输入 `github` 的账号和密码（现在github已经不支持使用密码登录，这里密码的输入框可以输入 Github Access Token），点击添加关闭窗口（这里也可以切换成 ssh key 的方式）
     ![](./image/jenkins_github_conf_2.png)
 - 点击「**构建触发器**」选项卡，选择 `GitHub hook trigger for GITScm pull` 选项，它将监听来自给定 `GitHub` 存储库的触发器
     ![](./image/jenkins_github_2.png)
@@ -214,3 +214,25 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 - 现在，单击 `Add webhook` 按钮以保存配置。
 
 至此！我们完成了 `Jenkins` 与 `GitHub Webhook` 集成。现在对于 `GitHub` 存储库中的任何提交，`Jenkins` 将触发指定的事件。
+
+#### 踩坑记录
+
+1. `Jenkins` 构建时出现
+
+``` shell
+ERROR: Timeout after 10 minutes
+ERROR: Error cloning remote repo 'origin'
+```
+
+解决办法：
+
+项目配置页面 -----> 源代码管理 ---> 单击附加行为，在该选择中 -----> 高级克隆行为，取消勾选“fetch tag”，在“超时（以分钟为单位）中提供60进行克隆和获取操作”，60 不是固定的，这取决于你的代码，所以首先在一个虚拟工作上尝试这个，然后在你的工作中实现。
+
+2. 运行 `Jenkins` 构建中 `shell` 脚本出现：`rm: cannot remove xxx: Permission denied`
+    出现这种情况是 `Jenkins` 权限不足导致的，解决办法：
+
+    - 将`jenkins`没有权限的目录转让给`jenkins`
+
+    ``` shell
+    chown -R jenkins /www 
+    ```

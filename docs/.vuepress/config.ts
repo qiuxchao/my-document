@@ -4,11 +4,12 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-05 15:35:51
+ * @LastEditTime: 2022-07-11 14:35:02
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
 
 export default defineUserConfig({
+  base: '/document/',
   lang: 'zh-CN',
   title: '湫的碎碎念',
   description: '记录学习',
