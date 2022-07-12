@@ -4,9 +4,10 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-12 14:49:55
+ * @LastEditTime: 2022-07-12 15:42:49
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
+import { navbarZh, sidebarZh } from './configs'
 
 export default defineUserConfig({
   base: '/',
@@ -21,24 +22,8 @@ export default defineUserConfig({
   // 主题配置
   theme: defaultTheme({
     logo: '/images/head.jpg',
-    navbar: [
-      {
-        text: '前端技术',
-        children: [],
-      },
-      {
-        text: '后端技术',
-        children: [],
-      },
-      {
-        text: '运维技术',
-        children: ['/operation/nginx.md', '/operation/ssl_ci.md', '/operation/gitlab.md', '/operation/linux.md', '/operation/jenkins.md'],
-      },
-      {
-        text: '技术分享',
-        children: ['/share/code_review.md'],
-      },
-    ],
+    navbar: navbarZh,
+    sidebar: sidebarZh,
     repo: 'https://github.com/qiuxchao',
     editLinkText: '编辑此页',
     lastUpdatedText: '最近更新时间',
