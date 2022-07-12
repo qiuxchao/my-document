@@ -4,12 +4,12 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-11 14:35:02
+ * @LastEditTime: 2022-07-12 14:49:55
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
 
 export default defineUserConfig({
-  base: '/document/',
+  base: '/',
   lang: 'zh-CN',
   title: '湫的碎碎念',
   description: '记录学习',
@@ -32,7 +32,7 @@ export default defineUserConfig({
       },
       {
         text: '运维技术',
-        children: ['/operation/nginx.md', '/operation/ssl_ci.md', '/operation/gitlab.md', '/operation/linux.md'],
+        children: ['/operation/nginx.md', '/operation/ssl_ci.md', '/operation/gitlab.md', '/operation/linux.md', '/operation/jenkins.md'],
       },
       {
         text: '技术分享',
