@@ -1,45 +1,45 @@
 :root {
   // brand colors
-  --c-brand: #3eaf7c;
-  --c-brand-light: #4abf8a;
+  --c-brand: #9254deff;
+  --c-brand-light: #d3adf7ff;
 
   // background colors
-  --c-bg: #ffffff;
-  --c-bg-light: #f3f4f5;
-  --c-bg-lighter: #eeeeee;
+  --c-bg: #f9f0ffff;
+  --c-bg-light: #efdbffff;
+  --c-bg-lighter: #d3adf7ff;
   --c-bg-navbar: var(--c-bg);
   --c-bg-sidebar: var(--c-bg);
-  --c-bg-arrow: #cccccc;
+  --c-bg-arrow: rgb(191, 149, 236);
 
   // text colors
-  --c-text: #2c3e50;
+  --c-text: #120338ff;
   --c-text-accent: var(--c-brand);
-  --c-text-light: #3a5169;
-  --c-text-lighter: #4e6e8e;
-  --c-text-lightest: #6a8bad;
-  --c-text-quote: #999999;
+  --c-text-light: #22075eff;
+  --c-text-lighter: #391085ff;
+  --c-text-lightest: #b37febff;
+  --c-text-quote: #9254deff;
 
   // border colors
-  --c-border: #eaecef;
-  --c-border-dark: #dfe2e5;
+  --c-border: #d3adf7ff;
+  --c-border-dark: #722ed1ff;
 
   // custom container colors
-  --c-tip: #42b983;
+  --c-tip: #9254deff;
   --c-tip-bg: var(--c-bg-light);
   --c-tip-title: var(--c-text);
   --c-tip-text: var(--c-text);
   --c-tip-text-accent: var(--c-text-accent);
-  --c-warning: #e7c000;
-  --c-warning-bg: #fffae3;
-  --c-warning-title: #ad9000;
-  --c-warning-text: #746000;
+  --c-warning: #ffc069ff;
+  --c-warning-bg: #fff7e6ff;
+  --c-warning-title: #ad4e00ff;
+  --c-warning-text: #873800ff;
   --c-warning-text-accent: var(--c-text);
-  --c-danger: #cc0000;
-  --c-danger-bg: #ffe0e0;
-  --c-danger-title: #990000;
-  --c-danger-text: #660000;
+  --c-danger: #cf1322ff;
+  --c-danger-bg: #fff1f0ff;
+  --c-danger-title: #a8071aff;
+  --c-danger-text: #820014ff;
   --c-danger-text-accent: var(--c-text);
-  --c-details-bg: #eeeeee;
+  --c-details-bg: #f9f0ffff;
 
   // badge component colors
   --c-badge-tip: var(--c-tip);
@@ -134,38 +134,38 @@
 
 html.dark {
   // brand colors
-  --c-brand: #3aa675;
-  --c-brand-light: #349469;
+  --c-brand: #b37febff;
+  --c-brand-light: rgb(219, 189, 243);
 
   // background colors
-  --c-bg: #22272e;
-  --c-bg-light: #2b313a;
-  --c-bg-lighter: #262c34;
+  --c-bg: rgb(21, 5, 61);
+  --c-bg-light: rgb(98, 52, 199);
+  --c-bg-lighter: rgba(129, 30, 168, 0.76);
 
   // text colors
-  --c-text: #adbac7;
-  --c-text-light: #96a7b7;
-  --c-text-lighter: #8b9eb0;
-  --c-text-lightest: #8094a8;
+  --c-text: #f9f0ffff;
+  --c-text-light: #efdbffff;
+  --c-text-lighter: #d3adf7ff;
+  --c-text-lightest: #b37febff;
 
   // border colors
-  --c-border: #3e4c5a;
-  --c-border-dark: #34404c;
+  --c-border: #722ed1ff;
+  --c-border-dark: #d3adf7ff;
 
   // custom container colors
-  --c-tip: #318a62;
-  --c-warning: #ceab00;
-  --c-warning-bg: #7e755b;
-  --c-warning-title: #ceac03;
-  --c-warning-text: #362e00;
-  --c-danger: #940000;
-  --c-danger-bg: #806161;
-  --c-danger-title: #610000;
-  --c-danger-text: #3a0000;
+  --c-tip: #b37febff;
+  --c-warning: #ffc53dff;
+  --c-warning-bg: rgb(95, 60, 14);
+  --c-warning-title: #ffe58fff;
+  --c-warning-text: rgb(236, 191, 140);
+  --c-danger: #cf1322ff;
+  --c-danger-bg: #820014ff;
+  --c-danger-title: #cf1322ff;
+  --c-danger-text: #5c0011ff;
   --c-details-bg: #323843;
 
   // code blocks vars
-  --code-hl-bg-color: #363b46;
+  --code-hl-bg-color: #423646;
 }
 
 // plugin-docsearch
