@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-12 17:40:18
+ * @LastEditTime: 2022-07-13 14:58:54
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -57,6 +57,7 @@ export const sidebarZh: SidebarConfig = {
     },
     '/frontend/typescript.md',
     '/frontend/jquery.md',
+    '/frontend/bgw.md',
   ],
   '/backend/': [
     {
@@ -82,6 +83,7 @@ export const sidebarZh: SidebarConfig = {
         '/backend/nodejs/koa.md',
       ],
     },
+    '/backend/php/',
   ],
   '/operation/': [
     {
