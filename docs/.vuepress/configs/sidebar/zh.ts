@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-13 14:58:54
+ * @LastEditTime: 2022-07-14 11:02:04
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -53,6 +53,13 @@ export const sidebarZh: SidebarConfig = {
         '/frontend/algorithm/tree.md',
         '/frontend/algorithm/graph.md',
         '/frontend/algorithm/greed_dynamic.md',
+      ],
+    },
+    {
+      text: 'Canvas',
+      collapsible: true,
+      children: [
+        '/frontend/canvas/',
       ],
     },
     '/frontend/typescript.md',

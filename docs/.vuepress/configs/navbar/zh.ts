@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-13 14:58:43
+ * @LastEditTime: 2022-07-14 11:01:24
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -31,6 +31,10 @@ export const navbarZh: NavbarConfig = [
           {
             text: '算法',
             link: '/frontend/algorithm/sort_search.md',
+          },
+          {
+            text: 'Canvas',
+            link: '/frontend/canvas/',
           },
           '/frontend/typescript.md',
           '/frontend/jquery.md',
