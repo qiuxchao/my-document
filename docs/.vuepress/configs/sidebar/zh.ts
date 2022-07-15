@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 15:05:16
+ * @LastEditTime: 2022-07-15 18:42:31
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -111,6 +111,7 @@ export const sidebarZh: SidebarConfig = {
         '/operation/ssl_ci.md',
         '/operation/gitlab.md',
         '/operation/jenkins.md',
+        '/operation/redis.md',
       ],
     },
   ],

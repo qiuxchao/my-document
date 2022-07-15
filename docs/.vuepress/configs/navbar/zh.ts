@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 15:04:35
+ * @LastEditTime: 2022-07-15 17:48:51
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -62,7 +62,8 @@ export const navbarZh: NavbarConfig = [
           '/operation/nginx.md',
           '/operation/ssl_ci.md',
           '/operation/gitlab.md',
-          '/operation/jenkins.md'
+          '/operation/jenkins.md',
+          '/operation/redis.md'
         ],
       },
       {
