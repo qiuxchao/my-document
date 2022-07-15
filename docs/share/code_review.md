@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-05-23 11:10:24
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-06-20 19:51:23
+ * @LastEditTime: 2022-07-14 17:31:04
 -->
 # Gitlab MR 结合钉钉机器人的自动化 Code Review
 
@@ -118,7 +118,7 @@ Code Review 流程：
 
 - 能否不登陆到 `Gitlab` 网页，在本地就可以创建 `MR`？
 
-`GitLab`提供了丰富的`API`供我们使用，让我们可以无需登陆到`GitLab`页面就可以进行一些操作。API地址：[https://gitlab.fenxianglife.com/help/api/README.md](https://gitlab.fenxianglife.com/help/api/README.md)
+`GitLab`提供了丰富的`API`供我们使用，让我们可以无需登陆到`GitLab`页面就可以进行一些操作。API地址为 `gitlab地址/help/api/README.md`
 
 其中就包括创建 `MR` 的`API`，基于此`API`便可以编写`NodeJs`脚本，在命令行交互式的创建`MR`，让我们能在编辑器控制台创建`MR`，整个流程看起来像这样：
 

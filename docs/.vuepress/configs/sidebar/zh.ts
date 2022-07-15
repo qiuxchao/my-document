@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-14 11:02:04
+ * @LastEditTime: 2022-07-15 11:23:30
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -42,6 +42,7 @@ export const sidebarZh: SidebarConfig = {
       children: [
         '/frontend/network/http.md',
         '/frontend/network/ajax.md',
+        '/frontend/network/websockets.md',
       ],
     },
     {
@@ -86,7 +87,14 @@ export const sidebarZh: SidebarConfig = {
       text: 'NodeJs',
       collapsible: true,
       children: [
+        '/backend/nodejs/fs.md',
+        '/backend/nodejs/path.md',
+        '/backend/nodejs/os.md',
+        '/backend/nodejs/url.md',
+        '/backend/nodejs/http.md',
+        '/backend/nodejs/events.md',
         '/backend/nodejs/npm_yarn.md',
+        '/backend/nodejs/express.md',
         '/backend/nodejs/koa.md',
       ],
     },

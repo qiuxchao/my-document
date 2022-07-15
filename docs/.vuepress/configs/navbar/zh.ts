@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-14 11:01:24
+ * @LastEditTime: 2022-07-15 10:13:24
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -50,7 +50,7 @@ export const navbarZh: NavbarConfig = [
           },
           {
             text: 'NodeJs',
-            link: '/backend/nodejs/npm_yarn.md',
+            link: '/backend/nodejs/fs.md',
           },
           '/backend/php/',
         ],

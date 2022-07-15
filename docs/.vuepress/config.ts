@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-12 15:42:49
+ * @LastEditTime: 2022-07-15 10:27:13
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { navbarZh, sidebarZh } from './configs'
