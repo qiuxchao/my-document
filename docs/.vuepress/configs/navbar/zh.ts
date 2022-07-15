@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 10:13:24
+ * @LastEditTime: 2022-07-15 15:04:35
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -45,12 +45,12 @@ export const navbarZh: NavbarConfig = [
         text: '后端技术',
         children: [
           {
-            text: 'Python',
-            link: '/backend/python/01_str_num.md',
-          },
-          {
             text: 'NodeJs',
             link: '/backend/nodejs/fs.md',
+          },
+          {
+            text: 'Python',
+            link: '/backend/python/01_str_num.md',
           },
           '/backend/php/',
         ],

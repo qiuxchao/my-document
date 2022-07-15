@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 11:23:30
+ * @LastEditTime: 2022-07-15 15:05:16
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -69,21 +69,6 @@ export const sidebarZh: SidebarConfig = {
   ],
   '/backend/': [
     {
-      text: 'Python',
-      collapsible: true,
-      children: [
-        '/backend/python/01_str_num.md',
-        '/backend/python/02_list_for.md',
-        '/backend/python/03_if.md',
-        '/backend/python/04_input_while.md',
-        '/backend/python/05_tuple.md',
-        '/backend/python/06_dict.md',
-        '/backend/python/07_def.md',
-        '/backend/python/08_format.md',
-        '/backend/python/09_encode_decode.md',
-      ],
-    },
-    {
       text: 'NodeJs',
       collapsible: true,
       children: [
@@ -96,6 +81,23 @@ export const sidebarZh: SidebarConfig = {
         '/backend/nodejs/npm_yarn.md',
         '/backend/nodejs/express.md',
         '/backend/nodejs/koa.md',
+        '/backend/nodejs/cheerio.md',
+        '/backend/nodejs/upload_img.md',
+      ],
+    },
+    {
+      text: 'Python',
+      collapsible: true,
+      children: [
+        '/backend/python/01_str_num.md',
+        '/backend/python/02_list_for.md',
+        '/backend/python/03_if.md',
+        '/backend/python/04_input_while.md',
+        '/backend/python/05_tuple.md',
+        '/backend/python/06_dict.md',
+        '/backend/python/07_def.md',
+        '/backend/python/08_format.md',
+        '/backend/python/09_encode_decode.md',
       ],
     },
     '/backend/php/',
