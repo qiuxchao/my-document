@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-15 11:18:27
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 11:22:41
+ * @LastEditTime: 2022-07-21 20:03:37
 -->
 # Websockets
 
@@ -21,7 +21,7 @@
 
 ## HTTP & WebSocket 演示图
 
-![](../images/websocket_http.png)
+![](./images/websocket_http.png)
 
 ## WebSockets 的应用
 

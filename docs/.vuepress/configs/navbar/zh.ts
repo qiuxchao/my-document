@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 17:48:51
+ * @LastEditTime: 2022-07-21 20:06:25
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -15,6 +15,10 @@ export const navbarZh: NavbarConfig = [
           {
             text: 'JavaScript',
             link: '/frontend/javascript/es6+.md',
+          },
+          {
+            text: 'Css',
+            link: '/frontend/css/vw_vh.md',
           },
           {
             text: 'React',
