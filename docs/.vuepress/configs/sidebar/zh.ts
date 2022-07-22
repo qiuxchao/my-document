@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-22 10:30:18
+ * @LastEditTime: 2022-07-22 11:33:53
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -106,6 +106,14 @@ export const sidebarZh: SidebarConfig = {
         '/backend/python/07_def.md',
         '/backend/python/08_format.md',
         '/backend/python/09_encode_decode.md',
+      ],
+    },
+    {
+      text: 'Java',
+      collapsible: true,
+      children: [
+        '/backend/java/basic.md',
+        '/backend/java/oop.md',
       ],
     },
     '/backend/php/',

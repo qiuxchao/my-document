@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-21 20:06:25
+ * @LastEditTime: 2022-07-22 11:33:11
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -55,6 +55,10 @@ export const navbarZh: NavbarConfig = [
           {
             text: 'Python',
             link: '/backend/python/01_str_num.md',
+          },
+          {
+            text: 'Java',
+            link: '/backend/java/basic.md',
           },
           '/backend/php/',
         ],
