@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-21 20:07:09
+ * @LastEditTime: 2022-07-22 10:30:18
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -25,6 +25,7 @@ export const sidebarZh: SidebarConfig = {
       collapsible: true,
       children: [
         '/frontend/css/vw_vh.md',
+        '/frontend/css/flexible.md',
       ],
     },
     {
