@@ -4,13 +4,24 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 19:53:55
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-08 13:38:14
+ * @LastEditTime: 2022-07-22 13:51:55
 -->
 # Linux
 
 ## 常用命令
 
 ``` shell
+# 创建文件夹
+mkdir 文件夹名
+
+# 创建文件
+touch 文件名
+
+# 删除文件
+rm 文件名
+# 强制删除文件夹
+rm -rf 文件/文件夹名
+
 # 查看端口是否被占用
 netstat -anp | grep 端口号
 

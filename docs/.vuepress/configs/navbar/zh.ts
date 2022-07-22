@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-22 11:33:11
+ * @LastEditTime: 2022-07-22 14:47:21
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -77,7 +77,15 @@ export const navbarZh: NavbarConfig = [
       {
         text: '工具',
         children: [
-          '/tools/git.md'
+          {
+            text: 'Git',
+            link: '/tools/git/',
+          },
+          {
+            text: 'IDE',
+            link: '/tools/ide/vscode_plugins.md',
+          },
+          
         ],
       },
       {

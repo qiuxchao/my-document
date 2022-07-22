@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-22 11:33:53
+ * @LastEditTime: 2022-07-22 14:48:06
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -133,9 +133,16 @@ export const sidebarZh: SidebarConfig = {
   ],
   '/tools/': [
     {
-      text: '工具',
+      text: 'Git',
       children: [
-        '/tools/git.md',
+        '/tools/git/',
+        '/tools/git/js_delivr.md',
+      ],
+    },
+    {
+      text: 'IDE',
+      children: [
+        '/tools/ide/vscode_plugins.md',
       ],
     },
   ],
