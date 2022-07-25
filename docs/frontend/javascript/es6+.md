@@ -337,7 +337,7 @@ car.sayName()
     一个基本的箭头函数最基本的定义形式：
 
 ```javascript
-;() => {}
+() => {};
 ```
 
 当仅有一个参数或一个返回值时，定义一个箭头函数的语法为：
@@ -897,8 +897,8 @@ function Person(name, age) {
  this.age = age
 }
 let person = new Person('Bob', 20)
-// 打印出对象的构造函数
-console.log(person.constructor)
+// 打印出对象的构造函数，就是上面定义的 Person
+console.log(person.constructor) // ƒ Person(name, age) {...}
 // 给构造函数原型添加方法
 Person.prototype.sayName = function () {
  console.log(this.name)
