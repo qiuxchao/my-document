@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-22 14:34:54
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-22 14:37:17
+ * @LastEditTime: 2022-07-26 10:34:17
 -->
 # Vs Code 常用插件
 
@@ -28,3 +28,4 @@
 18. `WXML` WXML 语法支持
 19. `TODO Highlight` TODO: 高亮
 20. `Todo Tree` 树形结构查看所有 TODO:
+21. `git-commit-plugin` git commit 标记（带emoji）
