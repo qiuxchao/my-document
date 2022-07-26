@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 16:40:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-07 14:07:37
+ * @LastEditTime: 2022-07-26 09:39:48
 -->
 # GitLab
 
@@ -119,9 +119,11 @@ gitlab Reconfigured!
 
 ![](./image/gitlat_edit_pwd.png)
 
-## 配置域名访问
+<!-- ## 配置域名访问 -->
 
 ## GitLab项目自动同步到GitHub或Gitee
+
+参考：[官方文档](https://docs.gitlab.com/omnibus/settings/nginx.html#using-an-existing-passengernginx-installation)
 
 > 参考链接🔗：<br/>
 > [CentOS 7 下 GitLab安装部署教程](https://ken.io/note/centos7-gitlab-install-tutorial)<br/>

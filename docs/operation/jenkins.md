@@ -91,7 +91,7 @@ server {
     server_name  jenkins.qiuxc.cn; #监听的域名
     access_log  /var/log/nginx/jenkins.access.log;
     error_log  /var/log/nginx/jenkins.error.log;
-    ssl          on;     #这一行是另外添加的，意思是打开ssl功能，一定要添加。
+    
     ssl_certificate      /etc/nginx/server/ssl/jenkins.qiuxc.cn_nginx/jenkins.qiuxc.cn_bundle.crt;  #这是下载下来的nginx证书的crt文>件路径，绝对或者>相对路径都可以
     ssl_certificate_key  /etc/nginx/server/ssl/jenkins.qiuxc.cn_nginx/jenkins.qiuxc.cn.key;   #和crt的规则一样
     ssl_session_cache    shared:SSL:1m;
