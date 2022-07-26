@@ -4,10 +4,13 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 10:27:13
+ * @LastEditTime: 2022-07-26 19:43:38
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { navbarZh, sidebarZh } from './configs'
+const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
+// const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+
 
 export default defineUserConfig({
   base: '/',
@@ -32,4 +35,14 @@ export default defineUserConfig({
     warning: '注意',
     danger: '警告',
   }),
+
+  // 插件
+  plugins: [
+    googleAnalyticsPlugin({
+      id: 'G-KEP9J329HR'
+    }),
+    // docsearchPlugin({
+      
+    // }),
+  ]
 })
