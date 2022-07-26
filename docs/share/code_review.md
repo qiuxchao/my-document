@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-05-23 11:10:24
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-14 17:31:04
+ * @LastEditTime: 2022-07-26 16:31:20
 -->
 # Gitlab MR 结合钉钉机器人的自动化 Code Review
 
@@ -50,7 +50,7 @@ GitLab可以在分支合并的时候支持两种方式：
 
 以上述Git工作流为例，开发人员在`Feature`分支进行开发，开发完成后仍然在`Feature`分支进行测试。
 
-基于当前的工作流，为了保证提测质量，我们可以在提测之前发起`Feature`到`Develop`分支的`Merge Request`，但是此`Merge Reuqest`应只用来审查代码，不能直接合并到`Develop`（因为还未测试），代码审查完成后应关闭此`Merge Request`
+基于当前的工作流，为了保证提测质量，我们可以在提测之前发起`Feature`到`Develop`分支的`Merge Request`，代码审查完成并且通过测试后将`Feature`分支合并到`Develop`分支.
 ![](./image/code_review_workflow.png)
 
 ### GitLab Code Review 流程
