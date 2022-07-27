@@ -28,11 +28,11 @@
 
 浏览器运行的是 html 页面，并加载页面中通过 script 元素引入的 js
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets3/2019-12-02-10-57-23.png)
+![image](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets3/2019-12-02-10-57-23.png)
 
 nodejs 直接运行某个 js 文件，该文件被称之为入口文件
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets3/2019-12-02-10-59-43.png)
+![image](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets3/2019-12-02-10-59-43.png)
 
 nodejs 遵循 EcmaScript 标准，但由于脱离了浏览器环境，因此：
 
@@ -56,7 +56,7 @@ node 中的所有代码均在 CommonJS 规范下运行
 
 有了 CommonJS 模块化，代码就会形成下面的结构：
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets3/2019-12-02-11-15-01.png)
+![image](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets3/2019-12-02-11-15-01.png)
 
 同时也解决了 JS 的两个问题
 

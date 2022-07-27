@@ -2,7 +2,7 @@
 
 ## 概念
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/tjg.png)
+![图结构](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/tjg.png)
 
 图结构中，一个结点可以链接到任意结点，所有结点链接而成的结构，即为图结构
 

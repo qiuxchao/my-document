@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-21 19:53:24
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-21 20:05:34
+ * @LastEditTime: 2022-07-27 14:35:04
 -->
 # 通过vw、vh来实现自适应
 
@@ -55,6 +55,6 @@ var defaults = {
 ## vw/vh 单位的兼容性
 
 可以在 [https://caniuse.com/](https://caniuse.com/) 查看各个版本的浏览器对 `vw` 单位的支持性。
-![](./images/vh_vw_jr.png)
+![vw/vh 单位的兼容性](./images/vh_vw_jr.png)
 
 从上图我们发现，绝大多数的浏览器支持 `vw` 单位，但是 `ie9-11` 不支持 `vmin` 和 `vmax`，考虑到 `vmin` 和 `vmax` 单位不常用，`vw` 单位在绝大部分高版本浏览器内的支持性很好，但是 `opera` 浏览器整体不支持 `vw` 单位，如果需要兼容 `opera` 浏览器的布局，不推荐使用 `vw`。

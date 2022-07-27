@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-22 10:44:19
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-22 11:37:41
+ * @LastEditTime: 2022-07-27 14:33:00
 -->
 # 基础
 
@@ -27,7 +27,7 @@
 4. 执行 `java Test` ，类加载器将 Test.class 中的类加载到内存中，然后运行 Test 类，执行 `main` 主方法
 5. `main` 方法入栈，发现声明了常量 `x` ，从常量缓冲区复制 `1` 到 栈 里
 
-![](./images/java_compile.png)
+![java编译流程](./images/java_compile.png)
 
 ## 环境搭建
 
@@ -214,4 +214,4 @@ int x = 97; char y = (int)x; // 需要强制转换，将 32bit 的 x 放入 16bi
 
 ## float & byte & long 赋值时的问题
 
-![](./images/float_byte_long_issue.md.png)
+![float & byte & long 赋值时的问题](./images/float_byte_long_issue.md.png)

@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 16:43:45
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-12 16:44:03
+ * @LastEditTime: 2022-07-27 14:36:51
 -->
 # 事件循环 EventLoop
 
@@ -20,17 +20,17 @@ JS 执行引擎：JS 宿主环境（例如浏览器）中的一个功能模块�
 
 它们的关系如下：
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-13-36-47.png)
+![浏览器、JS、执行引擎的关系](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-13-36-47.png)
 
 2. **进程 和 线程**
 
 进程：当一个应用程序运行时，需要使用内存和 CPU 资源，这些资源需要向操作系统申请。操作系统以进程的方式来分配这些资源，一个进程就代表着一块独立于其他进程的内存空间。一个应用程序要运行，必须至少有一个进程启动。进程的最大特点是**独立**，一个进程不能随意的访问其他进程的资源。这就保证了多个程序在操作系统上运行互不干扰。
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-13-47-01.png)
+![进程](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-13-47-01.png)
 
 线程：可能要同时执行多个任务，每个任务需要在一个线程上运行，线程与线程之间**相对独立**，但可以共享应用程序的进程数据。
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-13-49-54.png)
+![线程](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-13-49-54.png)
 
 3. **如何理解 JS 的单线程**
 
@@ -42,7 +42,7 @@ JS 执行引擎：JS 宿主环境（例如浏览器）中的一个功能模块�
 - 易于掌控程序：由于代码都按照顺序执行，不会出现中断，也没有共享资源的争夺问题，极大的降低了开发难度。
 - 更加合理的利用计算机资源：创建新的线程和销毁线程都会耗费额外的 CPU 和内存资源，没有良好的线程设计，将导致程序运行效率低下。而单线程的应用不受此影响
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-05-46.png)
+![JS 的单线程](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-05-46.png)
 
 4. **JS 如何处理多任务**
 
@@ -58,13 +58,13 @@ JS 执行引擎：JS 宿主环境（例如浏览器）中的一个功能模块�
 
 多线程：
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-16-35.png)
+![多线程](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-16-35.png)
 
 可以看到，如果以多线程的方式运行，会导致程序代码在某些时候会有重叠执行的情况出现，如果这些代码凑巧在使用共享数据，将难以控制最终的运行结果。
 
 而使用异步的方式就解决了该问题：
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-23-57.png)
+![异步](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-23-57.png)
 
 可以看出，使用异步之后，所有的 JS 代码都在单个线程中执行，不会出现多个任务同时执行的情况，自然就不会出现资源争夺的问题。
 
@@ -91,13 +91,13 @@ JS 执行引擎：JS 宿主环境（例如浏览器）中的一个功能模块�
 3. 将执行栈中的代码全部执行完毕
 4. 从事件队列中取出第一个任务放入执行栈，然后重复第 1 步
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-37-45.png)
+![事件循环](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-37-45.png)
 
 事件队列在不同的宿主环境中有所差异，大部分宿主环境会将事件队列进行细分。在浏览器中，事件队列分为两种：
 
 - 宏任务（队列）：macroTask，计时器结束的回调、事件回调、http 回调等等绝大部分异步函数进入宏队列
 - 微任务（队列）：microTask，Promise.then, [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)
 
-![](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-49-42.png)
+![事件队列](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/sjxh/assets1/2019-12-25-14-49-42.png)
 
 当执行栈清空时，JS 引擎首先会将微任务中的所有任务依次执行结束，如果没有微任务，则执行宏任务。

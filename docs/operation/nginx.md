@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-06-27 10:12:13
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-06-28 10:52:30
+ * @LastEditTime: 2022-07-27 14:39:09
 -->
 # Nginx
 
@@ -45,7 +45,7 @@ firewall-cmd --reload
 
 4. 访问测试
   浏览器输入 服务器IP，出现以下信息说明安装成功
-  ![](./image/nginx_welcome.png)
+  ![nginx_welcome](./image/nginx_welcome.png)
 
 ### Nginx 常用配置
 

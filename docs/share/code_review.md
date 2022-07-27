@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-05-23 11:10:24
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-26 16:31:20
+ * @LastEditTime: 2022-07-27 14:38:07
 -->
 # Gitlab MR 结合钉钉机器人的自动化 Code Review
 
@@ -39,7 +39,7 @@ GitLab可以在分支合并的时候支持两种方式：
 #### 工作流
 
 我们当前的工作流如下
-![](./image/develop_workflow.png)
+![当前的工作流](./image/develop_workflow.png)
 
 1. 需求确认后开发人员从`develop/master`分支创建自己的`feature`分支进行开发
 2. 需求开发完成后，需要从最新`develop`分支合并到自己的`feature`分支，然后发布到测试环境进行测试
@@ -51,7 +51,7 @@ GitLab可以在分支合并的时候支持两种方式：
 以上述Git工作流为例，开发人员在`Feature`分支进行开发，开发完成后仍然在`Feature`分支进行测试。
 
 基于当前的工作流，为了保证提测质量，我们可以在提测之前发起`Feature`到`Develop`分支的`Merge Request`，代码审查完成并且通过测试后将`Feature`分支合并到`Develop`分支.
-![](./image/code_review_workflow.png)
+![Code Review 时机](./image/code_review_workflow.png)
 
 ### GitLab Code Review 流程
 
@@ -94,11 +94,11 @@ Code Review 流程：
 ### 自定义机器人
 
 `GitLab` 上的操作，之所以能够把消息推送到对应钉钉群，本质上是借助于 `Webhooks` 和钉钉群消息机器人的能力，其流程如下图所示:
-![](./image/dd_gitlab_robot_workflow.png)
+![dd_gitlab_robot_workflow](./image/dd_gitlab_robot_workflow.png)
 
 上述流程中，给钉钉群推送什么样格式的消息是由钉钉群"GitLab机器人"服务来做的，那么如果要自定义推送到钉钉群的消息内容，只需要替换掉钉钉群”GitLab机器人“的默认服务即可，流程图如下所示:
 
-![](./image/dd_custom_robot_workflow.png)
+![dd_custom_robot_workflow](./image/dd_custom_robot_workflow.png)
 
 使用自定义机器人需要自建`Nodejs`服务，具体实现流程如下：
 
@@ -109,8 +109,8 @@ Code Review 流程：
 
 ### 自定义机器人结合 GitLab MR 的 Code Review 🛠
 
-![](./image/custom_mr_create.png)
-![](./image/custom_robot.png)
+![custom_mr_create](./image/custom_mr_create.png)
+![custom_robot](./image/custom_robot.png)
 
 ## NodeJs 脚本创建 MR 📝
 
@@ -122,7 +122,7 @@ Code Review 流程：
 
 其中就包括创建 `MR` 的`API`，基于此`API`便可以编写`NodeJs`脚本，在命令行交互式的创建`MR`，让我们能在编辑器控制台创建`MR`，整个流程看起来像这样：
 
-![](./image/mr_process.png)
+![mr_process](./image/mr_process.png)
 
 1. 在本地编辑器或命令行运行脚本，交互式创建`MR`
 2. `GitLab`接收到创建`MR`请求，创建`MR`后触发`WebHook`发送请求到`Nodejs`服务
@@ -143,9 +143,9 @@ Code Review 流程：
 创建个人访问令牌（Personal access tokens）即可，创建流程如下：
 
 1. 进入到`GitLab`中的用户设置页面
-  ![](./image/gitlab_profile.png)
+  ![GitLab中的用户设置页面](./image/gitlab_profile.png)
 2. 创建个人访问令牌（Personal access tokens）
-  ![](./image/gitlab_create_access_token.png)
+  ![创建个人访问令牌](./image/gitlab_create_access_token.png)
 
 将创建好的`access token`填入到脚本中，脚本路径为：`bin/create_mr.js`
 

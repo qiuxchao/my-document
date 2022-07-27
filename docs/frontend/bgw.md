@@ -582,7 +582,7 @@ PS：这里需要说明一下，Fiber 是 React 进行重构的核心算法，`f
 `requestIdleCallback` 是 react Fiber 实现的基础 api 。我们希望能够快速响应用户，让用户觉得够快，不能阻塞用户的交互，`requestIdleCallback` 能使开发者在主事件循环上执行后台和低优先级的工作，而不影响延迟关键事件，如动画和输入响应。正常帧任务完成后没超过 `16ms`，说明有多余的空闲时间，此时就会执行 `requestIdleCallback` 里注册的任务。
 
 具体的执行流程如下，开发者采用 `requestIdleCallback` 方法注册对应的任务，告诉浏览器我的这个任务优先级不高，如果每一帧内存在空闲时间，就可以执行注册的这个任务。另外，开发者是可以传入 timeout 参数去定义超时时间的，如果到了超时时间了，浏览器必须立即执行，使用方法如下：`window.requestIdleCallback(callback, { timeout: 1000 })`。浏览器执行完这个方法后，如果没有剩余时间了，或者已经没有下一个可执行的任务了，`React` 应该归还控制权，并同样使用 `requestIdleCallback` 去申请下一个时间片。具体的流程如下图：
-![](https://ucc.alicdn.com/pic/developer-ecology/d1fb0a0b3b814f4480ace346e6c1ee5d.png)
+![requestIdleCallback 流程图](https://ucc.alicdn.com/pic/developer-ecology/d1fb0a0b3b814f4480ace346e6c1ee5d.png)
 
 `window.requestIdleCallback(callback)` 的 `callback` 中会接收到默认参数 `deadline` ，其中包含了以下两个属性：
 
@@ -636,7 +636,7 @@ requestIdleCallback(workloop, { timeout: 1000 })
 ```
 
 上面定义了一个任务队列 `taskQueue，并定义了` `workloop` 函数，其中采用 `window.requestIdleCallback(workloop, { timeout: 1000 })`去执行 `taskQueue` 中的任务。每个任务中仅仅做了 `console.log` 的工作，时间是非常短的，浏览器计算此帧中还剩余 `15.52ms`，足以一次执行完这三个任务，因此在此帧的空闲时间中，`taskQueue` 中定义的三个任务均执行完毕。打印结果如下：
-![](https://ucc.alicdn.com/pic/developer-ecology/e5063c7d4d3540e8ba451ee52ec0892a.png)
+![taskQueue](https://ucc.alicdn.com/pic/developer-ecology/e5063c7d4d3540e8ba451ee52ec0892a.png)
 
 ##### 多帧执行
 
@@ -667,7 +667,7 @@ let taskQueue = [
 ```
 
 基于以上的例子做了部分改造，让 `taskQueue` 中的每个任务的执行时间都超过 `16.6ms`，看打印结果知道浏览器第一帧的空闲时间为 14ms，只能执行一个任务，同理，在第二帧、第三帧的时间也只够执行一个任务。所有这三个任务分别是在三帧中分别完成的。打印结果如下：
-![](https://ucc.alicdn.com/pic/developer-ecology/944ec3f9059b481bbe86bcfb868f5bf3.png)
+![taskQueue](https://ucc.alicdn.com/pic/developer-ecology/944ec3f9059b481bbe86bcfb868f5bf3.png)
 
 浏览器一帧的时间并不严格是 `16ms`，是可以动态控制的（如第三帧剩余时间为 49.95ms）。如果子任务的时间超过了一帧的剩余时间，则会一直卡在这里执行，直到子任务执行完毕。如果代码存在死循环，则浏览器会卡死。如果此帧的剩余时间大于 0（有空闲时间）或者已经超时（上文定义了 `timeout` 时间为 `1000`，必须强制执行了），且当时存在任务，则直接执行该任务。如果没有剩余时间，则应该放弃执行任务控制权，把执行权交还给浏览器。如果多个任务执行总时间小于空闲时间的话，是可以在一帧内执行多个任务的。
 
