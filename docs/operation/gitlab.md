@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 16:40:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-27 15:42:48
+ * @LastEditTime: 2022-07-27 16:01:00
 -->
 # GitLab
 
@@ -175,7 +175,7 @@ gitlab Reconfigured!
 4. 杀掉第一个进程（就是带有好多…………. 的进程）
 
   ```bash
-  kill -9 18777
+  kill -9 1453
   ```
 
   杀掉后，再 `ps aux | grep gitlab` 确认一遍，还有没有 gitlab 的进程
