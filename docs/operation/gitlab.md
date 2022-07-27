@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 16:40:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-26 10:36:18
+ * @LastEditTime: 2022-07-27 15:42:48
 -->
 # GitLab
 
@@ -129,3 +129,59 @@ gitlab Reconfigured!
 > [CentOS 7 下 GitLab安装部署教程](https://ken.io/note/centos7-gitlab-install-tutorial)<br/>
 > [gitlab配置域名访问](https://blog.51cto.com/u_13767724/2390388)<br/>
 > [gitlab项目自动同步到github或者码云gitee](https://developer.aliyun.com/article/644973)
+
+## 卸载删除 GitLab
+
+1. 停止 gitlab
+
+  ```bash
+  gitlab-ctl stop
+  ```
+
+2. 卸载 gitlab-ce
+
+  ```bash
+  rpm -e gitlab-ce
+  ```
+
+3. 查看 gitlab 进程
+
+  ```bash
+  $ ps aux | grep gitlab
+
+  root      1453  0.0  0.0   4384   496 ?        Ss   Jul04   0:28 runsvdir -P /opt/gitlab/service log: ...........................................................................................................................................................................................................................................................................................................................................................................................................
+  root      1488  0.0  0.0   4376   548 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/logrotate
+  root      1529  0.0  0.0   4376   540 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/redis
+  root      1576  0.0  0.0   4376   512 ?        S    Jul04   0:00 svlogd /var/log/gitlab/gitaly
+  root      1721  0.0  0.0   4376   540 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/postgresql
+  root      1830  0.0  0.0   4232   444 ?        Ss   Jul04   0:00 runsv gitlab-kas
+  root      1843  0.0  0.0   4376   540 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/gitlab-kas
+  root      2014  0.0  0.0   4376   516 ?        S    Jul04   0:05 svlogd /var/log/gitlab/sidekiq
+  root      2025  0.0  0.0   4232   444 ?        Ss   Jul04   0:00 runsv gitlab-workhorse
+  root      2051  0.0  0.0   4376   336 ?        S    Jul04   0:00 svlogd /var/log/gitlab/gitlab-workhorse
+  root      2136  0.0  0.0   4376   544 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/node-exporter
+  root      2151  0.0  0.0   4232   356 ?        Ss   Jul04   0:00 runsv gitlab-exporter
+  root      2162  0.0  0.0   4376   540 ?        S    Jul04   0:04 svlogd -tt /var/log/gitlab/gitlab-exporter
+  root      2186  0.0  0.0   4376   540 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/redis-exporter
+  root      2217  0.0  0.0   4376   544 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/prometheus
+  root      2258  0.0  0.0   4376   540 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/alertmanager
+  root      2298  0.0  0.0   4376   540 ?        S    Jul04   0:17 svlogd -tt /var/log/gitlab/postgres-exporter
+  root      2571  0.0  0.0   4376   540 ?        S    Jul04   0:00 svlogd -tt /var/log/gitlab/grafana
+  root      7381  0.0  0.0   4376   556 ?        S    15:06   0:00 svlogd -tt /var/log/gitlab/puma
+  root      7433  0.0  0.0   4376   556 ?        S    15:06   0:00 svlogd -tt /var/log/gitlab/nginx
+  root     14383  0.0  0.0 112816   980 pts/0    S+   15:35   0:00 grep --color=auto gitlab
+  ```
+
+4. 杀掉第一个进程（就是带有好多…………. 的进程）
+
+  ```bash
+  kill -9 18777
+  ```
+
+  杀掉后，再 `ps aux | grep gitlab` 确认一遍，还有没有 gitlab 的进程
+
+5. 删除所有包含 gitlab 文件
+
+  ```bash
+  find / -name gitlab | xargs rm -rf
+  ```
