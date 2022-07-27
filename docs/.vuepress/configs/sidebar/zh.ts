@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-26 16:22:11
+ * @LastEditTime: 2022-07-27 14:59:05
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -34,6 +34,7 @@ export const sidebarZh: SidebarConfig = {
       children: [
         '/frontend/react/react_redux.md',
         '/frontend/react/react_router_dom.md',
+        '/frontend/react/react_source_read.md',
       ],
     },
     {
