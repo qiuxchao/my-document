@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-07 15:41:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-14 17:09:42
+ * @LastEditTime: 2022-07-27 16:17:00
 -->
 # Jenkins
 
@@ -128,14 +128,14 @@ sudo systemctl restart nginx
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
-![](./image/jenkins_login.png)
+![jenkins_login](./image/jenkins_login.png)
 输入密码并继续
 
 #### 选择插件
 
-![](./image/jenkins_select_plugin.png)
+![jenkins_select_plugin](./image/jenkins_select_plugin.png)
 这里直接选择“安装推荐的插件”即可
-![](./image/jenkins_initinal.png)
+![jenkins_initinal](./image/jenkins_initinal.png)
 
 #### 添加管理员
 
@@ -146,15 +146,15 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 
 这里的URL指的是默认访问`Jenkins`的地址。
 默认是是<http://:8080>，如果你通过`Nginx`配置了域名，那么直接填写配置的域名即可
-![](./image/jenkins_url_configure.png)
+![jenkins_url_configure](./image/jenkins_url_configure.png)
 
 #### 开始使用Jenkins
 
 配置完`Jenkins URL`之后就完成了整个`Jenkins`配置引导
-![](./image/jenkins_install_successful.png)
+![jenkins_install_successful](./image/jenkins_install_successful.png)
 
 点击“开始使用Jenkins”就会进入`Jenkins`主页
-![](./image/jenkins_homepage.png)
+![jenkins_homepage](./image/jenkins_homepage.png)
 
 大功告成～
 
@@ -173,32 +173,32 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 开始配置前，我们需要先修改 `Jenkins` 全局配置中 `Git` 的部分：
 
 - 进入 `Jenkins` 主页，点击侧边栏的 `Manage Jenkins` 按钮
-    ![](./image/jenkins_manage_1.png)
+    ![jenkins_manage_1](./image/jenkins_manage_1.png)
 
 - 在打开的页面中 `System Configuration` 下点击 `Global Tool Configuration` 选项
-    ![](./image/jenkins_manage_2.png)
+    ![jenkins_manage_2](./image/jenkins_manage_2.png)
 
 - 在打开的页面 `Global Tool Configuration` 中找到 `Git` 配置
   - `Name`：`GitHub` 用户名
   - `Path to Git executable`：`Git`安装路径（Linux命令:which git、windows 命令: where git）
-    ![](./image/jenkins_manage_3.png)
+    ![jenkins_manage_3](./image/jenkins_manage_3.png)
 
 配置完 `Git` 路径后，还需要创建与 `Github` 互联的凭证（用户名密码或者ssh key）：
 
 - 进入 `Jenkins` 主页，点击侧边栏的 `Manage Jenkins` 按钮
-    ![](./image/jenkins_manage_1.png)
+    ![jenkins_manage_1](./image/jenkins_manage_1.png)
 
 - 点击 `Manage Credentials` 凭据管理
-    ![](./image/jenkins_bug_1.png)
+    ![jenkins_bug_1](./image/jenkins_bug_1.png)
 
 - 点击 `Jenkins`
-    ![](./image/jenkins_bug_2.png)
+    ![jenkins_bug_2](./image/jenkins_bug_2.png)
 
 - 点击 `添加凭据`
-    ![](./image/jenkins_bug_3.png)
+    ![jenkins_bug_3](./image/jenkins_bug_3.png)
 
 - 这里可以配置不同类型的连接到`GitHub`的凭据，我这里配置的是 `ssh key`，将服务器 `~/.ssh/id_rsa` 文件内容粘贴到下面的位置点击 `Create`
-    ![](./image/jenkins_bug_4.png)
+    ![jenkins_bug_4](./image/jenkins_bug_4.png)
 
 - 大功告成！我们配置了 `Git` 路径和 `GitHub ssh key`
 
@@ -217,29 +217,26 @@ ERROR: Error cloning remote repo 'origin'
 ### 第 1 步：为 GitHub 配置 Jenkins
 
 - 登录 `Jenkins`，进入到 `Jenkins` 项目面板，点击左侧边栏中的「**配置**」
-    ![](./image/jenkins_item_page.png)
+    ![jenkins_item_page](./image/jenkins_item_page.png)
 
 - 进入配置页面，勾选「**GitHub 项目**」，然后填入 `github` 项目地址
-    ![](./image/jenkins_github_1.png)
+    ![jenkins_github_1](./image/jenkins_github_1.png)
 
 - 点击「**源码管理**」选项卡，同样填入 `github` 项目地址，然后在点击下面的「**添加**」按钮，在浮窗中选择 `Jenkins`
-    ![](./image/jenkins_github_conf_1.png)
-
-- 在弹出的窗口中输入 `github` 的账号和密码（现在github已经不支持使用密码登录，这里密码的输入框可以输入 Github Access Token），点击添加关闭窗口（这里也可以切换成 ssh key 的方式）
-    ![](./image/jenkins_github_conf_2.png)
+    ![jenkins_github_conf_1](./image/jenkins_github_conf_1.png)
 
 - 点击「**构建触发器**」选项卡，选择 `GitHub hook trigger for GITScm pull` 选项，它将监听来自给定 `GitHub` 存储库的触发器
-    ![](./image/jenkins_github_2.png)
+    ![jenkins_github_2](./image/jenkins_github_2.png)
 
 - 现在，单击页面底部的「**应用**」按钮以保存更改并为我们的 `Github` 存储库创建一个 `Jenkins` 项目
 
 ### 第 2 步：设置 GitHub Webhook
 
 - 进入到 `Github` 项目的设置页面，点击侧边栏的 `Webhooks`，然后点击 `Add webhook` 按钮
-    ![](./image/jenkins_github_3.png)
+    ![jenkins_github_3](./image/jenkins_github_3.png)
 
 - 复制 `Jenkins` 的主页地址，然后将其粘贴到 `Payload URL` 输入框中，在地址的末尾附加 `/github-webhook/`, 选择 `Content type` 为 `application/json` 格式, 如下图所示:
-    ![](./image/jenkins_github_4.png)
+    ![jenkins_github_4](./image/jenkins_github_4.png)
 
 - `Secret` 字段是可选的，我们留空即可
 - 接下来，在 `Which events would you like to trigger this webhook?` 下选择一个选项。这3个选项将执行下列事件：
