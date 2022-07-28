@@ -4,19 +4,21 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-26 19:43:38
+ * @LastEditTime: 2022-07-28 11:08:27
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { navbarZh, sidebarZh } from './configs'
 const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
 // const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+import { sitemapPlugin } from "vuepress-plugin-sitemap2";
+
 
 
 export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
   title: '湫的碎碎念',
-  description: '记录学习',
+  description: '一只前端崽',
   head: [['link', { rel: 'icon', href: '/images/head.jpg' }]],
 
   // Dev 配置项
@@ -38,11 +40,11 @@ export default defineUserConfig({
 
   // 插件
   plugins: [
+    sitemapPlugin({
+      hostname: "https://qiuxc.cn",
+    }),
     googleAnalyticsPlugin({
       id: 'G-KEP9J329HR'
     }),
-    // docsearchPlugin({
-      
-    // }),
   ]
 })
