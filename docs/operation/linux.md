@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 19:53:55
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-29 14:46:03
+ * @LastEditTime: 2022-07-29 14:59:35
 -->
 # Linux
 
@@ -54,7 +54,7 @@ yum install -y wget
 vi /etc/hosts
 ```
 
-### cyctemctl 命令
+### systemctl 命令
 
 ```sh
 #开机运行服务：
@@ -86,10 +86,17 @@ systemctl --failed
 
 ```sh
 # 创建用户
-useradd -d / ftpuser
+useradd qiuxc
 
 # 修改密码
-passwd ftpuser
+passwd qiuxc
+
+# 删除用户
+userdel qiuxc
+
+# 查看有哪些用户
+cat /etc/passwd
+
 ```
 
 ### 防火墙
