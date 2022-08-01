@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-27 14:59:05
+ * @LastEditTime: 2022-08-01 11:11:55
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -81,6 +81,7 @@ export const sidebarZh: SidebarConfig = {
       text: 'NodeJs',
       collapsible: true,
       children: [
+        '/backend/nodejs/commonjs.md',
         '/backend/nodejs/fs.md',
         '/backend/nodejs/path.md',
         '/backend/nodejs/os.md',

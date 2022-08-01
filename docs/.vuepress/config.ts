@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-29 14:39:06
+ * @LastEditTime: 2022-08-01 13:58:18
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { navbarZh, sidebarZh } from './configs'
@@ -29,6 +29,7 @@ export default defineUserConfig({
     logo: '/images/head.jpg',
     navbar: navbarZh,
     sidebar: sidebarZh,
+    sidebarDepth: 3,
     repo: 'https://github.com/qiuxchao',
     editLinkText: '编辑此页',
     lastUpdatedText: '最近更新时间',
@@ -46,5 +47,12 @@ export default defineUserConfig({
     googleAnalyticsPlugin({
       id: 'G-KEP9J329HR'
     }),
-  ]
+  ],
+
+  markdown: {
+    extractHeaders: {
+      level: [2, 3, 4]
+    },
+  },
+
 })
