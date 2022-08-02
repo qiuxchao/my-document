@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-01 11:11:55
+ * @LastEditTime: 2022-08-02 15:58:48
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -82,13 +82,13 @@ export const sidebarZh: SidebarConfig = {
       collapsible: true,
       children: [
         '/backend/nodejs/commonjs.md',
+        '/backend/nodejs/npm.md',
         '/backend/nodejs/fs.md',
         '/backend/nodejs/path.md',
         '/backend/nodejs/os.md',
         '/backend/nodejs/url.md',
         '/backend/nodejs/http.md',
         '/backend/nodejs/events.md',
-        '/backend/nodejs/npm_yarn.md',
         '/backend/nodejs/express.md',
         '/backend/nodejs/koa.md',
         '/backend/nodejs/cheerio.md',
