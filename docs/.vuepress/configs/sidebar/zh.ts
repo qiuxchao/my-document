@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-02 17:02:17
+ * @LastEditTime: 2022-08-03 13:35:05
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -84,6 +84,7 @@ export const sidebarZh: SidebarConfig = {
         '/backend/nodejs/commonjs.md',
         '/backend/nodejs/npm.md',
         '/backend/nodejs/npm_yarn_source.md',
+        '/backend/nodejs/pnpm.md',
         '/backend/nodejs/fs.md',
         '/backend/nodejs/path.md',
         '/backend/nodejs/os.md',
