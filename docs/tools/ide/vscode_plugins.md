@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-22 14:34:54
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-26 10:34:17
+ * @LastEditTime: 2022-08-03 16:03:09
 -->
 # Vs Code 常用插件
 
@@ -29,3 +29,4 @@
 19. `TODO Highlight` TODO: 高亮
 20. `Todo Tree` 树形结构查看所有 TODO:
 21. `git-commit-plugin` git commit 标记（带emoji）
+22. `Codelf` 变量命名神器，解决命名词穷问题
