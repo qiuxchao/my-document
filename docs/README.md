@@ -6,8 +6,6 @@ features:
     details: 没事就折腾
   - title: 记录工作
     details: 记录日常工作中的踩坑之路
-  - title: 记录生活
-    details: 凑排版的
 actions:
 - text: Go ➡️
   link: /frontend/javascript/es6+.md
