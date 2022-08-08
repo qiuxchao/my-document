@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-05 14:53:23
+ * @LastEditTime: 2022-08-08 19:07:36
  */
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { navbarZh, sidebarZh } from './configs'
@@ -43,7 +43,7 @@ export default defineUserConfig({
   plugins: [
     docsearchPlugin({
       appId: '67Q5WACWHY',
-      apiKey: '1ea07c34e0458baa423fbc6100d7cb4f',
+      apiKey: 'c627209dd5e7b54594eb30728cc3ac08',
       indexName: 'qiuxc',
       locales: {
         '/zh/': {
