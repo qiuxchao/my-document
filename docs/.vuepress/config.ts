@@ -4,9 +4,10 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-08 19:07:36
+ * @LastEditTime: 2022-08-08 19:24:35
  */
-import { defaultTheme, defineUserConfig } from "vuepress";
+import { defineUserConfig } from '@vuepress/cli'
+import { defaultTheme } from '@vuepress/theme-default'
 import { navbarZh, sidebarZh } from './configs'
 const { googleAnalyticsPlugin } = require('@vuepress/plugin-google-analytics')
 const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
@@ -43,7 +44,7 @@ export default defineUserConfig({
   plugins: [
     docsearchPlugin({
       appId: '67Q5WACWHY',
-      apiKey: 'c627209dd5e7b54594eb30728cc3ac08',
+      apiKey: '1ea07c34e0458baa423fbc6100d7cb4f',
       indexName: 'qiuxc',
       locales: {
         '/zh/': {
@@ -98,8 +99,8 @@ export default defineUserConfig({
   ],
 
   markdown: {
-    extractHeaders: {
-      level: [2, 3, 4]
+    anchor: {
+      level: [1, 2, 3, 4, 5, 6]
     },
   },
 
