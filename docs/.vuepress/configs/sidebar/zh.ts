@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-03 13:35:05
+ * @LastEditTime: 2022-08-09 20:06:43
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -26,6 +26,7 @@ export const sidebarZh: SidebarConfig = {
       children: [
         '/frontend/css/vw_vh.md',
         '/frontend/css/flexible.md',
+        '/frontend/css/miniprogram_scroll_notice.md',
       ],
     },
     {
