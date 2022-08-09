@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 19:53:55
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-29 14:59:35
+ * @LastEditTime: 2022-08-09 13:36:22
 -->
 # Linux
 
@@ -97,6 +97,12 @@ userdel qiuxc
 # 查看有哪些用户
 cat /etc/passwd
 
+# 查看当前用户名
+whoami
+
+# 切换身份
+su qiuxc
+
 ```
 
 ### 防火墙
@@ -134,6 +140,113 @@ firewall-cmd --remove-service=ftp --permanent
 
 ## 参数 --permanent，表示永久生效
 ```
+
+### ssh 远程连接
+
+ssh 监听 `22` 端口。
+
+基本语法：
+
+```sh
+ssh [OPTIONS] [-p PORT] [USER@]HOSTNAME [COMMAND]
+```
+
+监听端口示例：
+
+```sh
+ssh -p 300 git@8.8.8.8
+```
+
+打开调试模式：
+
+```sh
+# -v 冗详模式，打印关于运行情况的调试信息
+ssh -v git@8.8.8.8
+```
+
+### cat
+
+查看文件内容：
+
+```sh
+cat ~/.ssh/id_rsa.pub
+```
+
+清空 index.html 内容：
+
+```sh
+cat /dev/null > index.html
+```
+
+把 index.html 的内容写入 second.html：
+
+```sh
+cat index.html > second.html
+```
+
+把 index.html 的内容追加写入 second.html：
+
+```sh
+cat index.html >> second.html
+```
+
+把 index.html 和 second.html 追加写入 third.html：
+
+```sh
+cat index.html second.html >> third.html
+
+```
+
+### chmod 更改文件权限
+
+权限除了用 `r`(读) `w`(写) `x`(执行) 这种方式表示，也可以用数字表示，数组与字母的对应关系为：
+
+- r:4
+- w:2
+- x:1
+
+之所有如此对应关系，主要还是为了方便推导，比如我们希望一个文件可读可写，那我们可以方便的设置权限为 6（4 + 2），同样，如果我们知道一个权限为 3，我们也可以推导出权限为可写可执行，因为只有 2 + 1 才可能等于 3。​
+
+`chmod` （change mode） 的具体语法：
+
+```sh
+# -R：递归更改文件属组
+chmod [-R] xyz 文件或目录
+```
+
+其中 xyz 分别表示 Owner、Group、Others 的权限，如果我们这样设置一个文件的权限：
+
+```sh
+chmod 750 index.html
+```
+
+我们可以得知，Owner 的权限为 7，为可读可写可执行，Group 的权限为 5，为可读可执行，Others 的权限为 0，表示不可读写不可执行。对应字母为：`rwxr-x---`。
+
+除了这种数字的方式，还有一种使用符号类型改变权限的方式：
+
+在这种方式里，我们将三种身份 `Owner`、`Group`、`Others`，分别简写为 `u（User）`、`g`、`o`，用 `a` 表示所有身份，再使用 `+` `-` `=` 表示加入、去除、设定一个权限，`r` `w` `x` 则继续表示读，写，执行权限，举个例子：
+
+```sh
+chmod u+x,g-x,o-x index.html
+```
+
+意思就是 Owner 加上执行权限，Group 和 Others 去除执行权限。
+
+当然我们也可以直接设定权限
+
+```sh
+chmod u=rwx,g=rx,o=r index.html
+```
+
+此时文件的权限就相当于 `-rwxr-xr--`。
+
+此外，我们还可以省略不写 `ugoa` 这类身份内容，直接写：
+
+```sh
+chmod +x index.html
+```
+
+此时相当于使用了 a，会给所有身份添加执行权限。
 
 ## 常用包
 
