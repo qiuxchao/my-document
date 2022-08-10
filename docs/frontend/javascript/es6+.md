@@ -1441,3 +1441,76 @@ async function foo(array) {
  }
 }
 ```
+
+## `??` 空值合并运算符
+
+空值合并操作符 `??` 是一个逻辑操作符，当左侧的操作数为 `null` 或者 `undefined` 时，返回其右侧操作数，否则返回左侧操作数。
+
+语法：
+
+```js
+leftExpr ?? rightExpr
+```
+
+与逻辑或操作符 `||` 不同，逻辑或操作符会在左侧操作数为假值时返回右侧操作数。也就是说，如果使用 `||` 来为某些变量设置默认值，可能会遇到意料之外的行为。比如为假值（例如，'' 或 0）时。见下面的例子。
+
+```js
+const foo = null ?? 'default string';
+console.log(foo);
+// "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// 0
+
+const bar = 0 || 1;
+console.log(bar);
+// 1
+```
+
+## `?.` 可选链操作符
+
+可选链操作符 `?.` 允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。`?.` 操作符的功能类似于 `.` 链式操作符，不同之处在于，在引用为空 (nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 `undefined`。与函数调用一起使用时，如果给定的函数不存在，则返回 `undefined`。
+
+语法：
+
+```js
+obj?.prop
+obj?.[expr]
+arr?.[index]
+func?.(args)
+```
+
+当尝试访问可能不存在的对象属性时，可选链操作符将会使表达式更短、更简明。在探索一个对象的内容时，如果不能确定哪些属性必定存在，可选链操作符也是很有帮助的。
+
+```js
+const person = {
+  name: 'qiuxc',
+  cat: {
+   name: 'Baiwan'
+  }
+}
+
+console.log(person.dog?.name)
+console.log(person.someMethod?.())
+// undefined
+// undefined
+```
+
+通过连接的对象的引用或函数可能是 `undefined` 或 `null` 时，可选链操作符提供了一种方法来简化被连接对象的值访问。
+
+比如，思考一个存在嵌套结构的对象 obj。不使用可选链的话，查找一个深度嵌套的子属性时，需要验证之间的引用，例如：
+
+```js
+let nestedProp = obj.first && obj.first.second;
+```
+
+为了避免报错，在访问 obj.first.second 之前，要保证 obj.first 的值既不是 `null`，也不是 `undefined`。如果只是直接访问 obj.first.second，而不对 obj.first 进行校验，则有可能抛出错误。
+
+有了可选链操作符 `?.`，在访问 obj.first.second 之前，不再需要明确地校验 obj.first 的状态，再并用短路计算获取最终结果：
+
+```js
+let nestedProp = obj.first?.second;
+```
+
+通过使用 `?.` 操作符取代 . 操作符，JavaScript 会在尝试访问 obj.first.second 之前，先隐式地检查并确定 obj.first 既不是 `null` 也不是 `undefined`。如果 obj.first 是 `null` 或者 `undefined`，表达式将会短路计算直接返回 `undefined`。
