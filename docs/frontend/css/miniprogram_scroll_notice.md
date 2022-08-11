@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-08-09 19:30:09
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-09 20:18:11
+ * @LastEditTime: 2022-08-11 11:33:20
 -->
 # 微信小程序滚动通知条
 
@@ -128,7 +128,11 @@ Component({
 
   methods: {
     getSysNotice() {
-      this.setData({ sysNotice: '系统公告系统公告系统公告系统公告系统公告系统公告系统公告' }, () => {
+      this.setData({ sysNotice: '系统公告系统公告系统公告系统公告系统公告系统公告系统公告' }, async () => {
+        // 滚动外层节点
+        this.sysNoticeContentRef = await getBoundingClientRect(this, '.sys-notice-content');
+        // 滚动文本节点
+        this.sysNoticetextRef = await getBoundingClientRect(this, '.sys-notice-content-text');
         this.bindStartNoticeScroll();
       });
     },
@@ -136,21 +140,22 @@ Component({
     // 通知滚动
     async bindStartNoticeScroll() {
       const { noticeTransform } = this.data;
-      // 滚动外层节点
-      const contentRef = await getBoundingClientRect(this, '.sys-notice-content');
-      // 滚动文本节点
-      const textRef = await getBoundingClientRect(this, '.sys-notice-content-text');
+      const { sysNoticeContentRef: contentRef, sysNoticetextRef: textRef } = this;
+      if (!contentRef || !textRef) return;
       // 是否为第一次滚动
       const initial = !noticeTransform;
       this.setData({
         noticeTransitionDuration: '0s',
         noticeTransform: initial ? 'translateX(0)' : `translateX(${contentRef.width}px)`,
       });
-      const distance = initial ? textRef.width : contentRef.width + textRef.width;
-      this.setData({
-        noticeTransitionDuration: `${Math.round(distance / 50)}s`,
+      // setData 回调和 wx.nextTick 均会出现 translateX 移动位置后视图不渲染的问题，故这里使用 setTimeout，给视图足够的时间渲染
+      setTimeout(() => {
+        const distance = initial ? textRef?.width : contentRef.width + textRef.width;
+        this.setData({
+        noticeTransitionDuration: `${Math.round(distance / 50)}s`,  // 距离 / 速度 = 时间
         noticeTransform: `translateX(-${textRef.width}px)`,
       });
+      }, 200);
     },
 
   },
