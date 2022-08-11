@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-15 09:58:39
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 10:07:51
+ * @LastEditTime: 2022-08-11 16:17:55
 -->
 # path 路径模块的使用
 
@@ -62,4 +62,10 @@ console.log(pathObj);
 // 假设在当前文件的目录下有目录 test，其下有一个 hello.html :   ./test/hello.html
 let helloPath = path.join(__dirname, 'test', 'hello.html');
 console.log(helloPath); // e:\前端\Node.js\nodeTest\reference\test\hello.html
+```
+
+## 获取用户 home 目录
+
+```js
+const USER_HOME = process.env.HOME || process.env.USERPROFILE;
 ```
