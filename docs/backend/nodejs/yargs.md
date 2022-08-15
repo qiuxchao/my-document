@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-26 16:05:32
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-26 16:26:06
+ * @LastEditTime: 2022-08-15 14:07:26
 -->
 # yargs 命令行参数解析
 
@@ -163,6 +163,61 @@ const argv = require('yargs')
   .argv;
 
 console.log('hello ', argv.n);
+```
+
+## 选项 & 命令
+
+- 选项使用 `options` 配置，使用时需要加 `-` 或 `--`
+- 命令使用 `command` 配置，使用时无需加前缀
+
+### 选项配置
+
+语法：`.options(key, [opt])`、`.option(key, [opt])`
+
+示例:
+
+```js
+const argv = require('yargs')
+  .option('f', {
+      alias: 'file',
+      demandOption: true,
+      default: '/etc/passwd',
+      describe: 'x marks the spot',
+      type: 'string'
+  })
+  .argv
+;
+```
+
+### 命令配置
+
+语法：
+
+- `.command(cmd, desc, [builder], [handler])`
+- `.command(cmd, desc, [module])`
+- `.command(module)`
+
+`cmd`, `desc`, `[builder]`, `[handler]`，其中 builder 和 handler 是方法，另外两个是字符串
+
+示例：
+
+```js
+yargs
+  .command(
+    'get',
+    'make a get HTTP request',
+    function (yargs) {
+      return yargs.option('u', {
+        alias: 'url',
+        describe: 'the URL to make an HTTP request to'
+      })
+    },
+    function (argv) {
+      console.log(argv.url)
+    }
+  )
+  .help()
+  .argv
 ```
 
 ## 帮助信息
