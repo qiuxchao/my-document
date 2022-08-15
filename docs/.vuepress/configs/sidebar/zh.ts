@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-15 14:08:47
+ * @LastEditTime: 2022-08-15 17:23:59
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -97,6 +97,7 @@ export const sidebarZh: SidebarConfig = {
         '/backend/nodejs/cheerio.md',
         '/backend/nodejs/upload_img.md',
         '/backend/nodejs/yargs.md',
+        '/backend/nodejs/axios.md',
       ],
     },
     {
