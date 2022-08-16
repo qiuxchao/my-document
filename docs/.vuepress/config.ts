@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-06-17 16:21:48
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-08 19:24:35
+ * @LastEditTime: 2022-08-16 19:08:58
  */
 import { defineUserConfig } from '@vuepress/cli'
 import { defaultTheme } from '@vuepress/theme-default'
@@ -33,7 +33,7 @@ export default defineUserConfig({
     sidebarDepth: 3,
     repo: 'https://github.com/qiuxchao',
     editLinkText: '编辑此页',
-    lastUpdatedText: '最近更新时间',
+    lastUpdatedText: '上次更新',
     contributorsText: '贡献者',
     tip: '提示',
     warning: '注意',
