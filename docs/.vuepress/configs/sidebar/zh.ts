@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-15 17:23:59
+ * @LastEditTime: 2022-08-16 17:19:19
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -143,6 +143,7 @@ export const sidebarZh: SidebarConfig = {
       text: 'Git',
       children: [
         '/tools/git/',
+        '/tools/git/git_tag.md',
         '/tools/git/js_delivr.md',
       ],
     },

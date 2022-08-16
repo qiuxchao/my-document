@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-26 16:05:32
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-15 14:07:26
+ * @LastEditTime: 2022-08-16 17:00:15
 -->
 # yargs 命令行参数解析
 
@@ -267,4 +267,50 @@ Examples:
   hello -n tom  say hello to Tom
 
 copyright 2022
+```
+
+## 示例
+
+近期编写的 `GitLab MR` 命令行工具的代码示例
+
+```js
+#!/usr/bin/env node
+
+const { options } = require('yargs');
+const { existsSync } = require('fs');
+const { TOKEN_PATH } = require('../utils');
+const yargs = require('yargs');
+const color = require('../utils/color');
+
+const log = console.log;
+
+
+const argv = yargs
+  .usage('使用: mr [命令] <选项>')
+  .recommendCommands()
+  .strict()
+  .command('token [token]', '查看/设置GitLab Token', () => { }, ({ token }) => {
+    if (token) {
+      require('./setToken')(token);
+      yargs.exit();
+    }
+    if (!existsSync(TOKEN_PATH)) {
+      log(color.red('错误:'), '未配置token, 请使用 mr token <token> 命令设置token');
+    } else {
+      log(color.green(require(TOKEN_PATH)));
+    }
+    yargs.exit();
+  })
+  .command(require('./userDataRelated'))
+  .alias('version', 'v')
+  .alias('h', ['help'])
+  .example('$ mr', '创建MR')
+  .example('$ mr token', '获取token')
+  .example('$ mr token 123456', '设置token')
+  .example('$ mr -h', '显示帮助信息')
+  .showHelpOnFail()
+  .argv;
+
+
+Array.isArray(argv._) && !argv._.length && require('./create')();
 ```
