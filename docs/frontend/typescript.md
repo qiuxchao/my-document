@@ -54,7 +54,7 @@ let strValue = (v1: string, v2: number): string => `${v1}${v2}`
 // 此时该函数表达式变量不可再被修改为其他类型的值，例：
 let returnNumber = (): number => 111
 // returnNumber = 'string' // 错误，不能将类型 string 赋值给 number
-// returnNumber = ():void => {}   // 错误，不能将 void 复制给number
+// returnNumber = ():void => {}   // 错误，不能将 void 赋值给number
 ```
 
 - `null` 和 `undefined`
@@ -75,7 +75,7 @@ let myValue2: undefined = undefined
 - `unknown` 与 `any`
 
 ```typescript
-// any 类型可以赋给任何类型，unknown 类型只能复制给 any | unknown
+// any 类型可以赋给任何类型，unknown 类型只能赋值给 any | unknown
 let notSure: unknown = 11
 notSure = '11'
 notSure = false
