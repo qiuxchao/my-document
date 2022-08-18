@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-17 18:16:36
+ * @LastEditTime: 2022-08-18 15:43:15
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -18,6 +18,7 @@ export const sidebarZh: SidebarConfig = {
         '/frontend/javascript/event_loop.md',
         '/frontend/javascript/promise.md',
         '/frontend/javascript/module.md',
+        '/frontend/javascript/dependency_injection.md',
       ],
     },
     {
