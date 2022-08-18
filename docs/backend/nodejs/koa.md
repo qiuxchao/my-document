@@ -36,7 +36,7 @@
 ```javascript
 // 引入 koa 模块
 const Koa = require('koa')
-// json 中间件可以将响应内容转为 josn 类型
+// json 中间件可以将响应内容转为 json 类型
 const json = require('koa-json')
 // 引入路由模块
 const KoaRouter = require('koa-router')
@@ -217,6 +217,9 @@ app.listen(3000, () => console.log('Server Started For http://localhost:3000/
 ## Koa 级联
 
 `Koa` 中间件以更传统的方式级联，您可能习惯使用类似的工具 - 之前难以让用户友好地使用 `node` 的回调。然而，使用 `async` 功能，我们可以实现 “真实” 的中间件。对比 `Connect` 的实现，通过一系列功能直接传递控制，直到一个返回，`Koa` 调用“下游”，然后控制流回“上游”。
+
+`Koa` 选择了洋葱圈模型:
+![洋葱圈模型](./images/koa_model.png)
 
 > 上述为官方文档，比较难以理解，可以结合下面的代码加以理解
 
