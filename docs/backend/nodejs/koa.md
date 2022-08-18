@@ -344,4 +344,4 @@ app.listen(3000, () => console.log('listening on http://localhost:3000'))
 
 客户端请求结果：<br>
 
-![koa-jsonp](https://cdn.jsdelivr.net/gh/qiuxchao/CDN/pictures/koa_jsonp1.png)
+![koa-jsonp](./images//koa_jsonp1.png)
