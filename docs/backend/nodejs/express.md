@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-15 10:53:08
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-15 11:15:13
+ * @LastEditTime: 2022-08-22 11:36:07
 -->
 # Express
 
@@ -88,7 +88,7 @@ app.listen(5000, () => console.log('服务器已经在：http://localhost:500
 
 EJS 是一套简单的模板语言，可以利用普通的 JavaScript 代码生成 HTML 页面。
 
-安装 ejs: `npm install ejs --save-dev`
+安装 ejs: `npm install ejs --save`
 
 ### 其他模板引擎
 
