@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 19:53:55
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-09 13:36:22
+ * @LastEditTime: 2022-08-24 19:41:29
 -->
 # Linux
 
@@ -162,6 +162,26 @@ ssh -p 300 git@8.8.8.8
 ```sh
 # -v 冗详模式，打印关于运行情况的调试信息
 ssh -v git@8.8.8.8
+```
+
+#### 远程连接并执行指定任务
+
+执行一条命令
+
+```sh
+ssh qiuxc@xxx.xxx.xxx.xxx "df -h"
+```
+
+执行多条命令，用 `;` 分隔
+
+```sh
+ssh qiuxc@xxx.xxx.xxx.xxx "pwd; cat hello.txt"
+```
+
+执行需要交互的命令，通过 `-t` 参数显式的告诉 ssh，我们需要一个 TTY 远程 shell 进行交互
+
+```sh
+ssh -t qiuxc@xxx.xxx.xxx.xxx "pwd; cat hello.txt"
 ```
 
 ### cat
