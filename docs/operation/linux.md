@@ -4,11 +4,11 @@
  * @Author: qiuxchao
  * @Date: 2022-07-04 19:53:55
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-24 19:41:29
+ * @LastEditTime: 2022-08-25 09:35:26
 -->
 # Linux
 
-## 常用命令
+## 常用Shell命令
 
 ``` shell
 # 创建文件夹
