@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-13 11:40:49
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-07-13 15:40:24
+ * @LastEditTime: 2022-08-25 09:33:12
 -->
 # PHP
 
@@ -175,10 +175,10 @@ switch ($num) {
 
 `PHP` 中的循环主要有：
 
- - `For` 循环
- - `While` 循环
- - `Do......While` 循环
- - `Foreach` 循环
+- `For` 循环
+- `While` 循环
+- `Do......While` 循环
+- `Foreach` 循环
 
 ```php
 <?php 
