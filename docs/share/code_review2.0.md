@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-08-18 15:45:21
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-30 10:55:55
+ * @LastEditTime: 2022-08-30 17:04:14
 -->
 # Code Review 2.0
 
@@ -14,7 +14,7 @@
 
 ## 前端实现
 
-借助 `yargs` 库来编写命令行工具，`yargs` 是一个命令行参数解析库【演示如何使用】
+借助 `yargs` 库来编写命令行工具，`yargs` 是一个命令行参数解析库
 
 ### yargs 命令行解析库
 
@@ -32,3 +32,20 @@
 - `Middleware` 中间件。类似于拦截器
 
 ### token 校验中间件
+
+将前端传过来的 `token` 传给 `GitLab`，验证用户是否存在，标识 `token` 是否有效。
+
+```js
+async (ctx, next) => {
+  await next();
+
+  const { token } = ctx.header;
+  !token && ctx.throw(422, '无 token');
+
+  const { status, data } = await ctx.curl('https://gitlab.fenxianglife.com/api/v4/user', {
+    method: 'GET',
+    data: { private_token: token },
+  });
+  status !== 200 && ctx.throw(422, 'token 验证失败');
+};
+```
