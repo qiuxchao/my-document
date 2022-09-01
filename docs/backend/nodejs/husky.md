@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-01 10:19:53
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-01 10:46:51
+ * @LastEditTime: 2022-09-01 10:53:21
 -->
 # 🪝 husky 一个 Git hooks 库
 husky 旨在于在 Node 中更好的使用 Git hooks
@@ -38,7 +38,7 @@ npx husky install
 husky 支持所有的 [Git hooks](https://git-scm.com/docs/githooks)
 
 ```sh
-# 添加 pre-commit commit 前置钩子，在 commit 时，先运行 npm run text 脚本
+# 添加 pre-commit commit 前置钩子，在 commit 时，先运行 npm run test 脚本
 npx husky add .husky/pre-commit "npm run test"
 ```
 
