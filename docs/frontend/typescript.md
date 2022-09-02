@@ -371,20 +371,30 @@ type Obj = {
 
 #### `infer` 声明一个类型变量并且对它进行使用
 
-```typescript
-// 以下代码中 infer R 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。
-type ReturnType1<T> = T extends (...args: any[]) => infer R ? R : any
-type ReturnType2<T extends (...args: any[]) => any> = T extends (
- ...args: any[]
-) => infer R
- ? R
- : any
+`infer` 既可以获取函数的参数类型，也可以获取函数的返回值类型
 
-// 获取参数列表类型
-type Parameter<T> = T extends (...args: infer R) => any ? R : any
-type T1 = Parameter<() => string> // type T1 = []
-type T2 = Parameter<(s: string) => void> // type T2 = [s: string]
-type T3 = Parameter<<T>(arg: T) => T> // type T3 = [arg: unknown]
+`infer` 获取函数返回值类型：
+- `T extends () => infer R` 是一个表达式，返回布尔值，通常配合三目运算符使用。表示泛型参数 `T` 是否兼容（包含但不限于）`() => infer R`，这里将函数类型的返回值用 `infer R` 收集了起来。
+- `? R : T` 表示如果前面的三目表达式成立，则返回收集了函数返回值类型的 `R`，否则返回传入的泛型参数 `T`。
+
+```typescript
+// 获取函数返回值类型
+type RT<T> = T extends () => infer R ? R : T;
+const rs = () => 'abc';
+type RSRT = RT<typeof rs>;  // type RSRT = string（获取到函数 rs 的返回值类型为 string）
+```
+
+`infer` 获取函数参数列表类型：
+- `T extends (...args: infer R) => any` 仍然是表达式，因为函数可能会有多个参数，所以我们要使用 `...args: infer R` 来收集参数列表的类型；如果只是使用 `arg: infer R` ，在有多个参数时会导致表达式失败，从而返回我们意料之外的结果；
+- `? R : any` 表示如果前面的三目表达式成立，则返回收集了函数返回值类型的 `R`，否则返回 `any`。
+
+```typescript
+// 获取函数参数类型
+type PT<T> = T extends (...args: infer R) => any ? R : any;
+const ps1 = (str: string) => str;
+type PS1PT = PT<typeof ps1>;  // type PS1PT = [str: string]（获取到 ps1 函数的参数类型为 [str: string]）
+const ps2 = (a: number, b: number) => a + b;
+type PS2PT = PT<typeof ps2>;  // type PS2PT = [a: number, b: number]（获取到 ps2 函数的参数类型为 [a: number, b: number]
 ```
 
 #### `extends` 添加泛型约束
