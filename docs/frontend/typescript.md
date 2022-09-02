@@ -314,7 +314,7 @@ function temp<T = string>(name: T): T {
 
 ### 泛型相关工具类型
 
-1. `typeof` 获取类型 获取指定变量的类型
+#### `typeof` 获取类型 获取指定变量的类型
 
 ```typescript
 interface PersonBasicType {
@@ -343,7 +343,7 @@ const newPeople: PersonFullType = {
 }
 ```
 
-2. `keyof` 获取某种类型的所有键，返回的是联合类型
+#### `keyof` 获取某种类型的所有键，返回的是联合类型
 
 ```typescript
 type PersonAllKeysType = keyof PersonFullType // name | age | sex
@@ -360,7 +360,7 @@ getProps(newPeople, 'name') // <PersonBasicType & Props, "name">(obj: PersonBasi
 getProps(newPeople, 'sex') // <PersonBasicType & Props, "sex">(obj: PersonBasicType & Props, key: "sex") => string
 ```
 
-3. `in` 用来遍历枚举类型
+#### `in` 用来遍历枚举类型
 
 ```typescript
 type Keys = 'a' | 'b' | 'c'
@@ -369,7 +369,7 @@ type Obj = {
 } // type Obj = { a: any; b: any; c: any; }
 ```
 
-4. `infer` 声明一个类型变量并且对它进行使用
+#### `infer` 声明一个类型变量并且对它进行使用
 
 ```typescript
 // 以下代码中 infer R 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。
@@ -387,13 +387,13 @@ type T2 = Parameter<(s: string) => void> // type T2 = [s: string]
 type T3 = Parameter<<T>(arg: T) => T> // type T3 = [arg: unknown]
 ```
 
-5. `extends` 添加泛型约束
+#### `extends` 添加泛型约束
 
 ```typescript
 const logging = <T extends { a: 1; b: 2 }>(val: T): void => console.log(val)
 ```
 
-6. 索引类型
+#### 索引类型
 
 ```typescript
 // 在对象中获取一些属性的值，然后建立对应的集合。下面这种写法可以约束第二个数组参数中的值
@@ -403,7 +403,7 @@ getValues({ a: 1, b: '2' }, ['a', 'b']) // => (string | number)[]
 // getValues({a: 1, b: '2'}, ['a', 'b', 'c']) // 不能将类型“"c"”分配给类型“"a" | "b"”。ts(2322)
 ```
 
-7. 映射类型 根据旧的类型创建出新的类型, 我们称之为映射类型
+#### 映射类型 根据旧的类型创建出新的类型, 我们称之为映射类型
 
 ```typescript
 interface TestInterface {
@@ -420,8 +420,9 @@ const objInterface: newTestInterface = { name: 'qiuxc', age: 18 }
 
 ### 内置工具类型
 
-1. `Partial<T>` 将类型的属性都变成可选的<br>
-   源码: `type Partial<T> = { [P in keyof T]?: T[P]; }`
+#### `Partial<T>` 将类型的属性都变成可选的
+
+源码: `type Partial<T> = { [P in keyof T]?: T[P]; }`
 
 ```typescript
 interface User {
@@ -450,8 +451,9 @@ const newUser: DeepPartial<NewUser> = {
 }
 ```
 
-2. `Required<T>` 将类型的属性变成必选<br>
-   源码: `type Required<T> = { [P in keyof T]-?: T[P] };` (`-?`表示去除 `?`表示可选)
+#### `Required<T>` 将类型的属性变成必选
+
+源码: `type Required<T> = { [P in keyof T]-?: T[P] };` (`-?`表示去除 `?`表示可选)
 
 ```typescript
 // 示例：先将类型的属性变成非必选，再变成必选
@@ -461,8 +463,9 @@ type RequiredUser = Required<User>
 // const u2: RequiredUser = { name: 'John'} // Error: 类型 "{ name: string; }" 中缺少属性 "id"，但类型 "Required<User>" 中需要该属性
 ```
 
-3. `Readonly<T>`将某个类型所有属性变为只读属性，也就意味着这些属性不能被重新赋值。<br>
-   源码: `type Readonly<T> = { readonly [k in keyof T]: T[k] }`
+#### `Readonly<T>`将某个类型所有属性变为只读属性，也就意味着这些属性不能被重新赋值。
+
+源码: `type Readonly<T> = { readonly [k in keyof T]: T[k] }`
 
 ```typescript
 const u3: Readonly<User> = {
@@ -472,8 +475,9 @@ const u3: Readonly<User> = {
 // u3.id = 11 // Error: 无法分配到 "id" ，因为它是只读属性。ts(2540)
 ```
 
-4. `Pick<T, K extends keyof T>`从某个类型中挑出一些属性出来<br>
-   源码: `type Pick<T, K extends keyof T> = { [P in K]: T[P]; };`
+#### `Pick<T, K extends keyof T>`从某个类型中挑出一些属性出来
+
+源码: `type Pick<T, K extends keyof T> = { [P in K]: T[P]; };`
 
 ```typescript
 interface Todo {
@@ -488,8 +492,9 @@ type TodoPriview = Pick<Todo, 'title' | 'completed'>
 } */
 ```
 
-5. `Record<K extends keyof any, T>` 将 `K` 中所有的属性的值转化为 `T` 类型<br>
-   源码: `type Record<K extends keyof any, T> = { [P in K]: T }`
+#### `Record<K extends keyof any, T>` 将 `K` 中所有的属性的值转化为 `T` 类型
+
+源码: `type Record<K extends keyof any, T> = { [P in K]: T }`
 
 ```typescript
 type PageInfo = 'home' | 'about' | 'contact'
@@ -512,8 +517,9 @@ const homepage: NewPageInfo = {
 }
 ```
 
-6. `ReturnType<T extends (...args: any[]) => any>` 获取函数返回值类型<br>
-   源码: `type ReturnType<T extends (...args: any[]) => any> = T extends (...args: any[]) => infer R ? R : any`
+#### `ReturnType<T extends (...args: any[]) => any>` 获取函数返回值类型
+
+源码: `type ReturnType<T extends (...args: any[]) => any> = T extends (...args: any[]) => infer R ? R : any`
 
 ```typescript
 const returnPerson = (name: string, age: number) => ({ name, age })
@@ -523,22 +529,25 @@ const foo: ReturnPersonReturnType = { name: 'foo', age: 1 }
 // const bar: ReturnPersonReturnType = 1 // Error: 不能将类型“number”分配给类型“{ name: string; age: number; }”。ts(2322)
 ```
 
-7. `Exclude<T, U>` 将 `T` 中的 `U` 移除掉。<br>
-   源码: `type Exclude<T, U> = T extends U ? never : T;`
+#### `Exclude<T, U>` 将 `T` 中的 `U` 移除掉
+
+源码: `type Exclude<T, U> = T extends U ? never : T;`
 
 ```typescript
 type T0 = Exclude<'a' | 'b' | 'c', 'a'> // type T0 = "b" | "c"
 ```
 
-8. `Extract<T, U>` 从 `T` 中提取出 `U`<br>
-   源码: `type Extract<T, U> = T extends U ? T : never;`
+#### `Extract<T, U>` 从 `T` 中提取出 `U`
+
+源码: `type Extract<T, U> = T extends U ? T : never;`
 
 ```typescript
 type T4 = Extract<'a' | 'b' | 'c', 'a'> // type T4 = "a"
 ```
 
-9. `Omit<T, K extends keyof T>` 忽略 `T` 中的 `K`，返回排除 `K` 后的 `T`<br>
-   源码: `type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>`
+#### `Omit<T, K extends keyof T>` 忽略 `T` 中的 `K`，返回排除 `K` 后的 `T`
+
+源码: `type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>`
 
 ```typescript
 interface AboutBook {
@@ -553,16 +562,18 @@ type BookThing = Omit<AboutBook, 'lookBook'>
 } */
 ```
 
-10. `NonNullable<T>` 过滤 `T` 中的 `null` 和 `undefined` 类型<br>
-    源码: `type NonNullable<T> = T extends null ? never : T` ( 这里说明 `undefined` 也 `extends null` )
+#### `NonNullable<T>` 过滤 `T` 中的 `null` 和 `undefined` 类型
+
+源码: `type NonNullable<T> = T extends null ? never : T` ( 这里说明 `undefined` 也 `extends null` )
 
 ```typescipt
 type SomeType = string | number | null | undefined | boolean
 type FilterNullable = NonNullable<SomeType>
 ```
 
-11. `Parameters<T extends (...args: any) => any>` 用于获取函数的参数类型组成的元组类型<br>
-    源码: `type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never`
+#### `Parameters<T extends (...args: any) => any>` 用于获取函数的参数类型组成的元组类型
+
+源码: `type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never`
 
 ```typescript
 type F0 = (v1: number, v2: string, v3: boolean) => any
