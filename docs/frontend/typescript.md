@@ -470,7 +470,7 @@ const newUser: DeepPartial<NewUser> = {
 type OptionalUser = Partial<User>
 const u1: OptionalUser = { name: 'John' }
 type RequiredUser = Required<User>
-// const u2: RequiredUser = { name: 'John'} // Error: 类型 "{ name: string; }" 中缺少属性 "id"，但类型 "Required<User>" 中需要该属性
+const u2: RequiredUser = { name: 'John'} // Error: 类型 "{ name: string; }" 中缺少属性 "id"，但类型 "Required<User>" 中需要该属性
 ```
 
 #### `Readonly<T>`将某个类型所有属性变为只读属性，也就意味着这些属性不能被重新赋值。
