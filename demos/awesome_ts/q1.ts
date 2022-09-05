@@ -16,6 +16,8 @@ function makeCustomer<T extends User>(u: T): T {
   }
 } 
 
+以上代码为什么会提示错误，应该如何解决上述问题？
+
 */
 
 type User = {
