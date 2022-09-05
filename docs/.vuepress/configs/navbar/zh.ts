@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-01 11:11:38
+ * @LastEditTime: 2022-09-05 10:27:42
  */
 import type { NavbarConfig } from '@vuepress/theme-default'
 
@@ -40,7 +40,10 @@ export const navbarZh: NavbarConfig = [
             text: 'Canvas',
             link: '/frontend/canvas/',
           },
-          '/frontend/typescript.md',
+          {
+            text: 'Typescript',
+            link: '/frontend/typescript/',
+          },
           '/frontend/jquery.md',
           '/frontend/bgw.md',
         ],

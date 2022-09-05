@@ -385,12 +385,12 @@ type RSRT = RT<typeof rs>;  // type RSRT = string（获取到函数 rs 的返回
 ```
 
 `infer` 获取函数参数列表类型：
-- `T extends (...args: infer R) => any` 仍然是表达式，因为函数可能会有多个参数，所以我们要使用 `...args: infer R` 来收集参数列表的类型；如果只是使用 `arg: infer R` ，在有多个参数时会导致表达式失败，从而返回我们意料之外的结果；
-- `? R : any` 表示如果前面的三目表达式成立，则返回收集了函数返回值类型的 `R`，否则返回 `any`。
+- `T extends (...args: infer P) => any` 仍然是表达式，因为函数可能会有多个参数，所以我们要使用 `...args: infer P` 来收集参数列表的类型；如果只是使用 `arg: infer P` ，在有多个参数时会导致表达式失败，从而返回我们意料之外的结果；
+- `? P : any` 表示如果前面的三目表达式成立，则返回收集了函数返回值类型的 `P`，否则返回 `any`。
 
 ```typescript
 // 获取函数参数类型
-type PT<T> = T extends (...args: infer R) => any ? R : any;
+type PT<T> = T extends (...args: infer P) => any ? P : any;
 const ps1 = (str: string) => str;
 type PS1PT = PT<typeof ps1>;  // type PS1PT = [str: string]（获取到 ps1 函数的参数类型为 [str: string]）
 const ps2 = (a: number, b: number) => a + b;
