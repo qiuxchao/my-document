@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-05 10:29:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-05 14:21:38
+ * @LastEditTime: 2022-09-05 14:26:42
 -->
 # TS 练习题
 
@@ -196,7 +196,7 @@ type SomeRequired = SetRequired<Foo, 'b' | 'c'>;
 - 先使用 `Omit<Foo, 'a' | 'b'>` 得到排除了 `a | b` 的 `Foo`，再使用 `Partial<Pick<Foo, 'a' | 'b'>>` 将 `Foo` 中的 `a | b` 设置为可选，最后将两种类型合并 `&` 返回即可。
 
 ```ts
-type SetOptional<T, U extends keyof T> = Omit<T, U> & Partial<Pick<T, U>>;
+type SetOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 ```
 
 `SetRequired` 思路：
@@ -204,5 +204,5 @@ type SetOptional<T, U extends keyof T> = Omit<T, U> & Partial<Pick<T, U>>;
 - 同 `SetOptional`，只不过将后面的 `Partial` 改为 `Required` 即可。
 
 ```ts
-type SetRequired<T, U extends keyof T> = Omit<T, U> & Required<Pick<T, U>>;
+type SetRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 ```
