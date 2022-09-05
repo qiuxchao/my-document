@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-05 10:29:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-05 14:26:42
+ * @LastEditTime: 2022-09-05 17:39:24
 -->
 # TS 练习题
 
@@ -205,4 +205,63 @@ type SetOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 ```ts
 type SetRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
+```
+
+## 第四题
+
+### 题目
+
+`Pick<T, K extends keyof T>` 的作用是将某个类型中的子属性挑出来，变成包含这个类型部分属性的子类型。
+
+```ts
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+type TodoPreview = Pick<Todo, "title" | "completed">;
+
+const todo: TodoPreview = {
+  title: "Clean room",
+  completed: false
+};
+```
+
+那么如何定义一个 `ConditionalPick` 工具类型，支持根据指定的 `Condition` 条件来生成新的类型，对应的使用示例如下：
+
+```ts
+interface Example {
+	a: string;
+	b: string | number;
+	c: () => void;
+	d: {};
+}
+
+// 测试用例：
+type StringKeysOnly = ConditionalPick<Example, string>;
+//=> {a: string}
+```
+
+## 解答
+
+- `[K in keyof T as (T[K] extends U ? K : never)]`: 这里使用 `as` 巧妙的对 `T[K]` 进行二次判断，使 `:` 左边返回符合 `T[K] extends U` 的 `K`；
+
+- 还有一个知识点：当 key 为 `never` `null` 和 `undefined` 时不会生效。
+
+```ts
+type ConditionalPick<T, U> = {
+  [K in keyof T as (T[K] extends U ? K : never)]: T[K]
+}
+
+interface Example {
+	a: string;
+	b: string | number;
+	c: () => void;
+	d: {};
+}
+
+// 测试用例：
+type StringKeysOnly = ConditionalPick<Example, string>;
+//=> {a: string}
 ```
