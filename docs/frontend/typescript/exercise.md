@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-05 10:29:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-06 14:28:02
+ * @LastEditTime: 2022-09-06 15:38:25
 -->
 # TS 练习题
 
@@ -305,4 +305,98 @@ type Fn = (a: number, b: string) => number
 
 type FinalFn = AppendArgument<Fn, boolean> 
 // (x: boolean, a: number, b: string) => number
+```
+
+
+## 第六题
+
+### 题目
+
+定义一个 `NativeFlat` 工具类型，支持把数组类型拍平（扁平化）。具体的使用示例如下所示：
+
+```ts
+type NaiveFlat<T extends any[]> = // 你的实现代码
+
+// 测试用例：
+type NaiveResult = NaiveFlat<[['a'], ['b', 'c'], ['d']]>
+// NaiveResult的结果： "a" | "b" | "c" | "d"
+```
+
+在完成 `NaiveFlat` 工具类型之后，在继续实现 `DeepFlat` 工具类型，以支持多维数组类型：
+
+```ts
+type DeepFlat<T extends any[]> = unknown // 你的实现代码
+
+// 测试用例
+type Deep = [['a'], ['b', 'c'], [['d']], [[[['e']]]]];
+type DeepTestResult = DeepFlat<Deep>  
+// DeepTestResult: "a" | "b" | "c" | "d" | "e"
+```
+
+### 知识点铺垫
+
+1. `['a', 'b', 'c'][number]` 可以取出 `"a" | "b" | "c"`。演变过程如下：
+
+```ts
+// 使用下标取数组元素
+type A = ['a', 'b', 'c'][0] // type A = "a"
+
+// | 可以取多个下标
+type B = ['a', 'b', 'c'][0 | 1] // type B = "a" | "b"
+
+// number 表示取所有下标，即取出数组中所有的类型
+type C = ['a', 'b', 'c'][number] // type C = "a" | "b" | "c"
+```
+
+2. `keyof` 数组类型得到 `{0: xxx, 1: xxx, ...}`, 再加上 `[number]` 就可以提取出数组的联合类型：
+
+```ts
+type StringArr = ['a', 'b', 'c'];
+// 根据数组类型生成对象类型
+type KeyofArrMap = {
+  [K in keyof StringArr]: StringArr[K]
+}
+/* 这里会将 Array 的属性都暴露出来
+type KeyofArrMap = {
+    [x: number]: "a" | "b" | "c";
+    0: "a";
+    1: "b";
+    2: "c";
+    length: 3;
+    toString: () => string;
+    toLocaleString: () => string;
+    pop: () => "a" | "b" | "c";
+    ...
+}
+*/
+
+// 加上 [number] 即可将所有数字所有对应的值提取出来
+type KeyofArrType = KeyofArrMap[number] // type KeyofArrType = "a" | "b" | "c"
+```
+
+### 解答
+
+`NaiveFlat` 实现：
+
+```ts
+type NaiveFlat<T extends any[]> = {
+  [P in keyof T]: T[P] extends any[] ? T[P][number] : T[P]
+}[number]
+
+// 测试用例：
+type NaiveResult = NaiveFlat<[['a'], ['b', 'c'], ['d']]>
+// NaiveResult的结果： "a" | "b" | "c" | "d"
+```
+
+`DeepFlat` 实现：
+
+```ts
+type DeepFlat<T extends any[]> = {
+  [P in keyof T]: T[P] extends any[] ? DeepFlat<T[P]> : T[P]
+}[number]
+
+// 测试用例
+type Deep = [['a'], ['b', 'c'], [['d']], [[[['e']]]]];
+type DeepTestResult = DeepFlat<Deep>  
+// DeepTestResult: "a" | "b" | "c" | "d" | "e"
 ```
