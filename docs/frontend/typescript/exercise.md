@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-05 10:29:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-06 15:38:25
+ * @LastEditTime: 2022-09-06 15:44:44
 -->
 # TS 练习题
 
@@ -243,7 +243,7 @@ type StringKeysOnly = ConditionalPick<Example, string>;
 //=> {a: string}
 ```
 
-## 解答
+### 解答
 
 - `[K in keyof T as (T[K] extends U ? K : never)]`: 这里使用 `as` 巧妙的对 `T[K]` 进行二次判断，使 `:` 左边返回符合 `T[K] extends U` 的 `K`；
 
@@ -348,7 +348,7 @@ type B = ['a', 'b', 'c'][0 | 1] // type B = "a" | "b"
 type C = ['a', 'b', 'c'][number] // type C = "a" | "b" | "c"
 ```
 
-2. `keyof` 数组类型得到 `{0: xxx, 1: xxx, ...}`, 再加上 `[number]` 就可以提取出数组的联合类型：
+2. `{[K in keyof ['a', 'b', 'c']]}` 得到 `{0: 'a', 1: 'b', 2: 'c', length: 3, ...}`, 再加上 `[number]` 就可以提取出数组的联合类型：
 
 ```ts
 type StringArr = ['a', 'b', 'c'];
