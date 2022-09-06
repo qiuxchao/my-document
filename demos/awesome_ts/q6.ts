@@ -41,3 +41,27 @@ type DeepFlat<T extends any[]> = {
 type Deep = [['a'], ['b', 'c'], [['d']], [[[['e']]]]];
 type DeepTestResult = DeepFlat<Deep>  
 // DeepTestResult: "a" | "b" | "c" | "d" | "e"
+
+const script = document.createElement('script');
+script.type = 'text/javascript';
+script.async = true;
+script.innerText = `
+const playNext = () => {
+  console.log('播放完成');
+  const videoEl = document.querySelector('video');
+  videoEl.addEventListener('ended', playNext);
+  
+};
+const videoEl = document.querySelector('video');
+videoEl.addEventListener('ended', playNext);
+
+`
+const playNext = () => {
+  // const targetEl = document.querySelector('.ant-tree-treenode-switcher-open.ant-tree-treenode-selected + li');
+  // targetEl.click();
+  console.log('播放完成');
+  videoEl.removeEventListener('ended', playNext);
+  videoEl.addEventListener('ended', playNext);
+};
+const videoEl = document.querySelector('video');
+videoEl.addEventListener('ended', playNext);

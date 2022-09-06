@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-08-25 16:43:26
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-26 16:30:20
+ * @LastEditTime: 2022-09-06 19:48:08
 -->
 # 一些例子
 
@@ -30,4 +30,12 @@ image {
       margin-right: 0;
     }
   }
+```
+
+## 支持 `\n` 换行
+
+```css
+div {
+  white-space: break-spaces;
+}
 ```
