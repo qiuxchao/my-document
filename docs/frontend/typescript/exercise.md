@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-05 10:29:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-05 20:00:11
+ * @LastEditTime: 2022-09-06 14:28:02
 -->
 # TS 练习题
 
@@ -271,6 +271,38 @@ type StringKeysOnly = ConditionalPick<Example, string>;
 
 ### 题目
 
+定义一个工具类型 `AppendArgument`，为已有的函数类型增加指定类型的参数，新增的参数名是 `x`，将作为新函数类型的第一个参数。具体的使用示例如下所示：
+
+```ts
+type Fn = (a: number, b: string) => number
+type AppendArgument<F, A> = // 你的实现代码
+
+type FinalFn = AppendArgument<Fn, boolean> 
+// (x: boolean, a: number, b: string) => number
+```
 
 ### 解答
 
+1. 使用 `Parameters<F>` 和 `ReturnType<F>` 工具类型提取出 `Fn` 函数类型的参数类型和返回值类型，再与 `x: A` 组合成新的类型即可
+
+```ts
+// 使用 Parameters<F> 和 ReturnType<F> 工具类型
+type AppendArgument<F extends (...args: any) => any, A> = (x: A, ...args: Parameters<F>) => ReturnType<F>;
+
+type Fn = (a: number, b: string) => number
+
+type FinalFn = AppendArgument<Fn, boolean> 
+// (x: boolean, a: number, b: string) => number
+```
+
+2. 使用 `infer`，因为 `Parameters` 和 `ReturnType` 都是通过 `infer` 实现的；这里直接使用 `infer`，在一个函数类型里声明了两个变量，即可同时收集参数类型和返回值类型
+
+```ts
+// 使用 infer
+type AppendArgument<F extends (...args: any) => any, T> = F extends (...args: infer P) => infer R ? (x: T, ...args: P) => R : never;
+
+type Fn = (a: number, b: string) => number
+
+type FinalFn = AppendArgument<Fn, boolean> 
+// (x: boolean, a: number, b: string) => number
+```
