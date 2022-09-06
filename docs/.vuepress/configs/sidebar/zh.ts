@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-05 10:29:03
+ * @LastEditTime: 2022-09-06 11:09:38
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -109,6 +109,7 @@ export const sidebarZh: SidebarConfig = {
         '/backend/nodejs/axios.md',
         '/backend/nodejs/shelljs.md',
         '/backend/nodejs/husky.md',
+        '/backend/nodejs/playwright.md',
       ],
     },
     {

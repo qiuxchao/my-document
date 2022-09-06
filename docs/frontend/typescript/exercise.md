@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-05 10:29:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-05 17:39:24
+ * @LastEditTime: 2022-09-05 20:00:11
 -->
 # TS 练习题
 
@@ -265,3 +265,12 @@ interface Example {
 type StringKeysOnly = ConditionalPick<Example, string>;
 //=> {a: string}
 ```
+
+
+## 第五题
+
+### 题目
+
+
+### 解答
+

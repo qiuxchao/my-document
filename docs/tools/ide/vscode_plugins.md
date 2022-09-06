@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-22 14:34:54
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-08-03 16:03:09
+ * @LastEditTime: 2022-09-06 09:29:41
 -->
 # Vs Code 常用插件
 
@@ -30,3 +30,4 @@
 20. `Todo Tree` 树形结构查看所有 TODO:
 21. `git-commit-plugin` git commit 标记（带emoji）
 22. `Codelf` 变量命名神器，解决命名词穷问题
+23. [`Playwright Test for VSCode` Nodejs 自动化测试库 Playwright 的辅助插件](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright)
