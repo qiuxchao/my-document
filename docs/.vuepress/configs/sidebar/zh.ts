@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-06 11:09:38
+ * @LastEditTime: 2022-09-07 14:26:26
  */
 import type { SidebarConfig } from '@vuepress/theme-default'
 
@@ -125,6 +125,7 @@ export const sidebarZh: SidebarConfig = {
         '/backend/python/07_def.md',
         '/backend/python/08_format.md',
         '/backend/python/09_encode_decode.md',
+        '/backend/python/venv.md',
       ],
     },
     {
