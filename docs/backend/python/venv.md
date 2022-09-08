@@ -19,8 +19,10 @@ $ source ./venv/bin/activate
 在不影响主机系统设置的情况下，在虚拟环境中安装软件包。首先升级 `pip`：
 
 ```sh
-(venv) $ pip install --upgrade pip
+(venv) $ python3 -m pip install --upgrade pip
 (venv) $ pip list # 显示安装在虚拟环境中的包
+(venv) $ pip --version # 查看pip的版本
+(venv) $ python3 --version # 查看python3的版本
 ```
 
 退出虚拟环境：
