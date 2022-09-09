@@ -16,6 +16,22 @@ Code Review 1.0 中存在的问题：
 
 > [🔗 mr工具使用文档](https://fenxianglife.yuque.com/technical-team/front/qpy4io)
 
+## 接入CR流程
+
+### 配置 GitLab Webhook
+
+配置指定项目的 GitLab Webhook 后，后续在该项目中进行的MR或评论操作都将推送到钉钉群中。
+
+在 `GitLab` 指定的项目下配置 `Webhook`，勾选「评论事件(Note Events)」和「合并请求事件(Merge Requests Events)」，地址为：`http://47.96.94.195:7001/code-review`
+
+![join_up_mr](./image/join_up_mr.png)
+
+### 安装 fx-mr-cli 命令行工具包
+
+`fx-mr-cli` 是一个 GitLab Merge Request 命令行工具，能够帮助我们在命令行中交互式创建 Merge Reqeust。
+
+全局安装 `fx-mr-cli` npm包，具体安装及使用参考：[fx-mr-cli 命令行工具使用教程](https://fenxianglife.yuque.com/technical-team/front/qpy4io)
+
 ## 前端实现
 
 - 借助 `yargs` 库来编写命令行工具
@@ -27,7 +43,7 @@ Code Review 1.0 中存在的问题：
 
 `yargs` 是一个命令行参数解析库，可以帮助我们快速构建一个命令行程序。类似功能的库还有 `commander`、`meow`。
 
-> [🔗 官方文档](http://yargs.js.org/docs/)
+> [🔗 yargs 官方文档](http://yargs.js.org/docs/)
 
 #### option 选项
 
