@@ -4,7 +4,7 @@
  * @Author: qiuxchao
  * @Date: 2022-09-05 10:29:12
  * @LastEditors: qiuxchao
- * @LastEditTime: 2022-09-15 10:38:56
+ * @LastEditTime: 2022-09-15 11:23:43
 -->
 # TS 练习题
 
@@ -467,6 +467,7 @@ type SomeType =  {
   prop: string
 }
 
+// 将 T2 中和 T1 不相同的 K 设置为 never
 type Exclusive<T1, T2 extends T1> = {
   [K in keyof T2]: K extends keyof T1 ? T2[K] : never 
 }
@@ -480,4 +481,31 @@ takeSomeTypeOnly(x) // 可以正常调用
 
 const y = { prop: 'a', addditionalProp: 'x' };
 takeSomeTypeOnly(y) // 将出现编译错误
+```
+
+## 第八题
+
+### 题目
+
+定义 `NonEmptyArray` 工具类型，用于确保数据非空数组。
+
+```ts
+type NonEmptyArray<T> = // 你的实现代码
+
+const a: NonEmptyArray<string> = [] // 将出现编译错误
+const b: NonEmptyArray<string> = ['Hello TS'] // 非空数据，正常使用
+```
+
+### 解答
+
+解法一
+
+```ts
+type NonEmptyArray<T> = [T, ...T[]]
+```
+
+解法二
+
+```ts
+type NonEmptyArray<T> = T[] & { 0: T }
 ```
