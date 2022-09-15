@@ -29,7 +29,8 @@ takeSomeTypeOnly(y) // 将出现编译错误
 */
 
 type EmptyObject = {
-  [K: string]: never
+  // type PropertyKey = string | number | symbol
+  [K in PropertyKey]: never
 }
 
 // 测试用例
@@ -40,11 +41,16 @@ const shouldFail: EmptyObject = { // 将出现编译错误
 
 
 type SomeType =  {
-  prop: string
+  prop: string, 
+}
+
+// 将 T2 中和 T1 不相同的 K 设置为 never
+type Exclusive<T1, T2 extends T1> = {
+  [K in keyof T2]: K extends keyof T1 ? T2[K] : never
 }
 
 // 更改以下函数的类型定义，让它的参数只允许严格SomeType类型的值
-function takeSomeTypeOnly(x: SomeType) { return x }
+function takeSomeTypeOnly<T extends SomeType>(x: Exclusive<SomeType, T>) { return x }
 
 // 测试用例：
 const x = { prop: 'a' };
