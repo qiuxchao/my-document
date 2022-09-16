@@ -135,7 +135,7 @@ def c(p):
 c('c')
 
 # 等价于
-a(a="a", b="b")(c)('c')
+a(p1='a', p2='b')(c)('c')
 
 # exec a {'p1': 'a', 'p2': 'b'}
 # exec b <function c at 0x108de9e50>
