@@ -144,6 +144,58 @@ a(a="a", b="b")(c)('c')
 # exec c:  c
 ```
 
+## 带参数多次使用
+
+```py
+def a(**kwds):
+    print('exec a', kwds)
+
+    def b(f):
+        print('exec b', f)
+        for k in kwds:
+            setattr(f, k, kwds[k])
+        return f
+
+    return b
+
+
+def a1(**kwds):
+    print('exec a1', kwds)
+
+    def b1(f):
+        print('exec b1', f)
+        for k in kwds:
+            setattr(f, k, kwds[k])
+        return f
+
+    return b1
+
+@a1(p3='c', p4='d')
+@a(p1='a', p2='b')
+def c(p):
+    print(getattr(c, 'p1'))
+    print(getattr(c, 'p2'))
+    print(getattr(c, 'p3'))
+    print(getattr(c, 'p4'))
+    print('exec c: ', p)
+
+
+c('c')
+
+# 等价于
+a1(p3='c', p4='d')(a(p1='a', p2='b')(c))('c')
+
+# exec a1 {'p3': 'c', 'p4': 'd'}
+# exec a {'p1': 'a', 'p2': 'b'}
+# exec b <function c at 0x111332c10>
+# exec b1 <function c at 0x111332c10>
+# a
+# b
+# c
+# d
+# exec c:  c
+```
+
 ## Python 中存在闭包
 
 ```py
