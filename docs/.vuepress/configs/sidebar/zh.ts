@@ -28,6 +28,7 @@ export const sidebarZh: SidebarConfig = {
         '/frontend/css/vw_vh.md',
         '/frontend/css/flexible.md',
         '/frontend/css/miniprogram_scroll_notice.md',
+        '/frontend/css/flex.md',
         '/frontend/css/some_example.md',
       ],
     },
