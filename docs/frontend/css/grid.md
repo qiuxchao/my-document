@@ -4,7 +4,7 @@ CSS 网格布局擅长于将一个页面划分为几个主要区域，以及定�
 
 像表格一样，网格布局让我们能够按行或列来对齐元素。然而在布局上，网格比表格更可能做到或更简单。例如，网格容器的子元素可以自己定位，以便它们像 CSS 定位的元素一样，真正的有重叠和层次。
 
-如何声明Grid布局? `display: grid;`、`display: inline-grid;` 或者 `display: subgrid;`
+如何声明 Grid 布局? `display: grid;`、`display: inline-grid;` 或者 `display: subgrid;`
 
 `grid-column-start` 和 `grid-column-end` 作用于网格项的开始结束, `start` 不一定比 `end` 小, 且都可以为负数.
 
@@ -22,6 +22,6 @@ CSS 网格布局擅长于将一个页面划分为几个主要区域，以及定�
 
 定义上述属性时,允许长度单位混合使用.
 
-`fr` 用于等分等分网格容器剩余空间.举例说明: 设有A B C 三个网格轨道, 他们的 `grid-template-columns` 的设置依次是 1fr 2fr 和 3fr. 那么他们共同把一个行分为6等分, 则A B C的空间就依次获得了这一行的1/6、2/6和3/6.
+`fr` 用于等分等分网格容器剩余空间.举例说明: 设有A B C 三个网格轨道, 他们的 `grid-template-columns` 的设置依次是 1fr 2fr 和 3fr. 那么他们共同把一个行分为 6 等分, 则 A B C 的空间就依次获得了这一行的1/6、2/6 和 3/6.
 
 `fr` 是可以和其他单位混用的,如 `grid-template-columns:1fr 50px 1fr 1fr`. 计算优先级记住一点即可: 除了 `auto` 之外,先计算所有固定值(包括百分数)后,剩下的空间再计算 `fr`.
