@@ -1,5 +1,7 @@
 # grid 网格布局
 
+grid 是一个 CSS 简写属性，可以用来设置以下属性： 显式网格属性 `grid-template-rows`、`grid-template-columns `和 `grid-template-areas`， 隐式网格属性 `grid-auto-rows`、`grid-auto-columns` 和 `grid-auto-flow`， 间距属性 `grid-column-gap` 和 `grid-row-gap`。
+
 CSS 网格布局擅长于将一个页面划分为几个主要区域，以及定义这些区域的大小、位置、层次等关系（前提是 HTML 生成了这些区域）。
 
 像表格一样，网格布局让我们能够按行或列来对齐元素。然而在布局上，网格比表格更可能做到或更简单。例如，网格容器的子元素可以自己定位，以便它们像 CSS 定位的元素一样，真正的有重叠和层次。
