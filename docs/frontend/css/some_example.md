@@ -39,3 +39,17 @@ div {
   white-space: break-spaces;
 }
 ```
+
+## 选择奇数和偶数
+
+- `:nth-child(odd){}` 选择奇数行
+
+- `:nth-child(even){}` 选择偶数行
+
+```css
+/* 选择奇数行 */
+li:nth-child(odd) {}
+
+/* 选择偶数行 */
+li:nth-child(even) {}
+```
