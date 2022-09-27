@@ -169,6 +169,7 @@ export const sidebarZh: SidebarConfig = {
       text: 'IDE',
       children: [
         '/tools/ide/vscode_plugins.md',
+        '/tools/ide/vscode_setting.md',
       ],
     },
   ],
