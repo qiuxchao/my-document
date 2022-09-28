@@ -179,6 +179,7 @@ export const sidebarZh: SidebarConfig = {
       children: [
         '/share/code_review.md',
         '/share/specification.md',
+        '/share/vuepress_blog.md',
       ],
     },
   ],
