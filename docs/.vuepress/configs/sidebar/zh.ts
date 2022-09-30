@@ -23,6 +23,7 @@ export const sidebarZh: SidebarConfig = {
           text: 'JavaScript 高级程序设计——读书笔记',
           link: '/frontend/javascript/js_basic/history.md',
           children: [
+            '/frontend/javascript/js_basic/history.md',
             '/frontend/javascript/js_basic/version.md'
           ]
         },
