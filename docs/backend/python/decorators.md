@@ -200,15 +200,22 @@ a1(p3='c', p4='d')(a(p1='a', p2='b')(c))('c')
 
 ```py
 def a():
-  d = {
-    'name': 'qxc'
-  }
-  def b():
-    return d
-  return b
+    d = {
+        'name': 'qiuxc'
+    }
 
-nd = a()()
+    def b():
+        return d
+
+    return b
+
+
+b = a()
+nd = b()
+nd1 = b()
 nd['age'] = 22
-print(nd)
+# 修改了 nd 但是 nd1 的值也变了，说明两者指向一个地方
+print(nd1)
+
 # {'name': 'qiuxc', 'age': 22}
 ```
