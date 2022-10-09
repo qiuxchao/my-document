@@ -169,6 +169,7 @@ export const sidebarZh: SidebarConfig = {
       children: [
         '/tools/git/',
         '/tools/git/git_tag.md',
+        '/tools/git/logogram.md',
         '/tools/git/js_delivr.md',
         '/tools/git/some_lore.md',
       ],
