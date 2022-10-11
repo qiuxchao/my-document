@@ -38,3 +38,15 @@ git remote set-url origin git@github.com:xxx/xxx.git
 - 把当前分支的 `HEAD` 指针移动到合并前的提交记录上；
 - 把暂存区恢复成 `HEAD` 所指向的版本；
 - 把工作目录恢复成和暂存区保持一致。
+
+## 回滚代码
+
+想要让Git回退历史，有以下步骤：
+
+- 使用 `git log` 命令，查看分支提交历史，确认需要回退的版本
+- 使用 `git reset --hard commit_id` 命令，进行版本回退
+- 使用 `git push origin` 命令，推送至远程分支
+
+快捷命令：
+
+- 回退上个版本：`git reset --hard HEAD^`
