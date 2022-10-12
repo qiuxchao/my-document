@@ -49,6 +49,7 @@ export const sidebarZh: SidebarConfig = {
         '/frontend/react/react_router_dom.md',
         '/frontend/react/react_source_read.md',
         '/frontend/react/hooks.md',
+        '/frontend/react/next.md',
       ],
     },
     {
