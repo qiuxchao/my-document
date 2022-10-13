@@ -212,3 +212,5 @@ Next.js 的 `package.json` 中有以下可运行的脚本：
 > 提示：可以自定义 `package.json` 中的 `start` 脚本以接受 `PORT` 参数来自定义启动端口，方法是将其更新为： `"start": "next start -p $PORT"`.
 
 服务启动后，通过服务器公网地址加端口号即可访问网站。
+
+> 本文示例代码：[https://github.com/qiuxchao/learn-next-demo](https://github.com/qiuxchao/learn-next-demo)
