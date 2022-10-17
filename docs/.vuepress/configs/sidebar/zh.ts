@@ -173,6 +173,7 @@ export const sidebarZh: SidebarConfig = {
         '/tools/git/logogram.md',
         '/tools/git/js_delivr.md',
         '/tools/git/some_lore.md',
+        '/tools/git/semantic_versions.md',
       ],
     },
     {
