@@ -122,6 +122,7 @@ export const sidebarZh: SidebarConfig = {
         '/backend/nodejs/shelljs.md',
         '/backend/nodejs/husky.md',
         '/backend/nodejs/playwright.md',
+        '/backend/nodejs/mongoose.md',
       ],
     },
     {

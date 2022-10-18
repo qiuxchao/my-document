@@ -6,7 +6,17 @@ CSS 网格布局擅长于将一个页面划分为几个主要区域，以及定�
 
 像表格一样，网格布局让我们能够按行或列来对齐元素。然而在布局上，网格比表格更可能做到或更简单。例如，网格容器的子元素可以自己定位，以便它们像 CSS 定位的元素一样，真正的有重叠和层次。
 
-如何声明 Grid 布局? `display: grid;`、`display: inline-grid;` 或者 `display: subgrid;`
+如何声明 Grid 布局? 
+
+```css
+.grid-wrap {
+  display: grid;
+  /* 或者 */
+  display: inline-grid;
+  /* 或者 */
+  display: subgrid;
+}
+```
 
 `grid-column-start` 和 `grid-column-end` 作用于网格项的开始结束, `start` 不一定比 `end` 小, 且都可以为负数.
 
