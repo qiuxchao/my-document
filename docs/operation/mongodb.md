@@ -114,3 +114,37 @@ brew install mongodb-community@6.0
   ```sh
   mongod --config /usr/local/etc/mongod.conf --fork
   ```
+
+  要停止 mongod 作为后台进程运行，使用 `mongosh` 连接到 mongod，并输入 `shutdown` 命令。
+
+
+
+5. 检查是否正在运行，要验证 MongoDB 是否正在运行，请执行以下操作之一：
+
+  - 如果将 MongoDB作为 macOS 服务启动：
+
+  ```sh
+  brew services list
+  ```
+  应该会看到列为 `mongodb-community` 的服务 `started`。
+
+  - 如果是手动启动 **MongoDB** 作为后台进程：
+
+  ```sh
+  ps aux | grep -v grep | grep mongod
+  ```
+
+  您应该 `mongod` 在输出中看到您的进程。
+
+  您还可以查看日志文件以查看 mongod 进程的当前状态：`/usr/local/var/log/mongodb/mongo.log`
+
+#### 连接和使用 MongoDB
+
+要开始使用 MongoDB，使用 `mongosh` 命令连接到正在运行的实例。从终端输入以下命令：
+
+```sh
+mongosh
+```
+
+
+
