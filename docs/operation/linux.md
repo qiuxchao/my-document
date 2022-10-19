@@ -33,6 +33,9 @@ scp -r 文件夹 root@xxx.xxx.xxx.xxx:/etc/
 # 查看可执行命令所在路径
 which xxx
 
+# 查看文件
+du -h 文件/目录
+
 ```
 
 ### 远程访问/网络

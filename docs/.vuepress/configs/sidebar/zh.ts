@@ -162,6 +162,7 @@ export const sidebarZh: SidebarConfig = {
         '/operation/gitlab.md',
         '/operation/jenkins.md',
         '/operation/redis.md',
+        '/operation/mongodb.md',
       ],
     },
   ],
