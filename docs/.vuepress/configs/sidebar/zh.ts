@@ -183,6 +183,7 @@ export const sidebarZh: SidebarConfig = {
       children: [
         '/tools/ide/vscode_plugins.md',
         '/tools/ide/vscode_setting.md',
+        '/tools/ide/eslint.md',
       ],
     },
   ],

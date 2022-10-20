@@ -74,7 +74,8 @@ export const navbarZh: NavbarConfig = [
           '/operation/ssl_ci.md',
           '/operation/gitlab.md',
           '/operation/jenkins.md',
-          '/operation/redis.md'
+          '/operation/redis.md',
+          '/operation/mongodb.md'
         ],
       },
       {
