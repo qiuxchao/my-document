@@ -19,6 +19,7 @@ export const sidebarZh: SidebarConfig = {
         '/frontend/javascript/promise.md',
         '/frontend/javascript/module.md',
         '/frontend/javascript/dependency_injection.md',
+        '/frontend/javascript/reg_grammar.md',
         {
           text: 'JavaScript 高级程序设计——读书笔记',
           link: '/frontend/javascript/js_basic/history.md',
