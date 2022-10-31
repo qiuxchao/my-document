@@ -346,9 +346,9 @@ CRUD 操作新增、读取、更新和删除文档。
 
 MongoDB 提供以下方法将文档插入到集合中：
 
-- [db.collection.insertOne(<document>, options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/#mongodb-method-db.collection.insertOne) *3.2 版中的新功能*，将单个文档插入到集合中。
+- [`db.collection.insertOne(<document>, options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/#mongodb-method-db.collection.insertOne) *3.2 版中的新功能*，将单个文档插入到集合中。
 
-- [db.collection.insertMany([ <document 1> , <document 2>, ... ], options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.insertMany/#mongodb-method-db.collection.insertMany) *3.2 版中的新功能*，将多个文档插入到集合中。
+- [`db.collection.insertMany([ <document 1> , <document 2>, ... ], options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.insertMany/#mongodb-method-db.collection.insertMany) *3.2 版中的新功能*，将多个文档插入到集合中。
 
 在 MongoDB 中，插入操作针对单个集合。MongoDB 中的所有写操作在单个文档级别上都是原子的。
 
@@ -358,7 +358,7 @@ MongoDB 提供以下方法将文档插入到集合中：
 
 读取操作从**集合中检索文档**；即查询文档集合。MongoDB 提供以下方法从集合中读取文档：
 
-- [db.collection.find(query, projection, options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#mongodb-method-db.collection.find) 
+- [`db.collection.find(query, projection, options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/#mongodb-method-db.collection.find) 
 
 您可以指定标识要返回的文档的[查询过滤器或条件](https://www.mongodb.com/docs/manual/tutorial/query-documents/#std-label-read-operations-query-argument)。
 
@@ -378,11 +378,11 @@ MongoDB 提供以下方法将文档插入到集合中：
 
 更新操作修改集合中的现有文档。MongoDB 提供以下方法来更新集合的文档：
 
-- [db.collection.updateOne(filter, update, options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/#mongodb-method-db.collection.updateOne) *3.2 版中的新功能*，更新单个文档，找到第一个匹配的文档筛选并应用指定的更新修改。
+- [`db.collection.updateOne(filter, update, options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/#mongodb-method-db.collection.updateOne) *3.2 版中的新功能*，更新单个文档，找到第一个匹配的文档筛选并应用指定的更新修改。
 
-- [db.collection.updateMany(filter, update, options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany/#mongodb-method-db.collection.updateMany) *3.2 版中的新功能*，更新多个文档。
+- [`db.collection.updateMany(filter, update, options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany/#mongodb-method-db.collection.updateMany) *3.2 版中的新功能*，更新多个文档。
 
-- [db.collection.replaceOne(filter, replacement, options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.replaceOne/#mongodb-method-db.collection.replaceOne) *3.2 版中的新功能*，替换单个文档。
+- [`db.collection.replaceOne(filter, replacement, options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.replaceOne/#mongodb-method-db.collection.replaceOne) *3.2 版中的新功能*，替换单个文档。
 
 在 MongoDB 中，更新操作针对单个集合。MongoDB 中的所有写操作在单个文档级别上都是[原子](https://www.mongodb.com/docs/manual/core/write-operations-atomicity/)的。
 
@@ -394,9 +394,9 @@ MongoDB 提供以下方法将文档插入到集合中：
 
 删除操作从集合中删除文档。MongoDB 提供以下方法来删除集合的文档：
 
-- [db.collection.deleteOne(filter, options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/#mongodb-method-db.collection.deleteOne) *3.2 版中的新功能*，从集合中删除单个文档。
+- [`db.collection.deleteOne(filter, options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/#mongodb-method-db.collection.deleteOne) *3.2 版中的新功能*，从集合中删除单个文档。
 
-- [db.collection.deleteMany(filter, options)](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/#mongodb-method-db.collection.deleteMany) *3.2 版中的新功能*，从集合中删除与`filter`匹配的所有文档。
+- [`db.collection.deleteMany(filter, options)`](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/#mongodb-method-db.collection.deleteMany) *3.2 版中的新功能*，从集合中删除与`filter`匹配的所有文档。
 
 在 MongoDB 中，删除操作针对单个集合。MongoDB 中的所有写操作在单个文档级别上都是原子的。
 
