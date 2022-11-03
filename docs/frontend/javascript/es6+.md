@@ -4,6 +4,16 @@
 
 > 参考资料：[MDN JavaScript Docs](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 
+ES6 语法汇总：
+
+![ES6_all](./images/ES6_all.png)
+
+ES7～ES11 语法汇总：
+
+![ES6+_all](./images/ES6+_all.png)
+
+> 图片引自 [ECMAScript2015~2020语法全解析](http://es.xiecheng.live/introduction/preface.html)
+
 ## let、块级作用域、const 常量
 
 ### let 声明变量
