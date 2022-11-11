@@ -193,6 +193,7 @@ export const sidebarZh: SidebarConfig = {
       text: '技术分享',
       children: [
         '/share/code_review.md',
+        '/share/chrome_extensions.md',
         '/share/specification.md',
         '/share/vuepress_blog.md',
       ],

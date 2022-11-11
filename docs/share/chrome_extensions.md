@@ -10,7 +10,7 @@ Chrome扩展是一系列文件的集合，这些文件包括**HTML文件**、**C
 
 ## 扩展程序基本组成结构
 
-![chrome_ext_jiagou](./image/chrome_ext_jiagou.jpg)
+![chrome_ext_jiagou](./image/chrome_ext_jiagou.png)
 
 ### manifest.json
 
@@ -203,7 +203,22 @@ chrome.action.onClicked.addListener((tab) => {
 });
 ```
 
+或者函数体也可以作为内容脚本注入和执行：
 
+background.js:
+```js
+function injectedFunction() {
+  document.body.style.backgroundColor = 'orange';
+}
+
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    // 直接运行函数
+    func: injectedFunction
+  });
+});
+```
 
 
 

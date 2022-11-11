@@ -95,7 +95,8 @@ export const navbarZh: NavbarConfig = [
       {
         text: '技术分享',
         children: [
-          '/share/code_review.md'
+          '/share/code_review.md',
+          '/share/chrome_extensions.md'
         ],
       },
 ]
