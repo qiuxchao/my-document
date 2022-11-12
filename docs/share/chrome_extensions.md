@@ -222,6 +222,23 @@ chrome.action.onClicked.addListener((tab) => {
 
 
 
+### 浮层(popup)
+
+点击插件图标后出现的浮层，`popup.html` 则是浮层的内容，可以在页面中引入JS文件，以用于与**后台脚本**或**内容脚本**交互。
+
+![chrome_ext_fehelper](./image/chrome_ext_fehelper.png)
+
+```json
+{
+  "name": "My Extension",
+
+  "action": {
+     "default_title": "Click to view a popup",
+   	 "default_popup": "popup.html"
+   },
+}
+```
+
 ### 消息传递
 
 由于**内容脚本**(content_script)在网页上下文而不是扩展程序的上下文中运行，因此它们通常需要某种方式与扩展程序的其余部分进行通信。
