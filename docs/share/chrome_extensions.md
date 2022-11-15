@@ -251,3 +251,13 @@ chrome.action.onClicked.addListener((tab) => {
 
 如果只需要向扩展程序的另一部分(内容脚本或后台脚本)发送一条消息（并且可以选择返回响应），应该使用简化的 `runtime.sendMessage` 或 `tabs.sendMessage`。这可以将一次性 JSON 可序列化消息从**内容脚本**发送到**后台脚本**，反之亦然。可选的回调参数允许我们处理来自另一侧的响应（如果有）。
 
+
+## 踩坑记录
+
+### 无法为内容脚本加载 JavaScript“”。 无法加载清单。
+
+出现此错误可能有多种原因，一般都是 `manifest.json` 中的配置项有问题，可以排查下列属性：
+
+- `content_scripts` 中的js不能使用网络路径
+- `default_locale` 配置为 `zh_CN` 后需要在根目录下新建 `_locales` 语言包目录
+- 将需要在外部使用的资源列到 `web_accessible_resources` 属性中
