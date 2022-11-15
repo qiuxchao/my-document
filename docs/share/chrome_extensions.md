@@ -1,4 +1,4 @@
-# Chrome 扩展开发
+# Chrome 扩展开发入门
 
 Chrome扩展是用于扩充Chrome浏览器功能的程序。
 
@@ -20,7 +20,7 @@ Chrome扩展是一系列文件的集合，这些文件包括**HTML文件**、**C
 
 Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后续我们使用最新的 V3 版本。
 
-下面仅列举部分配置，完整配置清单见官方：[https://developer.chrome.com/docs/extensions/mv3/manifest/](https://developer.chrome.com/docs/extensions/mv3/manifest/)
+下面仅列举部分配置，完整配置清单见官方：[📃 https://developer.chrome.com/docs/extensions/mv3/manifest/](https://developer.chrome.com/docs/extensions/mv3/manifest/)
 
 ```json
   {
@@ -58,6 +58,13 @@ Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后�
   // 使用/添加devtools中的功能
   "devtools_page": "devtools.html",
 
+  // 插件设置页面
+  "options_page": "options.html",
+  "options_ui": {
+    "chrome_style": true,
+    "page": "options.html"
+  },
+
   // 可以使用该插件的网站
   "host_permissions": ["http://*/*", "https://*/*"],
 
@@ -65,7 +72,7 @@ Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后�
   "permissions": ["storage"],
 
   // 可选权限，与 permissions 类似，但在扩展运行时授予，而不是提前授予
-  "optional_permissions": ["downloads"],
+  "optional_permissions": ["downloads"]
   
 }
 ```
@@ -80,7 +87,7 @@ Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后�
 
 - `service_worker` 会一直处于休眠状态，直到它们正在侦听的事件触发，按照指定的指令做出反应，然后卸载。
 
-> [service_worker官方文档](https://developer.chrome.com/docs/extensions/mv3/service_workers/)
+> [📃 service_worker](https://developer.chrome.com/docs/extensions/mv3/service_workers/)
 
 #### 注册 service_worker
 
@@ -143,7 +150,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 **内容脚本**可以通过使用 `message API` 来与扩展的其他部分进行通信。
 
-> [content_script官方文档](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)
+> [📃 content_script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)
 
 #### 注入方式
 
@@ -242,6 +249,36 @@ chrome.action.onClicked.addListener((tab) => {
 }
 ```
 
+> [📃 action](https://developer.chrome.com/docs/extensions/reference/action/)
+
+### 配置页面(options_page)
+
+提供选项页面来允许用户自定义扩展程序的功能。
+
+几种跳转到扩展程序配置页面的方法：
+
+- 通过 **右键单击工具栏** 中的扩展程序图标然后选择 **选项**；
+- 导航栏输入 `chrome://extensions` 跳转到扩展程序管理页面，然后点击目标扩展程序的「详情」-「扩展程序选项」；
+- 在扩展程序内调用 `chrome.runtime.openOptionsPage()` API。
+
+![chrome_ggbp_options](./image/chrome_ggbp_options.png)
+
+> [📃 options_page](https://developer.chrome.com/docs/extensions/mv3/options/)
+
+### DevTools(devtools_page)
+
+扩展程序的 DevTools 为 Chrome DevTools 添加了功能。它可以添加新的 UI 面板和侧边栏，与唤出 `DevTools` 的页面交互（打开F12的页面），获取有关网络请求的信息等等。DevTools 扩展可以访问一组额外的 DevTools 特定扩展 API：
+
+- `devtools.inspectedWindow` 获取**被检查页面**的选项卡ID、上下文代码、获取页面内的资源列表。
+- `devtools.network` 检索网络面板中开发者工具显示的网络请求信息。
+- `devtools.panels` 将的扩展的 `DevTools` 集成到开发人员工具窗口 UI 中：创建自己的面板、访问现有面板并添加侧边栏。
+
+Devtools 在扩展程序架构中的体现：
+
+![chrome_ext_devtools](./image/chrome_ext_devtools.png)
+
+> [📃 DevTools](https://developer.chrome.com/docs/extensions/mv3/devtools/)
+
 ### 消息传递
 
 由于**内容脚本**(content_script)在网页上下文而不是扩展程序的上下文中运行，因此它们通常需要某种方式与扩展程序的其余部分进行通信。 
@@ -250,7 +287,7 @@ chrome.action.onClicked.addListener((tab) => {
 
 有一个用于**一次性请求**的API和一个**建立长期连接**API（它允许在共享上下文中交换多条消息的长连接。如果知道另一个扩展的ID，也可以向另一个扩展发送消息）。
 
-> [消息传递官方文档](https://developer.chrome.com/docs/extensions/mv3/messaging/)
+> [📃 消息传递](https://developer.chrome.com/docs/extensions/mv3/messaging/)
 
 #### 一次性请求
 
@@ -321,3 +358,8 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 - `content_scripts` 中的js不能使用网络路径
 - `default_locale` 配置为 `zh_CN` 后需要在根目录下新建 `_locales` 语言包目录
 - 将需要在外部使用的资源列到 `web_accessible_resources` 属性中
+
+
+> 本文参考：
+> 🔗 [学习如何为 Chrome 开发扩展程序](https://developer.chrome.com/docs/extensions/mv3/)
+> 🔗 [最新版 V3 chrome 插件开发~ demo + 坑](https://juejin.cn/post/7021072232461893639#heading-8)
