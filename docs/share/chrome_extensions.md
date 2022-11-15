@@ -348,6 +348,11 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 - `content_script` 直接在页面控制台查看信息
 
+- `devtools` 在此页面打开F12进行调试 `chrome-extension://{扩展ID}/devtools/index.html`，扩展ID查看：
+
+![chrome_ext_devtools_ts](./image/chrome_ext_devtools_ts.png)
+
+
 
 ## 踩坑记录
 
