@@ -252,6 +252,19 @@ chrome.action.onClicked.addListener((tab) => {
 如果只需要向扩展程序的另一部分(内容脚本或后台脚本)发送一条消息（并且可以选择返回响应），应该使用简化的 `runtime.sendMessage` 或 `tabs.sendMessage`。这可以将一次性 JSON 可序列化消息从**内容脚本**发送到**后台脚本**，反之亦然。可选的回调参数允许我们处理来自另一侧的响应（如果有）。
 
 
+## 开发调试
+
+- `popup` 没有控制台，报错信息在导入插件的地方查看
+
+![chrome_ggbp_ts](./image/chrome_ggbp_ts.png)
+
+- `service_worker` 有一个专属的控制台，可以在那里查看打印信息
+
+![chrome_ggbp_ts2](./image/chrome_ggbp_ts2.png)
+
+- `content_script` 直接在页面控制台查看信息
+
+
 ## 踩坑记录
 
 ### 无法为内容脚本加载 JavaScript“”。 无法加载清单。
