@@ -365,6 +365,22 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 - 将需要在外部使用的资源列到 `web_accessible_resources` 属性中
 
 
+### Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist. 
+
+- 未捕获（承诺）错误：无法建立连接。接收端不存在。
+
+不能一进来就发消息，要手动触发一个消息或者扩展加载完毕再发
+
+```js
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+    console.log(response.farewell);
+  });
+});
+```
+
+
+
 > 本文参考：
 > 🔗 [学习如何为 Chrome 开发扩展程序](https://developer.chrome.com/docs/extensions/mv3/)
 > 🔗 [最新版 V3 chrome 插件开发~ demo + 坑](https://juejin.cn/post/7021072232461893639#heading-8)
