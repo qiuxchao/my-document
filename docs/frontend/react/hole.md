@@ -16,4 +16,4 @@ num > 0 && <span>Hello</span>
 
 这种语法称为 [`Falsy` 表达式](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy)
 
-经测试，只有在左边为**数值**时需要考虑这种情况，其他 `falsy` 的值符合预期。
+经测试，只有在左边为**数值**或**NaN**时需要考虑这种情况，其他 `falsy` 的值符合预期。
