@@ -365,20 +365,65 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 - 将需要在外部使用的资源列到 `web_accessible_resources` 属性中
 
 
-### Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist. 
+### Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist. 或者 Unchecked runtime.lastError: This function must be called during a user gesture
 
 - 未捕获（承诺）错误：无法建立连接。接收端不存在。
+- 未经检查的 runtime.lastError：必须在用户手势期间调用此函数
 
-不能一进来就发消息，要手动触发一个消息或者扩展加载完毕再发
+都是修改扩展程序代码后刷新不成功的缓存导致，解决办法：
+
+- 将扩展卸载重装
+- 使用扩展的页面强制刷新
+
+### Unchecked runtime.lastError: The message port closed before a response was received.
+
+- 未经检查的 runtime.lastError：消息端口在收到响应之前关闭
+
+这种问题是在调用 `chrome.runtime.sendMessage` 时添加了回调，但是在接受消息端没有调用回传消息方法导致的：
 
 ```js
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-    console.log(response.farewell);
-  });
+// 发送端
+chrome.runtime.sendMessage({
+    action: "server",
+    source: "test",
+}, function(response){
+    alert(response.text);
 });
+
+// 接收端
+chrome.extension.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    if (request.action === "server") {
+      console.log(request);
+      // 这里不调用 sendResponse 回传消息
+    }
+  }
+);
 ```
 
+解决办法：
+
+- 发送端去掉回调方法或者接收端调用回调方法。
+
+### Extension context invalidated
+
+- 扩展上下文无效
+
+当在扩展管理中心刷新或更新了某扩展，然后切换到浏览器某标签页的页面中直接使用该扩展时，扩展可能报错 `Extension context invalidated`。
+
+报错位置可能在 `devtools/index.js` 里的 `"chrome.runtime.sendMessage()"` 部分。
+
+处理方式：
+
+1. 在更新了扩展后，使用扩展前，首先刷新相关页面
+2. 使用 `chrome.runtime.id` 判断扩展上下文是否有效，然后再执行 `chrome.runtime.sendMessage()`
+```js
+chrome.runtime?.id && chrome.runtime.sendMessage()
+```
+
+### devtools 中使用 `chrome.devtools.network.onRequestFinished.addListener` 获取不到网络请求
+
+不能直接打开 devtools 面板刷新页面，要刷新页面后再打开 devtools 面板再请求接口。
 
 
 > 本文参考：
