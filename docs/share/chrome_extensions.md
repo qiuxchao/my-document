@@ -2,11 +2,11 @@
 
 Chrome扩展是用于扩充Chrome浏览器功能的程序。
 
-Chrome扩展主要用于对浏览器功能的增强，它更强调与浏览器相结合。比如Chrome扩展可以在浏览器的工具栏和地址栏中显示图标，它可以更改用户当前浏览的网页中的内容，也可以更改浏览器代理服务器的设置等等。
+Chrome扩展主要是对浏览器功能的增强，它更强调与浏览器相结合。比如Chrome扩展可以在浏览器的工具栏和地址栏中显示图标，它可以更改用户当前浏览的网页中的内容，也可以更改浏览器代理服务器的设置等等。
 
 Chrome扩展是一系列文件的集合，这些文件包括**HTML文件**、**CSS样式文件**、**JavaScript脚本文件**、**图片等静态文件**以及 `manifest.json` 清单文件。
 
-> 扩展程序（插件）是能通过『当前选项卡』『插件弹出页』『全局js脚本』『devtools信息』等合作通信去实现特定功能的后台程序。
+扩展程序是能通过『当前选项卡』『扩展弹出页』『后台js脚本』『devtools信息』等合作通信去实现特定功能的后台程序。
 
 ## 扩展程序基本组成结构
 
@@ -65,7 +65,7 @@ Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后�
     "page": "options.html"
   },
 
-  // 可以使用该插件的网站
+  // 该插件可以访问的资源，后台脚本发送跨域请求需要配置该项
   "host_permissions": ["http://*/*", "https://*/*"],
 
   // 必需权限，扩展程序的基本功能所需的权限。 权限列表：https://developer.chrome.com/docs/extensions/mv2/declare_permissions/
@@ -338,7 +338,7 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 ## 开发调试
 
-- `popup` 没有控制台，报错信息在导入插件的地方查看
+- `popup` 右键扩展图标，选择**审查弹出内容**，会弹出控制台
 
 ![chrome_ggbp_ts](./image/chrome_ggbp_ts.png)
 
