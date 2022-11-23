@@ -81,9 +81,13 @@ Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后�
 
 扩展程序使用 `service_worker` **后台脚本**监视这些事件，然后根据指定的指令做出反应。
 
-- `service_worker` 无法访问页面 `DOM`。
+`service_worker` 后台脚本的特性：
 
-- `service_worker` 会一直处于休眠状态，直到它们正在侦听的事件触发，按照指定的指令做出反应，然后卸载。
+- 无法访问页面 `DOM`。
+
+- 会一直处于休眠状态，直到它们正在侦听的事件触发，按照指定的指令做出反应，然后卸载。
+
+- 可以发送跨域请求。
 
 > [📃 service_worker](https://developer.chrome.com/docs/extensions/mv3/service_workers/)
 
@@ -111,6 +115,8 @@ Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后�
   }
 ```
 
+有关更多信息，参阅 [ES modules in service workers](https://web.dev/es-modules-in-sw/)
+
 #### 初始化扩展
 
 监听到 `runtime.onInstalled` 事件触发时表明插件安装完成。可以使用此事件设置状态或一次性初始化，例如设置右键菜单：
@@ -124,9 +130,6 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 ```
-
-
-有关更多信息，参阅 [ES modules in service workers](https://web.dev/es-modules-in-sw/)
 
 
 ### 内容脚本(content_script)
@@ -425,5 +428,5 @@ chrome.runtime?.id && chrome.runtime.sendMessage()
 
 
 > 本文参考：
-> 🔗 [学习如何为 Chrome 开发扩展程序](https://developer.chrome.com/docs/extensions/mv3/)
+> 🔗 [Chrome 扩展程序官方文档](https://developer.chrome.com/docs/extensions/mv3/)
 > 🔗 [最新版 V3 chrome 插件开发~ demo + 坑](https://juejin.cn/post/7021072232461893639#heading-8)
