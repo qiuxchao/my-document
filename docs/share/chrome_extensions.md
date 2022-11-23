@@ -1,12 +1,10 @@
 # Chrome 扩展开发入门
 
-Chrome扩展是用于扩充Chrome浏览器功能的程序。
-
-Chrome扩展主要是对浏览器功能的增强，它更强调与浏览器相结合。比如Chrome扩展可以在浏览器的工具栏和地址栏中显示图标，它可以更改用户当前浏览的网页中的内容，也可以更改浏览器代理服务器的设置等等。
+Chrome扩展是用于扩充Chrome浏览器功能的程序。主要是对浏览器功能的增强，它更强调与浏览器相结合。比如Chrome扩展可以在浏览器的工具栏和地址栏中显示图标，它可以更改用户当前浏览的网页中的内容，也可以更改浏览器代理服务器的设置等等。
 
 Chrome扩展是一系列文件的集合，这些文件包括**HTML文件**、**CSS样式文件**、**JavaScript脚本文件**、**图片等静态文件**以及 `manifest.json` 清单文件。
 
-扩展程序是能通过『当前选项卡』『扩展弹出页』『后台js脚本』『devtools信息』等合作通信去实现特定功能的后台程序。
+扩展程序是通过『当前tab页』『扩展弹出页』『后台js脚本』『devtools信息』等合作通信去实现特定功能的后台程序。
 
 ## 扩展程序基本组成结构
 
@@ -50,7 +48,7 @@ Manifest V3 扩展在安全性、隐私和性能方面得到增强，因此后�
      {
        "matches": ["https://*.nytimes.com/*"],  // 指定此内容脚本被插入到哪些页面中
        "css": ["my-styles.css"],  // 要注入匹配页面的 CSS 文件列表
-       "js": ["content-script.js"],  // 要注入匹配页面的 JavaScript 文件列表，按照数组的顺序注入
+       "js": ["content-script.js"],  // 要注入匹配页面的 JavaScript 文件列表，按照数组的顺序注入（不支持网络路径）
        "run_at": "document_idle", // 何时将 JavaScript 文件注入网页，可选址值：document_idle document_start document_end
      }
    ],
