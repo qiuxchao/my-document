@@ -1,6 +1,6 @@
 # Chrome 扩展开发入门
 
-Chrome扩展是用于扩充Chrome浏览器功能的程序。主要是对浏览器功能的增强，它更强调与浏览器相结合。比如Chrome扩展可以在浏览器的工具栏和地址栏中显示图标，它可以更改用户当前浏览的网页中的内容，也可以更改浏览器代理服务器的设置等等。
+Chrome扩展是用于扩充Chrome浏览器功能的程序。主要是对浏览器功能的增强，它更强调与浏览器相结合。比如Chrome扩展可以更改用户当前浏览的网页中的内容、获取Devtools中的信息、更改浏览器代理服务器的设置等等。
 
 Chrome扩展是一系列文件的集合，这些文件包括**HTML文件**、**CSS样式文件**、**JavaScript脚本文件**、**图片等静态文件**以及 `manifest.json` 清单文件。
 
@@ -352,10 +352,27 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 - `devtools` 在此页面打开F12进行调试 `chrome-extension://{扩展ID}/devtools/index.html`，扩展ID查看：
 
 ![chrome_ext_devtools_ts](./image/chrome_ext_devtools_ts.png)
+  
+或者在【扩展管理】-【详情】-【查看视图】找到对应扩展的调试窗口地址。
 
 
 
-## 踩坑记录
+## 项目实践-呱呱助手
+
+功能点：
+
+- 商品详情页面一键下载商品图片
+- 商品列表页面一键发送列表数据到服务端接口
+
+使用到的Chrome扩展能力：
+
+- `storage` 存储
+- `message API` 消息通信
+- `optional_permissions` 配置 `downloads` 可选权限，用到时请求
+- `devtools.network` 获取网络请求
+- `host_permissions` 配置支持后台脚本发送跨域请求
+
+### 踩坑记录
 
 ### 无法为内容脚本加载 JavaScript“”。 无法加载清单。
 
@@ -425,6 +442,14 @@ chrome.runtime?.id && chrome.runtime.sendMessage()
 ### devtools 中使用 `chrome.devtools.network.onRequestFinished.addListener` 获取不到网络请求
 
 不能直接打开 devtools 面板刷新页面，要刷新页面后再打开 devtools 面板再请求接口。
+
+## 发布扩展
+
+- 发布到 Chrome 应用商店（需要$5注册费），地址：[https://chrome.google.com/webstore/devconsole](https://chrome.google.com/webstore/devconsole)
+
+- 在【扩展管理】页面打包本地的扩展程序，将打包出来的 `.crx` 文件拖入 Chrome 即可安装。
+  > 但是现在 Chrome 已经不允许使用未在 Chrome 应用商店中发布的扩展程序，安装后会提示 *该扩展程序未列在 Chrome 应用商店中，并可能是在您不知情的情况下添加的。*参阅：[Chrome 停用的扩展程序](https://support.google.com/chrome_webstore/answer/2811969?visit_id=638048013328104701-2621356661&p=ui_remove_non_cws_extensions&hl=zh-Hans&rd=2)
+
 
 
 > 本文参考：
