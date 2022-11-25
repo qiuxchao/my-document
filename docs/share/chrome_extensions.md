@@ -448,7 +448,7 @@ chrome.runtime?.id && chrome.runtime.sendMessage()
 - 发布到 Chrome 应用商店（需要$5注册费），地址：[https://chrome.google.com/webstore/devconsole](https://chrome.google.com/webstore/devconsole)
 
 - 在【扩展管理】页面打包本地的扩展程序，将打包出来的 `.crx` 文件拖入 Chrome 即可安装。
-  > 但是现在 Chrome 已经不允许使用未在 Chrome 应用商店中发布的扩展程序，安装后会提示 *该扩展程序未列在 Chrome 应用商店中，并可能是在您不知情的情况下添加的。*参阅：[Chrome 停用的扩展程序](https://support.google.com/chrome_webstore/answer/2811969?visit_id=638048013328104701-2621356661&p=ui_remove_non_cws_extensions&hl=zh-Hans&rd=2)
+  > 但是现在 Chrome 已经不允许使用未在 Chrome 应用商店中发布的扩展程序，安装后会提示 *该扩展程序未列在 Chrome 应用商店中，并可能是在您不知情的情况下添加的。* 参阅：[Chrome 停用的扩展程序](https://support.google.com/chrome_webstore/answer/2811969?visit_id=638048013328104701-2621356661&p=ui_remove_non_cws_extensions&hl=zh-Hans&rd=2)
 
 
 
