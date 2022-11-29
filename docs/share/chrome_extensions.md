@@ -280,7 +280,7 @@ Devtools 在扩展程序架构中的体现：
 
 > [📃 DevTools](https://developer.chrome.com/docs/extensions/mv3/devtools/)
 
-### 消息传递
+## 消息传递
 
 由于**内容脚本**(content_script)在网页上下文而不是扩展程序的上下文中运行，因此它们通常需要某种方式与扩展程序的其余部分进行通信。 
 
