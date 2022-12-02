@@ -439,7 +439,7 @@ chrome.runtime?.id && chrome.runtime.sendMessage()
 
 ### devtools 中使用 `chrome.devtools.network.onRequestFinished.addListener` 获取不到网络请求
 
-不能直接打开 devtools 面板刷新页面，要刷新页面后再打开 devtools 面板再请求接口。
+不要直接打开 devtools 面板刷新页面，要刷新页面后再打开 devtools 面板再请求接口。
 
 ## 发布扩展
 
