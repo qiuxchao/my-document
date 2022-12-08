@@ -1,8 +1,67 @@
 # 🧭工具、软件、网址导航
 
+## 工具
+
+- [菜鸟工具](https://c.runoob.com/)
+- [lu在线工具](https://tool.lu/)
+
+- JSON格式化
+	- [JSON在线解析 - 菜鸟工具](https://c.runoob.com/front-end/53/)
+	- [Json.cn - JSON在线解析及验证](https://www.json.cn/)
+
+- 正则表达式
+	- [正则大全](https://any86.github.io/any-rule/)
+	- [正则表达式在线测试 - 菜鸟工具](https://c.runoob.com/front-end/854/)
+	- [正则表达式可视化](https://devtoolcafe.com/tools/regex#!flags=img&re=%5Cw%2B%5C.%5Cw%2B)
+
+- 代码在线运行、代码沙箱
+	- [CodeSandbox](https://codesandbox.io/)
+	- [CodePen](https://codepen.io/)
+	- [StackBlitz](https://stackblitz.com/)
+	- [TypeScript演练场 - 在线运行TypeScript](https://www.typescriptlang.org/zh/play)
+	- [在线运行Java](https://www.bejson.com/runcode/java/)
+	- [在线运行Python](https://www.bejson.com/runcode/python3/)
+
+- 算法
+	- [力扣 LeetCode](https://leetcode.cn/)
+	- [数据结构和算法动态可视化](https://visualgo.net/zh)
+
+- 图片相关
+	- [Carbon - 代码图片生成](https://carbon.now.sh/)
+	- [图片在线压缩](https://tinypng.com/)
+	- [草料二维码生成器](https://cli.im/)
+	- [编辑PDF - 可在你的浏览器直接使用的免费PDF编辑器](https://smallpdf.com/cn/edit-pdf)
+	- [在线抠图软件_图片去除背景](https://www.remove.bg/zh/upload)
+	- [GitHub徽章生成](https://shields.io/)
+
+- 流程图
+	- [ProcessOn](https://www.processon.com/diagrams)
+	- [手绘风格流程图 - Excalidraw](https://excalidraw.com/)
+
+- [在线Mock接口](https://www.fastmock.site/#/projects)
+- [油猴仓库](https://greasyfork.org/zh-CN)
+- [Picasso - Sketch 设计稿生成代码](https://picassoui.58.com/%E6%8C%87%E5%8D%97/#%E5%89%8D%E6%8F%90)
+- [命名词穷工具](https://unbug.github.io/codelf/#finance)
+
+## 软件
+
+### Mac
+
+- [MacWk - 精品mac软件下载](https://macwk.com/)
+- [MacSC - Mac软件下载](https://mac.macsc.com/)
+- [Mac 录屏 Gif](https://getkap.co/)
+- [HomebrewCN: Homebrew 国内安装脚本](https://gitee.com/cunkai/HomebrewCN)
+- Helm - Host管理
+- Charles - 抓包
+- Sourcetree - Git代码管理
+
+
 ## 前端
 
-### npm 类库
+- [npm 包分析](https://bundlephobia.com/)
+- [eslint 规则](https://alloyteam.github.io/eslint-config-alloy/?language=zh-CN)
+
+### 🔗框架 & npm类库
 
 - 服务端
 	- [express](https://github.com/expressjs/express) 用于 Node.js 的快速、不拘一格、极简主义的 Web 框架。
@@ -56,3 +115,15 @@
 - 爬虫
 	- [playwright](https://github.com/microsoft/playwright) 一个用于 Web 测试和自动化的框架。
 	- [cheerio](https://github.com/cheeriojs/cheerio) 基于 jQuery 语法的快速、灵活的 HTML 解析库。
+
+### Css
+
+- [Flexbox Froggy - 一个用来学CSS flexbox的游戏](https://flexboxfroggy.com/#zh-cn)
+- [Grid Garden - 一个用来学CSS grid的游戏](https://cssgridgarden.com/#zh-cn)
+- [Layoutit Grid 网格布局生成器](https://grid.layoutit.com/)
+- [贝塞尔曲线预览 - cubic-bezier](https://cubic-bezier.com/#.48,.51,1,-0.13)
+- [渐变生成 - Easing Gradients](https://larsenwork.com/easing-gradients/#editor)
+- [圆角工具 - Fancy Border Radius Generator](https://9elements.github.io/fancy-border-radius/#79.22.9.84--.)
+- [Css 裁剪工具 - Clippy — CSS clip-path maker](https://bennettfeely.com/clippy/)
+- [CSS 阴影生成 - Neumorphism/Soft UI CSS 阴影生成器](https://neumorphism.io/#e0e0e0)
+- [SVG波浪生成 - Get Waves – Create SVG waves for your next design](https://getwaves.io/)
