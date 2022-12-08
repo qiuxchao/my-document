@@ -97,6 +97,10 @@
 		- 
 	- Vue
 		- [vue3](https://cn.vuejs.org/guide/introduction.html) 用于构建用户界面的 JavaScript 框架。
+		- [Pinia](https://pinia.vuejs.org/zh/) 新一代的Vue状态管理库。
+		- [Vue Router](https://router.vuejs.org/zh/) Vue.js 的官方路由。
+		- [VuePress](https://v2.vuepress.vuejs.org/zh/) Vue 驱动的静态网站生成器
+		- [Vuex](https://vuex.vuejs.org/zh/) 老的Vue状态管理库。
 
 - 工程化
 	- [vite](https://cn.vitejs.dev/guide/) 一种新型前端构建工具，能够显著提升前端开发体验。
@@ -117,7 +121,6 @@
 	- [cheerio](https://github.com/cheeriojs/cheerio) 基于 jQuery 语法的快速、灵活的 HTML 解析库。
 
 ### Css
-
 - [Flexbox Froggy - 一个用来学CSS flexbox的游戏](https://flexboxfroggy.com/#zh-cn)
 - [Grid Garden - 一个用来学CSS grid的游戏](https://cssgridgarden.com/#zh-cn)
 - [Layoutit Grid 网格布局生成器](https://grid.layoutit.com/)
@@ -127,3 +130,4 @@
 - [Css 裁剪工具 - Clippy — CSS clip-path maker](https://bennettfeely.com/clippy/)
 - [CSS 阴影生成 - Neumorphism/Soft UI CSS 阴影生成器](https://neumorphism.io/#e0e0e0)
 - [SVG波浪生成 - Get Waves – Create SVG waves for your next design](https://getwaves.io/)
+- [RGB颜色值与十六进制颜色码转换工具](https://www.sioe.cn/yingyong/yanse-rgb-16/)
