@@ -101,6 +101,7 @@
 		- [Vue Router](https://router.vuejs.org/zh/) Vue.js 的官方路由。
 		- [VuePress](https://v2.vuepress.vuejs.org/zh/) Vue 驱动的静态网站生成器
 		- [Vuex](https://vuex.vuejs.org/zh/) 老的Vue状态管理库。
+		- [Nuxt](https://nuxtjs.org/) Vue SSR 服务端渲染框架。
 
 - 工程化
 	- [vite](https://cn.vitejs.dev/guide/) 一种新型前端构建工具，能够显著提升前端开发体验。
