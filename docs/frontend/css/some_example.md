@@ -53,3 +53,22 @@ li:nth-child(odd) {}
 /* 选择偶数行 */
 li:nth-child(even) {}
 ```
+
+## 渐入动画
+
+```css
+.fade-in {
+  animation: fadeIn 800ms ease both;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+```
