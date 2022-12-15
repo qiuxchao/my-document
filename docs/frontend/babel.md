@@ -174,6 +174,97 @@ Babel 在解析源码时，会生成源码的 AST，然后通过插件来转换 
 - `transform` 则是对 AST 节点进行遍历，遍历的过程中对 AST 进行修改。
 - `generate` 则是将被修改过的 AST，重新生成为代码。
 
+## 安装 & 使用
 
+可以使用以下命令来安装 Babel：
 
+```sh
+npm install --save-dev @babel/core @babel/cli
+```
 
+安装完成后，就可以使用 Babel 编译 JavaScript 代码了。下面是一个例子，展示了如何使用 Babel 将 `ES6` 代码编译成 `ES5` 代码：
+
+```js
+// 原始代码（使用了 ES6 的语法）
+const a = [1, 2, 3];
+const b = a.map(x => x * x);
+console.log(b);
+
+// 编译后的代码（使用了 ES5 的语法）
+"use strict";
+
+var a = [1, 2, 3];
+var b = a.map(function (x) {
+  return x * x;
+});
+console.log(b);
+
+```
+
+要将 `ES6` 代码编译成 `ES5`，需要创建一个名为 `.babelrc` 的文件，并在这个文件中指定需要使用的预设和插件。例如，要使用 Babel 的 ES6 转换插件，可以在 `.babelrc` 文件中添加如下内容：
+
+```json
+{
+	"presets": [
+		["@babel/preset-env"]
+	]
+}
+```
+
+然后，可以使用 `babel` 命令行工具来编译你的代码，例如：
+
+```sh
+npx src/script.js --out-file dist/script.js
+```
+
+这样，Babel 就会读取 `src/script.js` 文件，并将编译后的代码写入到 `dist/script.js` 文件
+
+## 插件 & 预设
+
+在 Babel 中，插件和预设都是用来扩展 Babel 的功能的小型模块。
+
+- **插件**通常是用来做某些特定的事情的，例如将箭头函数转换成函数表达式、将扩展运算符转换成 `.apply()` 方法、将 `ES6` 的类转换成构造函数等。
+- **预设**则是一组插件的集合，它通常包含了一系列相关的插件，用来实现某种特定的功能。
+
+例如，`@babel/preset-env` 预设包含了多个插件，用来实现将 `ES6` 代码转换成 `ES5` 代码的功能。这个预设包含了许多子插件，每个子插件都可以将一种特定的 `ES6` 特性转换成 `ES5` 的代码。如果你想要使用这个预设，只需要在 `.babelrc` 文件中指定使用 `@babel/preset-env` 预设即可。
+
+如果想要使用某个插件，可以在 `.babelrc` 文件中指定要使用的插件。例如，如果想要使用 `@babel/plugin-transform-arrow-functions` 插件，可以在 `.babelrc` 文件中添加如下内容：
+
+```json
+{
+  "plugins": ["@babel/plugin-transform-arrow-functions"]
+}
+```
+
+如果想要使用某个预设，也可以在 `.babelrc` 文件中指定要使用的预设。
+
+```json
+{
+	"presets": [["@babel/preset-env"]]
+}
+```
+
+### 常用插件 & 预设
+
+常用的 Babel 插件包括：
+
+- `babel-plugin-transform-arrow-functions`：转换箭头函数
+- `babel-plugin-transform-object-rest-spread`：支持对象的扩展运算符
+- `babel-plugin-transform-class-properties`：支持在类中定义静态属性
+- `babel-plugin-transform-async-to-generator`：将 async/await 转换为 generator 函数
+
+常用的 Babel 预设包括：
+
+- `@babel/preset-env`：根据目标环境自动转换代码
+- `@babel/preset-react`：支持 JSX 语法和 React 特有的语法
+- `@babel/preset-typescript`：支持 TypeScript 语法
+
+使用 Babel 时，可以通过在配置文件（如 `.babelrc`）中指定插件和预设来安装它们。例如：
+
+```json
+{
+  "plugins": ["transform-arrow-functions", "transform-object-rest-spread"],
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+
+```

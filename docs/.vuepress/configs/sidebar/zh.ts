@@ -97,6 +97,7 @@ export const sidebarZh: SidebarConfig = {
 				'/frontend/typescript/exercise.md'
 			],
 		},
+		'/frontend/babel.md',
 		'/frontend/rollup.md',
 		'/frontend/jquery.md',
 		'/frontend/bgw.md',

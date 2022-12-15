@@ -44,6 +44,7 @@ export const navbarZh: NavbarConfig = [
 				text: 'Typescript',
 				link: '/frontend/typescript/',
 			},
+			'/frontend/babel.md',
 			'/frontend/rollup.md',
 			'/frontend/jquery.md',
 			'/frontend/bgw.md',
