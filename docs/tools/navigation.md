@@ -116,6 +116,8 @@
 
 - 样式
 	- [js-confetti](https://github.com/loonywizard/js-confetti) 🎉JavaScript 五彩纸屑库
+	- [logt](https://github.com/sidhantpanda/logt) 浏览器的彩色日志打印库
+
 
 - 爬虫
 	- [playwright](https://github.com/microsoft/playwright) 一个用于 Web 测试和自动化的框架。
