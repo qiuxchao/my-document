@@ -304,7 +304,6 @@ SCSS 还提供了许多其他内置函数，例如：
 - `str-insert($string, $insert, $index)`：在给定字符串的指定位置插入另一个字符串。
 - `str-index($string, $substring)`：搜索给定子字符串在给定字符串中的位置。
 - `str-slice($string, $start-at, $end-at)`：从给定字符串中截取一段字符。
-- `str-replace($string, $old-str, $new-str)`：替换字符串中的一个子串。
 - `to-upper-case($string)`：将给定字符串转换为大写。
 - `to-lower-case($string)`：将给定字符串转换为小写。
 - `map-get($map, $key)`：获取给定映射中指定键对应的值。
@@ -312,5 +311,36 @@ SCSS 还提供了许多其他内置函数，例如：
 - `map-remove($map, $key)`：从给定映射中删除指定键。
 - `map-keys($map)`：获取给定映射中的所有键。
 - `map-values($map)`：获取给定映射中的所有值。
+
+另外，SCSS 中没有提供用于替换字符串的方法，我们可以自己实现它：
+
+```scss
+/// 将 `$string` 中的 `$search` 替换为 `$replace`
+/// @param {String} $string - 初始字符
+/// @param {String} $search - 要替换的子字符串
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
+
+// 使用：
+.selector {
+  $string: 'The answer to life the universe and everything is 42.';
+  content: str-replace($string, 'e', 'xoxo');
+}
+
+// 结果
+.selector {
+  content: "Thxoxo answxoxor to lifxoxo thxoxo univxoxorsxoxo and xoxovxoxorything is 42.";
+}
+```
+
 
 这些函数可以帮助你更加高效地编写 SCSS 代码，并使你的代码更具可维护性。
