@@ -39,6 +39,7 @@ export const sidebarZh: SidebarConfig = {
 				'/frontend/css/miniprogram_scroll_notice.md',
 				'/frontend/css/flex.md',
 				'/frontend/css/grid.md',
+				'/frontend/css/scss.md',
 				'/frontend/css/some_example.md',
 			],
 		},
