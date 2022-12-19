@@ -321,13 +321,16 @@ SCSS 还提供了许多其他内置函数，例如：
 /// @param {String} $replace ('') - New value
 /// @return {String} - Updated string
 @function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-  
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
-  
-  @return $string;
+	$string: '#{$string}';
+	$search: '#{$search}';
+	$index: str_index($string, $search);
+
+	@if $index {
+		@return str_slice($string, 1, $index - 1) + $replace +
+			str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
 }
 
 // 使用：
