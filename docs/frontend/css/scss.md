@@ -304,6 +304,7 @@ SCSS 还提供了许多其他内置函数，例如：
 - `str-insert($string, $insert, $index)`：在给定字符串的指定位置插入另一个字符串。
 - `str-index($string, $substring)`：搜索给定子字符串在给定字符串中的位置。
 - `str-slice($string, $start-at, $end-at)`：从给定字符串中截取一段字符。
+- `str-replace($string, $old-str, $new-str)`：替换字符串中的一个子串。
 - `to-upper-case($string)`：将给定字符串转换为大写。
 - `to-lower-case($string)`：将给定字符串转换为小写。
 - `map-get($map, $key)`：获取给定映射中指定键对应的值。
