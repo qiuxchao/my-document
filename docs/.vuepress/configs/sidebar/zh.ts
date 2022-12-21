@@ -128,6 +128,7 @@ export const sidebarZh: SidebarConfig = {
 				'/backend/nodejs/husky.md',
 				'/backend/nodejs/playwright.md',
 				'/backend/nodejs/mongoose.md',
+				'/backend/nodejs/jsdoc.md',
 			],
 		},
 		{
