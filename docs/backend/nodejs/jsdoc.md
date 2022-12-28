@@ -65,4 +65,4 @@ $ jsdoc *.js -d docs
 jsdoc -c config.js
 ```
 
-在配置文件中，你可以定义要包含或排除的文件，要使用的模板，以及如何命名生成的文件等。有关配置文件的详细信息，请参阅 JSDoc 文档。
+在配置文件中，你可以定义要包含或排除的文件，要使用的模板，以及如何命名生成的文件等。有关配置文件的详细信息，请参阅 [JSDoc](https://jsdoc.app/about-getting-started.html) 文档。
