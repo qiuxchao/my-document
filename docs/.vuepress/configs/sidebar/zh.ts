@@ -54,6 +54,7 @@ export const sidebarZh: SidebarConfig = {
 				'/frontend/react/hooks.md',
 				'/frontend/react/next.md',
 				'/frontend/react/hole.md',
+				'/frontend/react/custom_renderers.md',
 			],
 		},
 		{
