@@ -65,7 +65,7 @@ MyCustomRenderer.render(<App />, document.getElementById('root'));
 
 这个渲染函数有 3 个参数，`reactElement` 在我们的例子中它是我们的 `App` 组件。是具有将呈现到其中 `domElement` 的 `id` 的 DOM 元素。第三个参数是可选的，在组件渲染或更新后调用。在我们的例子中，我们忽略了这一点。
 
-`hostConfig` 是我们需要实现将由 `ReactReconciler` 使用的函数的对象。除了查看源代码和其他实现之外，没有专门针对 `ReactReconciler` 的文档或指南。
+`hostConfig` 是我们需要实现将由 `ReactReconciler` 使用的函数的对象。可以在 `react-reconciler` 的[官方文档](https://github.com/facebook/react/tree/main/packages/react-reconciler#an-incomplete-reference)中看到它的定义。
 
 最终我们自定义渲染器的代码如下：
 
