@@ -1,4 +1,4 @@
-# 工程搭建
+# Mono-repo 工程搭建
 
 演示了创建 `monorepo` 项目的流程。
 
@@ -8,7 +8,7 @@
 - 定义开发规范（lint、commit、tsc、代码风格）
 - 选择打包工具
 
-## 项目结构
+### 项目结构
 
 `Multi-repo` 和 `Mono-repo` 该如何选择？
 
@@ -51,13 +51,13 @@ npm install -g pnpm
 pnpm init
 ```
 
-[初始化pnpm-workspace.yaml](https://pnpm.io/zh/pnpm-workspace_yaml)
+[初始化 pnpm-workspace.yaml](https://pnpm.io/zh/pnpm-workspace_yaml)
 
 ### 定义开发规范
 
 #### 代码规范检查与修复
 
-代码规范：lint工具
+代码规范：lint 工具
 
 `eslint` 安装：
 
@@ -75,29 +75,24 @@ npx eslint --init
 
 ```json
 {
-   "env": {
+  "env": {
     "browser": true,
     "es2021": true,
     "node": true
-   },
-   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended"
-   ],
-   "parser": "@typescript-eslint/parser",
-   "parserOptions": {
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier", "plugin:prettier/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
-   },
-   "plugins": ["@typescript-eslint", "prettier"],
-   "rules": {
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
     "prettier/prettier": "error",
     "no-case-declarations": "off",
     "no-constant-condition": "off",
     "@typescript-eslint/ban-ts-comment": "off"
-   }
+  }
 }
 ```
 
@@ -121,21 +116,21 @@ pnpm i prettier -D -w
 
 ```json
 {
- "printWidth": 80,
- "tabWidth": 2,
- "useTabs": true,
- "singleQuote": true,
- "semi": true,
- "trailingComma": "none",
- "bracketSpacing": true
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": true,
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "none",
+  "bracketSpacing": true
 }
 ```
 
 将 `prettier` 集成到 `eslint` 中，其中：
 
-`eslint-config-prettier`：覆盖 `ESLint` 本身的规则配置
+- `eslint-config-prettier`：覆盖 `ESLint` 本身的规则配置
 
-`eslint-plugin-prettier`：用 `Prettier` 来接管修复代码即 `eslint --fix`
+- `eslint-plugin-prettier`：用 `Prettier` 来接管修复代码即 `eslint --fix`
 
 ```shell
 pnpm i eslint-config-prettier eslint-plugin-prettier -D -w
@@ -144,7 +139,7 @@ pnpm i eslint-config-prettier eslint-plugin-prettier -D -w
 为 `lint` 增加对应的执行脚本，并验证效果：
 
 ```shell
-"lint": "eslint --ext .ts,.jsx,.tsx --fix --quiet ./packages"
+"lint": "eslint --ext .js,.ts,.jsx,.tsx --fix --quiet ./packages"
 ```
 
 验证成功后，安装 `prettier` 与 `eslint` 的 `VSCode` 插件，并在 `setting` 中设置为保存后自动执行：
@@ -164,3 +159,80 @@ pnpm i husky -D -w
 ```shell
 npx husky install
 ```
+
+将刚才实现的格式化命令 `pnpm lint` 纳入 `commit` 时 `husky` 将执行的脚本：
+
+```shell
+npx husky add .husky/pre-commit "pnpm lint"
+```
+
+> TODO：`pnpm lint` 会对代码全量检查，当项目复杂后执行速度可能比较慢，届时可以考虑使用 `lint-staged`，实现只对暂存区代码进行检查
+
+通过 `commitlint` 对 `git` 提交信息进行检查，首先安装必要的库：
+
+```shell
+pnpm i commitlint @commitlint/cli @commitlint/config-conventional -D -w
+```
+
+新建配置文件 `.commitlintrc.js`：
+
+```js
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+};
+```
+
+集成到 `husky` 中：
+
+```shell
+npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
+```
+
+conventional commit 规范集意义：
+
+```sh
+# 提交的类型: 摘要信息
+<type>: <subject>
+```
+
+常用的 `type` 值包括如下:
+
+- `feat`: 添加新功能
+- `fix`: 修复 Bug
+- `chore`: 一些不影响功能的更改
+- `docs`: 专指文档的修改
+- `perf`: 性能方面的优化
+- `refactor`: 代码重构
+- `test`: 添加一些测试代码等等
+
+### ts 配置
+
+配置 `tsconfig.json`：
+
+```json
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": false,
+    "skipLibCheck": true,
+    "baseUrl": "./packages"
+  }
+}
+```
+
+### 选择打包工具
+
+比较不同打包工具的区别 [参考资料：Overview | Tooling.Report](https://bundlers.tooling.report/)
