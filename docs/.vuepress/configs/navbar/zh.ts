@@ -46,8 +46,9 @@ export const navbarZh: NavbarConfig = [
 			},
 			'/frontend/babel.md',
 			'/frontend/rollup.md',
-			'/frontend/jquery.md',
-			'/frontend/bgw.md',
+			'/frontend/monorepo_proj_create.md',
+			// '/frontend/jquery.md',
+			// '/frontend/bgw.md',
 		],
 	},
 	{
