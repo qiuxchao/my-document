@@ -1,4 +1,4 @@
-# React Hook
+# React Hooks
 
 `Hook` 是 `React 16.8` 的新增特性。它可以让你在不编写 `class` 的情况下使用 `state` 以及其他的 React 特性。
 
@@ -273,7 +273,7 @@ const value = useContext(SomeContext)
 
 一个使用 `createContext`、`useContext`、`useState` 动态改变主题的例子：
 
-```js
+```ts
 import { useState, useContext, createContext, Component } from 'react';
 
 type ThemeType = 'light' | 'dark';
