@@ -374,6 +374,7 @@ type Obj = {
 `infer` 可以获取一个类型。
 
 `infer` 获取函数返回值类型：
+
 - `T extends () => infer R` 是一个表达式，返回布尔值，通常配合三目运算符使用。表示泛型参数 `T` 是否兼容（包含但不限于）`() => infer R`，这里将函数类型的返回值用 `infer R` 收集了起来。
 - `? R : T` 表示如果前面的三目表达式成立，则返回收集了函数返回值类型的 `R`，否则返回传入的泛型参数 `T`。
 
@@ -385,6 +386,7 @@ type RSRT = RT<typeof rs>;  // type RSRT = string（获取到函数 rs 的返回
 ```
 
 `infer` 获取函数参数列表类型：
+
 - `T extends (...args: infer P) => any` 仍然是表达式，因为函数可能会有多个参数，所以我们要使用 `...args: infer P` 来收集参数列表的类型；如果只是使用 `arg: infer P` ，在有多个参数时会导致表达式失败，从而返回我们意料之外的结果；
 - `? P : any` 表示如果前面的三目表达式成立，则返回收集了函数返回值类型的 `P`，否则返回 `any`。
 
@@ -473,7 +475,7 @@ type RequiredUser = Required<User>
 const u2: RequiredUser = { name: 'John'} // Error: 类型 "{ name: string; }" 中缺少属性 "id"，但类型 "Required<User>" 中需要该属性
 ```
 
-#### `Readonly<T>`将某个类型所有属性变为只读属性，也就意味着这些属性不能被重新赋值。
+#### `Readonly<T>`将某个类型所有属性变为只读属性，也就意味着这些属性不能被重新赋值
 
 源码: `type Readonly<T> = { readonly [k in keyof T]: T[k] }`
 
@@ -658,6 +660,28 @@ type ParamsType = Parameters<F0> // type ParamsType = [v1: number, v2: string, v
   "emitDecoratorMetadata": true // 为装饰器提供元数据的支持
  }
 }
+```
+
+## 踩坑记录🕳️
+
+### 箭头函数泛型声明报错
+
+像下面这样的工作正常:
+
+```ts
+function foo<T>(x: T): T { return x; }
+```
+
+但是,使用箭头函数不会:
+
+```ts
+const foo = <T>(x: T) => x; // ERROR : unclosed `T` tag
+```
+
+解决方法：对泛型参数进行类型约束提示编译器它是通用的，例如:
+
+```ts
+const foo = <T extends unknown>(x: T) => x;
 ```
 
 > 本文参考文章<br> > [2021 typescript 史上最强学习入门文章(2w 字)
