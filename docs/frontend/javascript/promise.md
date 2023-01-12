@@ -101,3 +101,50 @@ function (data){
 ```
 
 **注意：后续处理函数一定是异步函数，并且放到微队列中**
+
+## Promise 静态方法
+
+### Promise.allSettled()
+
+`Promise.allSettled()` 方法以 promise 组成的可迭代对象作为输入，并且返回一个 `Promise` 实例。当输入的所有 promise 都已敲定时（包括传递空的可迭代类型），返回的 promise 将兑现，并带有描述每个 promsie 结果的对象数组。
+
+`Promise.allSettled()` 方法是 **promise 并发性** 方法的其中之一。在你有多个不依赖于彼此成功完成的异步任务时，或者你总是想知道每个 promise 的结果时，使用 `Promise.allSettled()` 。相比之下，如果任务相互依赖，或者如果你想立即拒绝其中任何任务，`Promise.all()` 返回的 Promise 可能更合适。
+
+语法：
+
+```js
+Promise.allSettled(iterable)
+```
+
+参数：
+
+- `iterable`：一个以 promise 组成的可迭代（例如 Array）对象。
+
+返回值：
+
+一个 `Promise`，如下：
+
+- **已经兑现**，如果传递的 `iterable` 是空的。
+
+- **异步兑现**，当给定的 `iterable` 中所有 promise 已经敲定时（要么已兑现，要么已拒绝）。兑现的值是一个对象数组，其中的对象按照 `iterable` 中 promise 传递的顺序，描述每一个 promise 的结果，无论完成顺序如何。每个结果对象都有以下的属性：
+  - `status`：一个字符串，要么是 `"fulfilled"`（成功），要么是 `"rejected"`（失败），表示 promise 的最终状态。
+  - `value`：仅当 `status` 为 `"fulfilled"`，才存在。在 promise 兑现时才有 `value`。
+  - `reason`：仅当 `status` 为 `"rejected"`，才存在，在 promsie 拒绝时才有 `reason`。
+
+示例：
+
+```js
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+const promises = [promise1, promise2];
+
+// 当 promises 中的所有 promise 都有结果时成功
+Promise.allSettled(promises).
+  then((results) => results.forEach((result) => console.log(result.status)));
+
+// 输出结果:
+// "fulfilled"
+// "rejected"
+```
+
+###
