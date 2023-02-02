@@ -10,7 +10,7 @@
 
 ## 网络 浏览器相关
 
-- 浏览器 渲染 进程 线程管理
+- 浏览器 渲染 缓存 进程 线程管理
 - TCP/IP 协议 OSI 网络模型
 - HTTP1 HTTP2
 - Socket
@@ -24,6 +24,7 @@
 - ESlint
 - Prettier
 - Husky
+- 性能优化相关
 
 ## 框架相关
 
