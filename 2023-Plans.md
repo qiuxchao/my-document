@@ -7,6 +7,10 @@
 - ES, ES6+
 - DOM, BOM API
 - Nodejs
+- 大文件上传
+- 手写 call、apply、bind
+- 手写 new
+- 手写 Promise
 
 ## 网络 浏览器相关
 
