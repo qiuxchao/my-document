@@ -8,11 +8,11 @@ web缓存主要指的是两部分：**浏览器缓存** 和 **http缓存**。
 
 不过这里需要注意。像 `localStorage`，`sessionStorage` 这种用户缓存数据的功能，他只能保存5M左右的数据，多了不行。`cookie` 则更少，大概只能有 `4kb` 的数据。
 
-逻辑图：
+这篇文章重点讲解的是：前端**http缓存**。
+
+前端缓存逻辑图：
 
 ![前端缓存](./images/%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98.png)
-
-这篇文章重点讲解的是：前端**http缓存**。
 
 http缓存官方介绍：Web 缓存是可以自动保存常见文档副本的 HTTP 设备。当 Web 请求抵达缓存时， 如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。
 
@@ -48,7 +48,7 @@ http缓存又分为两种两种缓存，**强制缓存**和**协商缓存**,我�
 
 在以前，我们通常会使用响应头的 `Expires` 字段去实现强缓存。如下图↓
 
-![Expires实现强缓存]()
+![Expires实现强缓存](./images/Expires%E5%AE%9E%E7%8E%B0%E5%BC%BA%E7%BC%93%E5%AD%98.png)
 
 `Expires` 字段的作用是，设定一个强缓存时间。在此时间范围内，则从内存（或磁盘）中读取缓存返回。
 
@@ -77,7 +77,7 @@ res.writeHead(200,{
 
 下图的意思就是，从该资源第一次返回的时候开始，往后的10秒钟内如果该资源被再次请求，则从缓存中读取。
 
-![Cache-Control实现强缓存]()
+![Cache-Control实现强缓存](./images/Cache-Control%E5%AE%9E%E7%8E%B0%E5%BC%BA%E7%BC%93%E5%AD%98.png)
 
 `Cache-Control: max-age=N`，`N` 就是需要缓存的秒数。从第一次请求资源的时候开始，往后 `N` 秒内，资源若再次请求，则直接从磁盘（或内存中读取），不与服务器做任何交互。
 
@@ -150,29 +150,31 @@ res.writeHead(200,{
 
 如下图↓
 
-![基于last-modified的协商缓存]()
+![基于last-modified的协商缓存](./images/%E5%9F%BA%E4%BA%8Elast-modified%E7%9A%84%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98.png)
 
-注意圈出来的三行。
+注意圈出来的部分。
 
-- 第一行，读出修改时间。
-- 第二行，给该资源响应头的 `last-modified` 字段赋值修改时间
-- 第三行，给该资源响应头的 `Cache-Control` 字段值设置为 `:no-cache` .(上文有介绍，`Cache-control:no-cache` 的意思是跳过强缓存校验，直接进行协商缓存。)
+- 读出修改时间。
+- 给该资源响应头的 `last-modified` 字段赋值修改时间
+- 给该资源响应头的 `Cache-Control` 字段值设置为 `:no-cache` .(上文有介绍，`Cache-control:no-cache` 的意思是跳过强缓存校验，直接进行协商缓存。)
 
 还没完。到这里还无法实现协商缓存。
 
 当客户端读取到 `last-modified` 的时候，会在下次的请求标头中携带一个字段 `:If-Modified-Since`。
 
-而这个请求头中的 `If-Modified-Since` 就是服务器第一次修改时候给他的时间，也就是上图中的
+![If-Modified-Since](./images/If-Modified-Since.png)
+
+而这个请求头中的 `If-Modified-Since` 就是第一次请求资源时服务端设置的 `last-modified`，也就是这行代码：
 
 ```js
-res.setHeader('last-modified', mtime.toUTCString());
+'last-modified': mtime.toUTCString(),
 ```
 
 那么之后每次对该资源的请求，都会带上 `If-Modified-Since` 这个字段，而服务端就需要拿到这个时间并再次读取该资源的修改时间，让他们两个做一个比对来决定是读取缓存还是返回新的资源。
 
 如图↓
 
-![last-modified协商缓存对比修改时间]()
+![last-modified协商缓存对比修改时间](./images/last-modified%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E5%AF%B9%E6%AF%94%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4.png)
 
 这样，就是基于 `last-modified` 的协商缓存的所有操作了。流程图如下↓
 
@@ -200,7 +202,7 @@ res.setHeader('last-modified', mtime.toUTCString());
 
 代码图例↓
 
-![Etag协商缓存代码图例]()
+![Etag协商缓存代码图例](./images/Etag%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E4%BB%A3%E7%A0%81%E5%9B%BE%E4%BE%8B.png)
 
 流程示例图↓
 
@@ -237,5 +239,7 @@ res.setHeader('last-modified', mtime.toUTCString());
 - 有些缓存是从磁盘读取，有些缓存是从内存读取，有什么区别？答：从内存读取的缓存更快。
 
 - 所有带 `304` 的资源都是协商缓存，所有标注（from memory cache/从内存中读取/from disk cache/从磁盘中读取）的资源都是强缓存。
+
+> 示例源码：<https://github.com/qiuxchao/http-cache-demo>
 
 > 本篇参考：[中高级前端工程师都需要熟悉的技能--前端缓存](https://juejin.cn/post/7127194919235485733)

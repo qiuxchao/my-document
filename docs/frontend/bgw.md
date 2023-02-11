@@ -80,10 +80,20 @@
 
 1. 集中改变样式，不要一条一条地修改 DOM 的样式。
 2. 不要把 DOM 结点的属性值放在循环里当成循环里的变量。
-3. 为动画的 HTML 元件使用 fixed 或 absoult 的 position，那么修改他们的 CSS 是不会 reflow 的。
+3. 为动画的 HTML 元件使用 `fixed` 或 `absoult` 的 `position`，那么修改他们的 CSS 是不会 reflow 的。
 4. 不使用 table 布局。因为可能很小的一个小改动会造成整个 table 的重新布局。
-5. 尽量只修改 position：absolute 或 fixed 元素，对其他元素影响不大
-6. 动画开始 GPU 加速，translate 使用 3D 变化
+5. 尽量只修改 `position: absolute` 或 `fixed` 元素，对其他元素影响不大
+6. 动画开始 GPU `加速，translate` 使用 3D 变化
+
+### 会引起内存泄漏的几种情况
+
+- 用 `console.log` 打印对象的代码；
+- 定时器用完了没有清除，那每次执行都会多一个定时器的内存占用；
+- 元素从 dom 移除了，但是还有一个变量引用着他，这样的游离的 dom 元素也不会被回收。每执行一次代码，就会多出游离的 dom 元素的内存，这也是内存泄漏；
+- 闭包引用了某个变量，这个变量不会被回收，如果这样的闭包比较多，那每次执行都会多出这些被引用变量的内存占用。这样引用大对象的闭包多了之后，也会导致内存问题；
+- 全局变量，这个本来就不会被 GC，要注意全局变量的使用；
+
+> 全局变量、闭包引用的变量、被移除的 dom 依然被引用、定时器用完了没清除、`console.log` 都会发生代码执行完了，但是还占用着一部分内存的流氓行为，也就是内存泄漏。
 
 ## HTML
 
@@ -221,7 +231,7 @@ BFC 是 Block Formatting Context 的缩写，即块级格式化上下文。BFC �
 1. `line-height` 的值设为容器的 `height` 的值
 2. 父级 `dispaly: flex; align-items: center;`
 3. 通过设置父容器 相对定位 ，子级设置 绝对定位，top: 50%
-4. table 布局, 父级通过转换成表格形式，然后子级设置 vertical-align 实现。（需要注意的是：vertical-align: middle 使用的前提条件是内联元素以及 display 值为 table-cell 的元素）。
+4. table 布局, 父级通过转换成表格形式，然后子级设置 `vertical-align` 实现。（需要注意的是：`vertical-align: middle` 使用的前提条件是内联元素以及 display 值为 table-cell 的元素）。
 
 ### 隐藏页面中某个元素
 
@@ -340,7 +350,7 @@ console.log(toString.call(null)) //[object Null]
     1. 调用函数时，函数作用域被创建，函数执行完毕，函数作用域被销毁
     2. 每调用一次函数就会创建一个新的函数作用域，他们之间是相互独立的
     3. 在函数作用域中可以访问到全局作用域的变量，在函数外无法访问到函数作用域中的变量
-    4. 在函数作用域中访问变量、函数时，会现在自身作用域中寻找，如果没有找到，则会到函数的上一级作用域中寻找，一直找到全局作用域
+    4. 在函数作用域中访问变量、函数时，会先在自身作用域中寻找，如果没有找到，则会到函数的上一级作用域中寻找，一直找到全局作用域
 
 - 函数作用域预编译
 
@@ -351,7 +361,7 @@ console.log(toString.call(null)) //[object Null]
 
 - 全局作用域预编译
     1. 创建 `GO{}` 对象
-    2. 找变量声明，将变量名作为`GO{}`的属性名 值为 `undefined`
+    2. 找变量声明，将变量名作为 `GO{}` 的属性名 值为 `undefined`
     3. 找函数声明 值赋予函数体
 
 ### 闭包
@@ -381,7 +391,7 @@ console.log(toString.call(null)) //[object Null]
 - 构造函数的 `prototype` 也是个对象，它身上也有 `[[Prototype]]` 属性，也指向这个对象构造函数的 `prototype`，这样就形成了一个原型的链条；
 - 在底层对象身上获取属性或调用方法时，它会先在自身寻找要获取的属性或调用的方法，如果自身没有，则会通过它的 `[[Prototype]]` 向它构造函数的原型对象上查找，原型对象也没有则继续向上查找；
 - 最顶层的原型是 **`Object.prototype.__proto__`** ，值为 `null`；
-- 如果找到最顶层的原型 `null`，依然没有找到要获取的属性或调用的方法，则属性值会返回 `undefined`，方法会报错。
+- 如果找到最顶层的原型 `null`，依然没有找到要获取的属性或调用的方法，则**属性值会返回 `undefined`**，**方法会报错**。
 
 #### `obj.hasOwnProperty(prototype)` 获取对象自身的属性
 
@@ -408,15 +418,16 @@ obj.hasOwnProperty('age') // false
 function antiShake(fn, wait) {
  let timeOut = null
  // 闭包
- return (args) => {
+ return (...args) => {
   if (timeOut) clearTimeout(timeOut)
-  timeOut = setTimeout(fn, wait)
+  // setTimeout 第 2 个参数往后是第一个参数(函数)的参数
+  timeOut = setTimeout(fn, wait, ...args)
  }
 }
 
 // 真正要触发的操作
-function handle() {
- console.log('发送请求')
+function handle(event) {
+ console.log('发送请求', event.target.value)
 }
 
 // input 输入事件防抖
@@ -436,10 +447,10 @@ document
 // 节流封装
 function throttle(fn, wait) {
  let timer = null
- return (args) => {
+ return (...args) => {
   if (!timer) {
    timer = setTimeout(() => {
-    fn()
+    fn(...args)
     timer = null
    }, wait)
   }
@@ -447,8 +458,8 @@ function throttle(fn, wait) {
 }
 
 // 真正要触发的操作
-function handler() {
- console.log('提交表单')
+function handler(event) {
+ console.log('提交表单', evnet)
 }
 
 // div 触摸事件节流
@@ -464,17 +475,17 @@ document
 // 节流封装
 function throttle(fn, wait) {
  let timestamp = null
- return (args) => {
+ return (...args) => {
   if (timestamp) {
    const nowTimestamp = new Date().getTime()
    // 判断当前操作的时间与上次的真正操作的时间间隔是否大于指定的时间
    if (nowTimestamp - timestamp > wait) {
     // 大于指定的时间，执行真正的操作，更新时间戳
-    fn()
+    fn(...args)
     timestamp = nowTimestamp
    }
   } else {
-   fn()
+   fn(...args)
    // 记录第一次操作的时间戳
    timestamp = new Date().getTime()
   }
@@ -482,7 +493,7 @@ function throttle(fn, wait) {
 }
 
 // 真正要触发的操作
-function handler() {
+function handler(event) {
  console.log('提交表单')
 }
 
@@ -506,9 +517,11 @@ document
 
 这些 `getter/setter` 对用户来说是不可见的，但是在内部它们让 Vue 能够**追踪依赖**，在 `property` 被**访问和修改**时**通知变更**。
 
-**每个组件实例都对应一个 watcher 实例**，它会在组件**渲染的过程中**把“接触”过的数据 **`property` 记录为依赖**。之后当依赖项的 **`setter` 触发**时，会**通知 `watcher`**，从而使它关联的组件重新渲染。
+**每个组件实例都对应一个 `watcher` 实例**，它会在组件**渲染的过程中**把“接触”过的数据 **`property` 记录为依赖**。之后当依赖项的 **`setter` 触发**时，会**通知 `watcher`**，从而使它关联的组件重新渲染。
 
 ![vue](https://cn.vuejs.org/images/data.png)
+
+> 说 `Object.defineProperty` 是 ES5 中一个无法 shim 的特性，是指它是 ES5 中新引入的一个特性，不向下兼容，如果你的环境不支持 ES5，那么你不能直接使用它。所谓 shim 指的是在不支持某个特性的环境中，通过模拟或其他方法模拟这个特性，以达到兼容性的目的。因此，如果某个环境不支持 `Object.defineProperty`，你不能通过 shim 的方式让它支持。
 
 ### 什么是虚拟 dom
 
@@ -548,13 +561,13 @@ vue 在初次渲染时会根据 `template` 中的模板来生成虚拟 dom，然
 
 #### 不同点
 
-- 编程思想不同：类组件使用的是面相对象的编程思想，需要创建类的实例；而函数式组件用的是函数式编程，接收参数，返回值
+- 编程思想不同：类组件使用的是面向对象的编程思想，需要创建类的实例；而函数式组件用的是函数式编程，接收参数，返回值
 - 内存占用：类组件需要内存存储实例，而函数组件执行完立即释放内存
 - 捕获特性：函数式组件拥有值捕获特性
 - 可测试性：便于编写单元测试
 - 状态：类组件有自己的状态，函数组件需要使用 `useState` 来获得状态
-- 声明周期：类组件有完整的生命周期，函数组件可以使用 `useEffect` 来拥有生命周期
-- 更新：类组件使用 `pureComponent` 或 `shouldComponentUpdate` 来告诉组件需不需要更新，函数组件使用 `useMemo`
+- 生命周期：类组件有完整的生命周期，函数组件可以使用 `useEffect` 来拥有生命周期
+- 更新：类组件使用 `pureComponent` 或 `shouldComponentUpdate` 来告诉组件需不需要更新，函数组件使用 `useMemo`、`useCallBack`
 
 ### React Fiber
 
@@ -671,4 +684,4 @@ let taskQueue = [
 
 浏览器一帧的时间并不严格是 `16ms`，是可以动态控制的（如第三帧剩余时间为 49.95ms）。如果子任务的时间超过了一帧的剩余时间，则会一直卡在这里执行，直到子任务执行完毕。如果代码存在死循环，则浏览器会卡死。如果此帧的剩余时间大于 0（有空闲时间）或者已经超时（上文定义了 `timeout` 时间为 `1000`，必须强制执行了），且当时存在任务，则直接执行该任务。如果没有剩余时间，则应该放弃执行任务控制权，把执行权交还给浏览器。如果多个任务执行总时间小于空闲时间的话，是可以在一帧内执行多个任务的。
 
-<!-- ## 算法 -->
+## 算法
