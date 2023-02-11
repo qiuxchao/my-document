@@ -1,12 +1,12 @@
 /*
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
  * @LastEditTime: 2022-09-15 19:53:19
  */
-import type { SidebarConfig } from '@vuepress/theme-default'
+import type { SidebarConfig } from '@vuepress/theme-default';
 
 export const sidebarZh: SidebarConfig = {
 	'/frontend/': [
@@ -26,8 +26,8 @@ export const sidebarZh: SidebarConfig = {
 					link: '/frontend/javascript/js_basic/history.md',
 					children: [
 						'/frontend/javascript/js_basic/history.md',
-						'/frontend/javascript/js_basic/version.md'
-					]
+						'/frontend/javascript/js_basic/version.md',
+					],
 				},
 			],
 		},
@@ -89,16 +89,14 @@ export const sidebarZh: SidebarConfig = {
 		{
 			text: 'Canvas',
 			collapsible: true,
-			children: [
-				'/frontend/canvas/',
-			],
+			children: ['/frontend/canvas/'],
 		},
 		{
 			text: 'Typescript',
 			collapsible: true,
 			children: [
 				'/frontend/typescript/',
-				'/frontend/typescript/exercise.md'
+				'/frontend/typescript/exercise.md',
 			],
 		},
 		'/frontend/babel.md',
@@ -156,10 +154,7 @@ export const sidebarZh: SidebarConfig = {
 		{
 			text: 'Java',
 			collapsible: true,
-			children: [
-				'/backend/java/basic.md',
-				'/backend/java/oop.md',
-			],
+			children: ['/backend/java/basic.md', '/backend/java/oop.md'],
 		},
 		'/backend/php/',
 	],
@@ -198,6 +193,10 @@ export const sidebarZh: SidebarConfig = {
 				'/tools/ide/eslint.md',
 			],
 		},
+		{
+			text: '操作系统',
+			children: ['/tools/system/mac/'],
+		},
 	],
 	'/share/': [
 		{
@@ -210,4 +209,4 @@ export const sidebarZh: SidebarConfig = {
 			],
 		},
 	],
-}
+};

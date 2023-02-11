@@ -1,12 +1,12 @@
 /*
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: qiuxchao
  * @Date: 2022-07-12 15:32:23
  * @LastEditors: qiuxchao
  * @LastEditTime: 2022-09-05 10:27:42
  */
-import type { NavbarConfig } from '@vuepress/theme-default'
+import type { NavbarConfig } from '@vuepress/theme-default';
 
 export const navbarZh: NavbarConfig = [
 	{
@@ -79,7 +79,7 @@ export const navbarZh: NavbarConfig = [
 			'/operation/gitlab.md',
 			'/operation/jenkins.md',
 			'/operation/redis.md',
-			'/operation/mongodb.md'
+			'/operation/mongodb.md',
 		],
 	},
 	{
@@ -87,7 +87,7 @@ export const navbarZh: NavbarConfig = [
 		children: [
 			{
 				text: '🧭工具、软件、网址导航',
-				link: '/tools/navigation.md'
+				link: '/tools/navigation.md',
 			},
 			{
 				text: 'Git',
@@ -97,14 +97,14 @@ export const navbarZh: NavbarConfig = [
 				text: 'IDE',
 				link: '/tools/ide/vscode_plugins.md',
 			},
-
+			{
+				text: '操作系统',
+				link: '/tools/system/mac/',
+			},
 		],
 	},
 	{
 		text: '技术分享',
-		children: [
-			'/share/code_review.md',
-			'/share/chrome_extensions.md'
-		],
+		children: ['/share/code_review.md', '/share/chrome_extensions.md'],
 	},
-]
+];
