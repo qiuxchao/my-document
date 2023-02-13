@@ -191,6 +191,7 @@ export const sidebarZh: SidebarConfig = {
 				'/tools/ide/vscode_plugins.md',
 				'/tools/ide/vscode_setting.md',
 				'/tools/ide/eslint.md',
+				'/tools/ide/prettier.md',
 			],
 		},
 		{
