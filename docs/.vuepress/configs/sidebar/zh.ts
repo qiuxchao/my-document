@@ -101,6 +101,7 @@ export const sidebarZh: SidebarConfig = {
 		},
 		'/frontend/babel.md',
 		'/frontend/rollup.md',
+		'/frontend/vite.md',
 		'/frontend/monorepo_proj_create.md',
 		'/frontend/cache.md',
 		// '/frontend/jquery.md',
