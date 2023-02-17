@@ -19,7 +19,7 @@ export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
   title: '湫的碎碎念',
-  description: '一只前端崽',
+  description: '一名进击的前端er',
   head: [['link', { rel: 'icon', href: '/images/head.jpg' }]],
 
   // Dev 配置项
