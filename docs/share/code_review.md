@@ -159,9 +159,4 @@ Code Review 流程：
 
 根据提示输入MR标题、描述，然后选择reviewer即可
 
-## ------
-
-> 本文参考链接🔗：<br/>
-> [如何在团队中做好Code Review](https://ken.io/note/how-to-do-code-review-in-a-team)<br/>
-> [基于GitLab的Code Review教程](https://ken.io/note/gitlab-code-review-tutorial#H3-6)<br/>
-> [GitLab merge request 结合钉钉群消息机器人的全自动 Code Review 实践](https://juejin.cn/column/7066714281068199972)
+下一章：[Code Review2.0](https://qiuxc.cn/share/code_review2.0.html)

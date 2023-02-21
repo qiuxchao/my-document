@@ -1,4 +1,4 @@
-# fx-mr-cli
+# mr-cli 使用文档
 
 `fx-mr-cli` 是一个 GitLab Merge Request 命令行工具，能够帮助我们在命令行中交互式创建 Merge Reqeust，使 Code Review 流程更简洁高效。
 
@@ -6,7 +6,7 @@
 
 ### 1. 全局安装
 
-> 需要连接到公司npm私有仓库，[查看教程](https://fenxianglife.yuque.com/technical-team/front/enhgqg)
+> 需要连接到公司npm私有仓库
 
 ```bash
 sudo npm install fx-mr-cli -g
@@ -14,7 +14,7 @@ sudo npm install fx-mr-cli -g
 
 ### 2. 配置 GitLab token
 
-> token 用于后续创建MR、操作服务端数据时的身份验证，[创建token教程](https://fenxianglife.yuque.com/technical-team/front/dnoalf#b81f1344)
+> token 用于后续创建MR、操作服务端数据时的身份验证，[创建token教程](https://qiuxc.cn/share/code_review.html#%E5%88%9B%E5%BB%BA-access-token)
 
 ```bash
 mr token <你的token>
@@ -50,7 +50,7 @@ module.exports = {
 
 | 字段 | 说明 | 必填 | 类型 | 默认 |
 | --- | --- | ---- | --- | --- |
-| gitlabUrl | 托管当前项目的GitLab主页地址(非项目地址) | 否 | `string` | `'https://gitlab.fenxianglife.com'` |
+| gitlabUrl | 托管当前项目的GitLab主页地址(非项目地址) | 否 | `string` | `'https://gitlab.xxx.com'` |
 | projectId | 当前项目在GitLab上的ID | 是 | `number` |  |
 | sourceBranch | 发起MR的源分支，默认当前分支 | 否 | `string` |  |
 | targetBranch | 发起MR的目标分支，默认develop | 否 | `string` | `'develop'` |
