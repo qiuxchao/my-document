@@ -67,6 +67,27 @@ procychains4 git clone https://github.com/facebook/react.git
 
 这将使用代理服务器访问该网站，并隐藏您的真实 IP 地址。
 
+#### zsh 配置别名
+
+可以在 zsh 中配置 `proxychains4` 为 `pc`，便于使用：
+
+```sh
+# 编辑 zsh 配置文件
+vi ~/.zshrc
+
+# 在 .zshrc 配置别名
+alias pc="proxychains4"
+
+# 重载配置
+source ~/.zshrc
+```
+
+然后便可以通过 `pc` 命令来实现命令行代理：
+
+```sh
+pc curl https://www.baidu.com
+```
+
 #### 安装后无法使用，命令行提示：zsh: command not found: procychains4
 
 如果您在安装完 Proxychains-ng 后遇到“zsh: command not found: procychains4”错误，则表明您没有正确配置系统的 `PATH` 变量。可以使用以下步骤来解决此问题：
