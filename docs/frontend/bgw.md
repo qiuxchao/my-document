@@ -569,6 +569,17 @@ vue 在初次渲染时会根据 `template` 中的模板来生成虚拟 dom，然
 - 生命周期：类组件有完整的生命周期，函数组件可以使用 `useEffect` 来拥有生命周期
 - 更新：类组件使用 `pureComponent` 或 `shouldComponentUpdate` 来告诉组件需不需要更新，函数组件使用 `useMemo`、`useCallBack`
 
+### React.PureComponent 作用、React.memo 作用
+
+`React.PureComponent` 和 `React.memo` 都是 React 中用于性能优化的工具，它们可以帮助我们避免不必要的重新渲染，提高应用程序的性能。
+
+`React.PureComponent` 是一个基于 class 的组件，它的作用是在 `shouldComponentUpdate` 生命周期中对比当前组件的 `props` 和 `state` 与前一次渲染时的值是否发生了变化。如果没有变化，则不会重新渲染组件。这个过程是自动进行的，我们不需要手动去实现 `shouldComponentUpdate` 方法，从而可以避免一些无谓的重新渲染，提高性能。
+
+`React.memo` 是一个高阶组件，它可以用于优化函数组件的性能。`React.memo` 会对比组件的 `props` 是否发生变化，如果没有变化，则不会重新渲染组件。使用 `React.memo` 可以减少组件的重新渲染次数，提高性能。
+
+需要注意的是，`React.PureComponent` 和 `React.memo` 都只能进行浅层比较，即只能对比 `props` 的第一层属性是否发生变化。如果 `props` 中包含了深层次的属性或者对象，那么可能会出现误判，从而导致不必要的重新渲染。此时可以考虑使用 `immutable.js` 或者手动实现 `shouldComponentUpdate` 方法进行深层次的比较。
+
+
 ### React Fiber
 
 #### 什么是 Fiber

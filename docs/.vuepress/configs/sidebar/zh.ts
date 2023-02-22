@@ -199,6 +199,8 @@ export const sidebarZh: SidebarConfig = {
 			text: '操作系统',
 			children: ['/tools/system/mac/'],
 		},
+		'/tools/code_snippets.md',
+		'/tools/term.md',
 	],
 	'/share/': [
 		{

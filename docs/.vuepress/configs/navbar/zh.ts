@@ -86,10 +86,7 @@ export const navbarZh: NavbarConfig = [
 	{
 		text: '工具',
 		children: [
-			{
-				text: '🧭工具、软件、网址导航',
-				link: '/tools/navigation.md',
-			},
+			'/tools/navigation.md',
 			{
 				text: 'Git',
 				link: '/tools/git/',
@@ -102,6 +99,8 @@ export const navbarZh: NavbarConfig = [
 				text: '操作系统',
 				link: '/tools/system/mac/',
 			},
+			'/tools/code_snippets.md',
+			'/tools/term.md',
 		],
 	},
 	{
