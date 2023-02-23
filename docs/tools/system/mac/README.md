@@ -13,8 +13,8 @@ curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection re
 此报错为: _443 端口连接被拒_，一般是因为墙的原因，如果你可以科学上网（Virtual Private Network）的话，在命令行键以下命令执行：
 
 ```sh
-# 7890 和 789 需要换成你自己的端口
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:789
+# 9981 需要换成你自己的端口
+export https_proxy=http://127.0.0.1:9981 http_proxy=http://127.0.0.1:9981 all_proxy=socks5://127.0.0.1:9981
 ```
 
 再次执行之前连接 `http://raw.githubusercontent.com:443` 被拒绝的命令应该就成功了。
