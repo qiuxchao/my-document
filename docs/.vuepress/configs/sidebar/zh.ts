@@ -179,6 +179,7 @@ export const sidebarZh: SidebarConfig = {
 			text: 'Git',
 			children: [
 				'/tools/git/',
+				'/tools/git/commands.md',
 				'/tools/git/git_tag.md',
 				'/tools/git/logogram.md',
 				'/tools/git/js_delivr.md',
