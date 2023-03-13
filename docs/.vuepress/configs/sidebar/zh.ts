@@ -56,6 +56,7 @@ export const sidebarZh: SidebarConfig = {
 				'/frontend/react/hole.md',
 				'/frontend/react/custom_renderers.md',
 				'/frontend/react/将状态逻辑提取到Reducer中.md',
+				'/frontend/react/forwardRef_useImperativeHandleType.md',
 			],
 		},
 		{
