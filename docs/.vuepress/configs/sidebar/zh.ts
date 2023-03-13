@@ -21,6 +21,7 @@ export const sidebarZh: SidebarConfig = {
 				'/frontend/javascript/dependency_injection.md',
 				'/frontend/javascript/reg_grammar.md',
 				'/frontend/javascript/将内容复制到剪贴板.md',
+				'/frontend/javascript/function_currying.md',
 				{
 					text: 'JavaScript 高级程序设计——读书笔记',
 					link: '/frontend/javascript/js_basic/history.md',
