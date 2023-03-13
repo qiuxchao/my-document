@@ -98,6 +98,9 @@ export const sidebarZh: SidebarConfig = {
 			children: [
 				'/frontend/typescript/',
 				'/frontend/typescript/exercise.md',
+				'/frontend/typescript/dts&ts.md',
+				'/frontend/typescript/declare.md',
+				'/frontend/typescript/reference.md',
 			],
 		},
 		'/frontend/babel.md',
