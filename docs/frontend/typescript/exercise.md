@@ -667,6 +667,62 @@ interface Todo1 {
 
 #### 元组转换为对象
 
+[Palyground](https://www.typescriptlang.org/play?#code/PQKgUABBCM0QtBQwoqBG-QNvGCNjQXHKE-tQhjGQLzEmEBGAnhAM4CWAdgPaP0QAUAAnUywJQQBiQAHegVWVBjMgCsApgGMALvADW0itTCEBWiIAyMwHduGqAD4IgImtAc-EQACgCUIgTlNA2-GBv-0CL0YApYwPOJgIAZDEQATygKaKgABygFRyqIDePoDR6oAw-4BgOoCb8eEo0Zi4eNExSfjRgCFugHSpwIA8CoC-CYD0ZoBzcqiAtHKAsgmAYcqAX4qApua+hIDR8oBBmoBY-34ABgPy6lCyLNTyEPIArgAOADbSEAC8EADaAOTy0tRzAIbrADQQ6wC2jAAm0nMQAMyHx2eX1wAa96cXVxAAmusAuhC7agQUb0cZ+eQUGaLABO2ymcwmKwAKrMFkjGAB5KRyeQAHghUMYADNJqjpCZgMAINIAB5QhTSc4QADek22ewAXMctjt9kd3k9busuQLPnd+Y9Pq8RZKXm9Zd9hQ8PtcfgBfQgDPp+EyACnUIABxWjyAAWUzIEEAUHKAU-NANDu3RN8nkM2oHMpQ1kJoAdJJqF7GNCAObAWDAABeJvgAGEAHJgEDADSgCAAfTT6Yz6YggAN5XKAY7lAIAeqczJZTEATGgJixR82k6KxMgUuKR1JpW3o5yBsN25xYcyobHG0IYgYgAB8IPQpicyNJoeOaBQZ4w5rxVr8TCtmYRVgBpCAMCBI1ZTmdz36-Lm7sAasDJ0sliCAaVtAKvRgApXdrFh9Ziu0E4zAMJirFkIAAUQARymXY5iOUC6RxCA1QgIloUYE5jg4Kt4E9aCFnoQNtmAKZ5FoOZqHWDQQXGUla2WNZNnZPllUFcVmKleUVUVf5AWBMZ5DAKigLJGNp1necVlWaAjgAJiOG4jgAFm4oFBIEviaIWABZWgaToyT+Wk+55OOBS-gBFS+MrSFFlkQFtj0wg4PpPEIKguZmzJetsSbKtiQ08kjlZHlOW5Rj1gAbjY647hlTi7ki0U5ViwVXgShUfmSz4fkQowjAORz4KbVzoI82svMbPFfJJaZaxEs9oTykDoC5aBIukrlpMim4uRuSKFK5BScrygrnNxYr3JrNFMW8yrrL8mqtJ0xrWWamAEsMkVDK6nqEtMkVTKG-LfiTKlMOoeBaWci7oVQ6EwGAudbroya62mircVWfSIGk35ArVDckxAL9vzLQBoOWCQBTa2B79y0TUBCBMQAwJUAarlc0AY8jABVvB0nRdN1gA9b1fX9IMQ2gYBdlBAB3Odw0jWMEYgO1Mex51XXdahPR9P0A2DUNqBXYjaDGBnABezQAsTX0FncfZzmiZ52nozjCsgA)
+
+```ts
+/*
+  11 - 元组转换为对象
+  -------
+  by sinoon (@sinoon) #简单 #object-keys
+
+  ### 题目
+
+  > 欢迎 PR 改进翻译质量。
+
+  传入一个元组类型，将这个元组类型转换为对象类型，这个对象类型的键/值都是从元组中遍历出来。
+
+  例如：
+
+  ``ts
+  const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
+
+  type result = TupleToObject<typeof tuple> // expected { tesla: 'tesla', 'model 3': 'model 3', 'model X': 'model X', 'model Y': 'model Y'}
+  ``
+
+  > 在 Github 上查看：https://tsch.js.org/11/zh-CN
+*/
+
+/* _____________ 你的代码 _____________ */
+
+type TupleToObject<T extends readonly (string | number | symbol)[]> = {
+  [K in T[number]]: K
+}
+
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from '@type-challenges/utils'
+
+const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
+const tupleNumber = [1, 2, 3, 4] as const
+const tupleMix = [1, '2', 3, '4'] as const
+
+type cases = [
+  Expect<Equal<TupleToObject<typeof tuple>, { tesla: 'tesla'; 'model 3': 'model 3'; 'model X': 'model X'; 'model Y': 'model Y' }>>,
+  Expect<Equal<TupleToObject<typeof tupleNumber>, { 1: 1; 2: 2; 3: 3; 4: 4 }>>,
+  Expect<Equal<TupleToObject<typeof tupleMix>, { 1: 1; '2': '2'; 3: 3; '4': '4' }>>,
+]
+
+// @ts-expect-error
+type error = TupleToObject<[[1, 2], {}]>
+
+/* _____________ 下一步 _____________ */
+/*
+  > 分享你的解答：https://tsch.js.org/11/answer/zh-CN
+  > 查看解答：https://tsch.js.org/11/solutions
+  > 更多题目：https://tsch.js.org/zh-CN
+*/
+
+```
+
 #### 第一个元素
 
 #### 获取元组长度
