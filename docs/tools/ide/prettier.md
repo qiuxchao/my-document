@@ -12,6 +12,22 @@ Prettier 是一种代码格式化工具，它可以帮助我们自动格式化�
 
 - 点击安装按钮。
 
+- 设置 Prettier 扩展，在 Vscode `settings.json` 中添加如下代码：
+
+```json
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.withNodeModules": false,
+	"prettier.jsxSingleQuote": true,
+	"prettier.printWidth": 120,
+	"prettier.singleQuote": true,
+	"prettier.trailingComma": "es5",
+	"prettier.bracketSpacing": true,
+	"prettier.useTabs": true,
+	"prettier.tabWidth": 2
+}
+```
+
 ### 步骤 2：安装 Prettier 的命令行工具
 
 Prettier 的命令行工具提供了命令行接口，可以通过命令行执行代码格式化。
@@ -30,11 +46,11 @@ npm install --save-dev prettier
 
 ```json
 {
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "endOfLine": "lf",
-  "printWidth": 120,
-  "semi": true
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"endOfLine": "lf",
+	"printWidth": 120,
+	"semi": true
 }
 ```
 
@@ -90,18 +106,12 @@ npm install --save-dev eslint-config-prettier eslint-plugin-prettier prettier
 
 ```json
 {
-  "extends": [
-    "eslint:recommended",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
-  ],
-  "rules": {
-    "prettier/prettier": "error"
-  }
+	"extends": ["eslint:recommended", "prettier"],
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": "error"
+	}
 }
-
 ```
 
 3. 配置 VSCode，以让它在保存文件时自动格式化代码
@@ -121,6 +131,6 @@ npm install --save-dev eslint-config-prettier eslint-plugin-prettier prettier
 ### 已经完成了所有步骤，但保存文件时并未按照配置文件进行格式化
 
 1. 右键需要格式化的文件
-2. 点击 *使用...格式化文档*
-3. 弹窗的选项中点击 *配置默认格式化程序*
-4. 弹窗中选择 *Prettier - Code Formatter* 即可
+2. 点击 _使用...格式化文档_
+3. 弹窗的选项中点击 _配置默认格式化程序_
+4. 弹窗中选择 _Prettier - Code Formatter_ 即可
