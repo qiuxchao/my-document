@@ -58,6 +58,7 @@ export const sidebarZh: SidebarConfig = {
 				'/frontend/react/custom_renderers.md',
 				'/frontend/react/将状态逻辑提取到Reducer中.md',
 				'/frontend/react/forwardRef_useImperativeHandleType.md',
+				'/frontend/react/闭包在ReactHooks中的应用.md',
 			],
 		},
 		{
